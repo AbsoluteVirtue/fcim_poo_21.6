@@ -1,90 +1,77 @@
-
-#include <assert.h>
+#include <algorithm>
 #include <iostream>
 
-struct pod
+struct Vector
 {
-    int *value;
-    unsigned int length;
+    unsigned int _size{0};
+    // переменная _list должна быть массивом/списком из элементов типа int;
 };
 
-void copy(pod &dest, const pod &other)
-{
-    if (dest.value)
-        delete[] dest.value;
+int norm(Vector &data);
+void init(Vector &data, unsigned int size);
+void clear(Vector &data);
+int pop(Vector &data);
+void push(Vector &data, int val);
 
-    dest.length = other.length;
-    dest.value = new int[dest.length];
-    for (unsigned int i = 0; i < dest.length; ++i)
+bool cmp(int left, int right)
+{
+    return left < right;
+}
+
+int main(void)
+{
+    Vector v;
+    unsigned int size = 0;
+    std::cin >> size;
+    int push_val = 0;
+    std::cin >> push_val;
+
+    init(v, size);
+    for (size_t i = 0; i < v._size; i++)
     {
-        dest.value[i] = other.value[i];
+        std::cin >> v._list[i];
     }
-}
 
-bool eq(const pod &dest, const pod &other)
-{
-    if (dest.length != other.length)
-        return false;
+    push(v, push_val);
 
-    for (unsigned int i = 0; i < dest.length; ++i)
+    for (size_t i = 0; i < v._size; i++)
     {
-        if (dest.value[i] != other.value[i])
-            return false;
+        std::cout << v._list[i] << " ";
     }
-    return true;
-}
 
-int at(const pod &dest, const int idx)
-{
-    // FIXME: find a way without comparing int and uint 
-    unsigned int i = (idx < 0) ? ((-idx < dest.length) ? dest.length + idx : 0) : idx;
-    return dest.value[(i > dest.length - 1) ? dest.length - 1 : i];
-}
+    // укажите начало и конец списка в соответствии с вашей реализацией
+    std::sort(, , cmp);
 
-void make_from_array(pod &dest, const int *x, const unsigned int n)
-{
-    if (dest.value)
-        delete[] dest.value;
+    std::cout << pop(v) << " ";
 
-    dest.length = n;
-    dest.value = new int[dest.length];
-    for (unsigned int i = 0; i < dest.length; ++i)
+    for (size_t i = 0; i < v._size; i++)
     {
-        dest.value[i] = x[i];
+        std::cout << v._list[i] << " ";
     }
+
+    std::cout << norm(v) << " ";
+
+    clear(v);
+
+    std::cout << norm(v);
 }
 
-void make_empty(pod &dest)
+int norm(Vector &data)
 {
-    dest.length = 0;
-    dest.value = nullptr;
 }
 
-void clear(pod &dest)
-{ 
-    delete[] dest.value;
-    dest.length = 0;
-    dest.value = nullptr;
-}
-
-int main(int argc, char const *argv[])
+void init(Vector &data, unsigned int size)
 {
-    int array[] = {1, 4, 7, 9};
-    pod a;
-    make_empty(a);
-    make_from_array(a, array, 4);
-    assert(9 == at(a, 3));
-    assert(9 == at(a, -1));
-    assert(9 == at(a, 13));
-    assert(1 == at(a, -13));
+}
 
-    pod b;
-    make_empty(b);
-    copy(b, a);
-    assert( 1 == at(b, 0));
+void clear(Vector &data)
+{
+}
 
-    assert(eq(a, b));
+int pop(Vector &data)
+{
+}
 
-    clear(a);
-    clear(b);
+void push(Vector &data, int val)
+{
 }

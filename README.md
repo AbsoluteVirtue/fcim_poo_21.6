@@ -1,37 +1,22 @@
-# fcim_poo_21.6
-Object-oriented programming for beginners.
+## Полезные ресурсы
 
-## lab 1 ##
-list.append(x)\
-Add an item to the end of the list. Equivalent to a[len(a):] = [x].
+1. Степанов, А.А., Заметки о программировании (англ.), http://stepanovpapers.com/notes.pdf
+2. https://grugbrain.dev/ (англ.)
+3. Список видео на русском, посвященный основам ООП в С++, https://www.youtube.com/playlist?list=PLQOaTSbfxUtBm7DxblJZShqBQnBAVzlXX
+4. Столяров, А.В., Введение в язык С++, http://www.stolyarov.info/books/pdf/cppintro5.pdf
+5. Онлайн-учебник (англ.), https://icarus.cs.weber.edu/~dab/cs1410/textbook/chapters.html
+6. Data-oriented как альтернатива object-oriented (англ.), https://gamesfromwithin.com/category/data-oriented-design
+7. Хорошее видео об особенностях С++ с точки зрения производительности с конкретными примерами (англ.), https://youtu.be/BP6NxVxDQIs
+8. E. Gamma et al., Design Patterns (англ., 1994), https://github.com/TushaarGVS/Design-Patterns.pdf
+9. Почему современные стандарты С++ устарели (англ.), https://www.linkedin.com/pulse/why-i-dont-spend-time-modern-c-anymore-henrique-bucher-phd
+10. Как не надо писать код на С++, http://www.boost.org/doc/libs/1_55_0/libs/geometry/doc/html/geometry/design.html
+11. О статическом анализе кода (англ.), https://www.gamedeveloper.com/programming/in-depth-static-code-analysis
 
-list.extend(iterable)\
-Extend the list by appending all the items from the iterable. Equivalent to a[len(a):] = iterable.
+## Что смотреть дальше\
+1. Для самопроверки, реализация механизмов выделения памяти с использованием ООП-техник, https://youtu.be/LIb3L4vKZ7U\
+2. Для подготовки к следующему предмету, декомпиляция С++, https://youtu.be/bSkpMdDe4g4
 
-list.insert(i, x)\
-Insert an item at a given position. The first argument is the index of the element before which to insert, so a.insert(0, x) inserts at the front of the list, and a.insert(len(a), x) is equivalent to a.append(x).
+## Материалы для лабораторных
 
-list.remove(x)\
-Remove the first item from the list whose value is equal to x. It raises a ValueError if there is no such item.
-
-list.pop([i])\
-Remove the item at the given position in the list, and return it. If no index is specified, a.pop() removes and returns the last item in the list. (The square brackets around the i in the method signature denote that the parameter is optional, not that you should type square brackets at that position. You will see this notation frequently in the Python Library Reference.)
-
-list.clear()\
-Remove all items from the list. Equivalent to del a[:].
-
-list.index(x[, start[, end]])\
-Return zero-based index in the list of the first item whose value is equal to x. Raises a ValueError if there is no such item.\
-The optional arguments start and end are interpreted as in the slice notation and are used to limit the search to a particular subsequence of the list. The returned index is computed relative to the beginning of the full sequence rather than the start argument.
-
-list.count(x)\
-Return the number of times x appears in the list.
-
-list.sort(*, key=None, reverse=False)\
-Sort the items of the list in place (the arguments can be used for sort customization, see sorted() for their explanation).
-
-list.reverse()\
-Reverse the elements of the list in place.
-
-list.copy()\
-Return a shallow copy of the list. Equivalent to a[:].
+### UML-диаграмма разрабатываемой системы
+![diagram](https://raw.githubusercontent.com/AbsoluteVirtue/fcim_poo_21.6/2021/docs/diag_5.png?raw=true)
