@@ -1,7 +1,6 @@
-# fcim_poo_21.6
-Object-oriented programming for beginners.
+# FCIM.POO21.6 -- Объектно-ориентированное программирование, вступительный курс
 
-## lab 1 ##
+## Материалы для лабораторных
 list.append(x)\
 Add an item to the end of the list. Equivalent to a[len(a):] = [x].
 
