@@ -1,7 +1,6 @@
 
 #include <assert.h>
 
-
 struct pod
 {
     int *value;
