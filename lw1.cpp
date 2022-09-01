@@ -1,43 +1,151 @@
+#include <ciso646>
+#include <cstring>
+#include <ctime>
+#include <cstdio>
+#include <cstdlib>
 
-#include <assert.h>
+#include <iostream>
 
-
-struct pod
+struct Rerr
 {
-    int *value;
-    unsigned int length;
+    int _val;
+    int _err;
 };
 
-void make_copy(pod &, const pod &);
-void make_from_array(pod &, const int *, const unsigned int);
-void make_of_size(pod &, const unsigned int);
-void make_empty(pod &);
-void clear(pod &);
-int at(const pod &, const int);
-bool is_equal(const pod &, const pod &);
+struct Vector
+{
+    size_t _size;
+    int *_list;
+};
+
+void initialize(Vector *v);
+int allocate(Vector *v, size_t len);
+int add(Vector *v, int x);
+Rerr get(Vector *v, size_t index);
+int set(Vector *v, size_t index, int x);
+int calculate_norm(Vector *v);
+int deallocate(Vector *v);
+
+#define N 10
 
 int main(int argc, char const *argv[])
 {
-    int array[] = {1, 4, 7, 9};
+    srand(time(NULL));
 
-    pod a;
-    make_empty(a);
-    make_from_array(a, array, 4);
+    Vector A;
 
-    assert(9 == at(a, 3));
-    assert(9 == at(a, -1));
-    assert(9 == at(a, 13));
-    assert(1 == at(a, -13));
+    initialize(&A);
 
-    pod b;
-    make_empty(b);
-    make_copy(b, a);
+    allocate(&A, N);
 
-    assert(1 == *(b.value));
-    assert(9 == *(b.value + b.length - 1));
+    for (size_t i = 0; i < N; ++i)
+    {
+        set(&A, i, rand() % 100);
+        printf("%d\t", get(&A, i));
+    }
+    printf("\n");
 
-    assert(is_equal(a, b));
+    deallocate(&A);
 
-    clear(a);
-    clear(b);
+    return 0;
+}
+
+int calculate_norm(Vector *v)
+{
+    int sum = 0;
+    for (size_t i = 0; i < v->_size; i++)
+    {
+        sum += v->_list[i];
+    }
+
+    return sum;
+}
+
+int set(Vector *v, size_t index, int x)
+{
+    if (v->_size < 1 or index < 0 or index > v->_size - 1)
+    {
+        return 1;
+    }
+
+    v->_list[index] = x;
+
+    return 0;
+}
+
+Rerr get(Vector *v, size_t index)
+{
+    if (v->_size < 1 or index < 0 or index > v->_size - 1)
+    {
+        return {0, 1};
+    }
+
+    return {v->_list[index], 0};
+}
+
+int allocate(Vector *v, size_t len)
+{
+    if (len < 1 or len == v->_size)
+    {
+        return 1;
+    }
+
+    int *tmp = (int *)calloc(len, sizeof(int));
+    if (tmp == NULL)
+    {
+        return -1;
+    }
+
+    if (v->_list != NULL)
+    {
+        for (size_t i = 0; i < (v->_size > len) ? len : v->_size; i++)
+        {
+            tmp[i] = v->_list[i];
+        }
+        free(v->_list);
+    }
+
+    v->_list = tmp;
+    v->_size = len;
+
+    return 0;
+}
+
+void initialize(Vector *v)
+{
+    v->_size = 0;
+    v->_list = NULL;
+}
+
+int add(Vector *v, int x)
+{
+    int *tmp = (int *)calloc(v->_size + 1, sizeof(int));
+    if (tmp == NULL)
+    {
+        return -1;
+    }
+
+    for (size_t i = 0; i < v->_size; ++i)
+    {
+        tmp[i] = v->_list[i];
+    }
+    tmp[v->_size] = x;
+
+    v->_size += 1;
+
+    free(v->_list);
+
+    v->_list = tmp;
+
+    return 0;
+}
+
+int deallocate(Vector *v)
+{
+    if (v->_list == NULL)
+    {
+        return -1;
+    }
+    free(v->_list);
+    v->_list = NULL;
 }
