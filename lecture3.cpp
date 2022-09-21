@@ -122,9 +122,11 @@ int main(int argc, char const *argv[])
 {
     c_shape a(kind::square);
     a.draw();
+
     // полиморфизм подтипов
     cpp_shape *x[3] = {new cpp_circle(), new cpp_triangle(), new cpp_square()};
     draw_all(x, 3);
+
     // адаптер
     stack s;
     s.push_back();
