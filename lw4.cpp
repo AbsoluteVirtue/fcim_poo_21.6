@@ -1,7 +1,14 @@
+/*
+Задание:
+Сделать структуру container полиморфной засчет шаблонов типов (class template). 
+Для примера ниже показана шаблонизированная функция swap (function template).
+Внимательно проверьте все обращения к конкретному типу в структуре container и замените их на переменный тип T там, где это необходимо.
+После этого внутренний массив должен стать полностью полиморфным. Возможно, для этого придется пересмотреть алгоритмы в некоторых функциях.
+*/
+
 #include <assert.h>
 #include <iostream>
 #include <string>
-
 
 template <typename T>
 inline
@@ -21,7 +28,7 @@ struct container
 int main(int argc, char const *argv[])
 {
     container<int> a({2, 3, 5, 7});
-    
+
     a.append(11);
     assert(11 == a[a.size() - 1]);
 
