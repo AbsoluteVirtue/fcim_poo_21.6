@@ -3,6 +3,7 @@
 class color
 {
 };
+
 class point
 {
 };
@@ -20,7 +21,6 @@ class c_shape
     kind k;
     point center;
     color col;
-
 public:
     c_shape(kind x) : k(x) {}
     void draw()
@@ -45,7 +45,6 @@ class cpp_shape
     // дополнительное поле kind не нужно
     point center;
     color col;
-
 public:
     virtual void draw() = 0; // = 0 отмечает метод как чисто виртуальный, а сам класс - как абстрактный
 };
@@ -54,7 +53,6 @@ class cpp_square : public cpp_shape
 {
     int w, x, y, z;
     int n;
-
 public:
     void draw() override
     {
@@ -66,7 +64,6 @@ class cpp_triangle : public cpp_shape
 {
     int x, y, z;
     float a, b, c;
-
 public:
     void draw() override
     {
@@ -77,7 +74,6 @@ public:
 class cpp_circle : public cpp_shape
 {
     int radius;
-
 public:
     void draw() override
     {
@@ -104,7 +100,6 @@ public:
 class stack
 {
     deque data;
-
 public:
     void push_back()
     { 

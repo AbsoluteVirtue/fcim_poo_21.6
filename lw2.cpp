@@ -80,9 +80,9 @@ int main(int argc, char const *argv[])
     assert(7 == a.back());
 
     a.remove(4);
-    assert(7 == a.at(1));
+    assert(9 == a.at(1));
     assert(7 == a.at(-1));
-    assert(8 == a.size());
+    assert(7 == a.size());
 
     for (unsigned int i = 0; i < a.size(); i++)
     {

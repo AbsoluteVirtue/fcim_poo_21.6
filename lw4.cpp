@@ -42,6 +42,8 @@ int main(int argc, char const *argv[])
     assert(0 == a.count(19));
     assert(8 == a.size());
 
+    std::cout << a;
+
     container<int> b(a);
     assert(a == b);
 
@@ -49,6 +51,8 @@ int main(int argc, char const *argv[])
     assert(0 == b.front());
     assert(17 == b.pop(20));
     assert(13 == b.back());
+
+    std::cout << b;
 
     container<char> c = "abra";
     assert(0 == c.back());
@@ -70,4 +74,11 @@ int main(int argc, char const *argv[])
     assert('A' == c.front());
 
     std::cout << c;
+
+    container<std::string> d({"Hello", "world"});
+    assert("Helloworld" == d.norm());
+    d[0].append(",");
+    d[d.size()].append("!");
+
+    std::cout << d;
 }
