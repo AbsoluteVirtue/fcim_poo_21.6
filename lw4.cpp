@@ -41,6 +41,7 @@ int main(int argc, char const *argv[])
     a.remove(19);
     assert(0 == a.count(19));
     assert(8 == a.size());
+    assert(59 == a.norm());
 
     std::cout << a;
 
@@ -51,6 +52,7 @@ int main(int argc, char const *argv[])
     assert(0 == b.front());
     assert(17 == b.pop(20));
     assert(13 == b.back());
+    assert(41 == b.norm());
 
     std::cout << b;
 
