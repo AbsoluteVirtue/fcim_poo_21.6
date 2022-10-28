@@ -12,31 +12,35 @@
 
 // ваша реализация с наследованием здесь
 
-// typedef /* тип вашего контейнера здесь */ container; например:
+// typedef /* тип вашего контейнера здесь */ container; 
+// например:
 typedef vector<int> Container;
 
 int main(int argc, char const *argv[])
 {
     Container v({1, 2, 3, 4}), w;
-
-    assert(w.empty());
-    assert(!v.empty());
+    assert(!v.empty()); // !array
+    assert(w.empty()); // !array
 
     w = v;
-    assert(v.size() == w.size());
+    assert(v.size() == w.size()); // !forward_list
 
     for (auto i = v.end() - 1, j = w.begin(); i != v.begin() - 1; *j++ = *i--);
 
-    auto it1 = std::next(v.begin());
-    auto it2 = std::next(w.begin());
+    std::cout << *std::next(v.begin()) << *std::next(w.begin()); // !stack, queue
  
-    int& ref1 = v.front();
-    int& ref2 = w.front();
- 
-    v.swap(w);
+    v.swap(w); // !array
 
-    assert(std::next(w.begin()) == it1);
-    assert(std::next(v.begin()) == it2);
-    assert(w.front() == ref1);
-    assert(v.front() == ref2);
+    v.erase(v.begin());
+
+    w.erase(w.begin(), w.end());
+    assert(w.empty());
+
+    v.clear();
+    assert(!v.size());
+
+    v.insert(v.begin(), 23);
+    w.insert(w.begin(), 23);
+
+    std::cout << *v.begin() << *w.begin();
 }
