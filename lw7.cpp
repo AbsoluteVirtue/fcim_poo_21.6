@@ -100,7 +100,6 @@ public:
     void
     report_status()
     {
-        // std::cout << values;
         for (auto it : values)
             std::cout << it << " ";
     }
