@@ -39,9 +39,8 @@ int main()
         std::cout << n << " ";
 
     std::reverse_copy(a2.begin(), a2.end(),
-                      std::ostream_iterator(std::cout, " "));
+                      std::ostream_iterator<int>(std::cout, " "));
 }
-
 #endif
 
 #ifdef VECTOR
