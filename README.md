@@ -23,7 +23,7 @@ http://lucacardelli.name/Papers/OnUnderstanding.A4.pdf
 http://www.melconway.com/Home/Committees_Paper.html
 4. Статья о важности статического анализа кода, написана бывшим главным инженером Oculus Rift -- John Carmack, In-depth: static code analysis (англ.)
 https://www.gamedeveloper.com/programming/in-depth-static-code-analysis
-5. Любопытный взгляд на развитие С++, который в свое время [https://news.ycombinator.com/item?id=11720659](вызвал много споров) в среде профессиональных С++-программистов, статья начинается на стр. 47 -- Henrique Bucher, Why I don't spend time with modern C++ anymore (англ.)
+5. Любопытный взгляд на развитие С++, который в свое время [вызвал много споров в среде профессиональных С++-разработчиков](https://news.ycombinator.com/item?id=11720659), статья начинается на стр. 47 -- Henrique Bucher, Why I don't spend time with modern C++ anymore (англ.)
 https://hackerbits.com/wp-content/uploads/2016/11/hacker_bits_issue11.pdf
 6. Статья об опыте перехода с написания программ в С++ на С, с интересными выводами -- Andre Weissflog, One year of C (англ.)
 https://floooh.github.io/2018/06/02/one-year-of-c.html
