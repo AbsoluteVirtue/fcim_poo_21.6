@@ -57,5 +57,6 @@ https://web.archive.org/web/20150906155800/http://www.objectmentor.com/resources
 3. https://www.youtube.com/@Reducible/videos
 4. https://www.youtube.com/@denniscosgrove8978/videos
 5. https://www.youtube.com/@simondev758/videos
+6. https://www.youtube.com/@contextfree/videos
 
 К сожалению, ресурсов на русском у меня для вас нет, если найду, дополню список.
