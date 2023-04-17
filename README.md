@@ -52,9 +52,10 @@ https://web.archive.org/web/20150906155800/http://www.objectmentor.com/resources
 19. Большой курс высокоуровневого программирования от Amazon, ведет курс автор EOP -- Efficient Programming with Components, https://www.youtube.com/playlist?list=PLHxtyCq_WDLXryyw91lahwdtpZsmo4BGD
 
 И несколько любопытных каналов о программировании:
-https://www.youtube.com/@CodeAesthetic/videos
-https://www.youtube.com/@Tsoding/videos
-https://www.youtube.com/@Reducible
-https://www.youtube.com/@denniscosgrove8978/videos
+1. https://www.youtube.com/@CodeAesthetic/videos
+2. https://www.youtube.com/@Tsoding/videos
+3. https://www.youtube.com/@Reducible/videos
+4. https://www.youtube.com/@denniscosgrove8978/videos
+5. https://www.youtube.com/@simondev758/videos
 
 К сожалению, ресурсов на русском у меня для вас нет, если найду, дополню список.
