@@ -48,7 +48,7 @@ https://web.archive.org/web/20150906155800/http://www.objectmentor.com/resources
 15. Лекция, критикующая принципы SOLID с точки зрения обозримых эффектов их применения -- Where Does Bad Code Come From?, https://youtu.be/7YpFGkG-u1w
 16. Исторический экскурс в основы программирования через призму их внедрения в различные языки программирования -- Procedural Programming: It's Back? It Never Went Away, https://youtu.be/eEBOvqMfPoI
 17. Интересная иллюстрация ООП в классическом понимании этого термина -- Moldable development, https://youtu.be/Pot9GnHFOVU
-18. Документальный сериал, показывающий полный цикл разработки игры Psychonauts 2 изнутри -- Double Fine PsychOdyssey, https://youtube.com/playlist?list=PLIhLvue17Sd70y34zh2erWWpMyOnh4UN_
+18. Документальный сериал, показывающий полный цикл разработки игры Psychonauts 2 изнутри -- Double Fine PsychOdyssey, [https://youtube.com/playlist?list=PLIhLvue17Sd70y34zh2erWWpMyOnh4UN_](https://youtube.com/playlist?list=PLIhLvue17Sd70y34zh2erWWpMyOnh4UN_)
 19. Большой курс высокоуровневого программирования от Amazon, ведет курс автор EOP -- Efficient Programming with Components, https://www.youtube.com/playlist?list=PLHxtyCq_WDLXryyw91lahwdtpZsmo4BGD
 
 И несколько любопытных каналов о программировании:
