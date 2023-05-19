@@ -13,14 +13,15 @@ https://people.inf.ethz.ch/wirth/AD.pdf
 https://classes.cs.uoregon.edu/14S/cis607pl/Papers/fundamental-1967.pdf
 6. Вводный курс по программированию, затрагивающий философские аспекты фундаментальных элементов программирования -- Alex A. Stepanov et al., Elements of programming - EOP (англ.)
 http://elementsofprogramming.com/eop.pdf
-
-7. Лямбда-исчисление - математическая модель, которая служит основой для архитектуры компьютеров и многих языков программирования -- Владимир А. Башкин (ЯрГУ), Лямбда-исчисление (рус.)
+7. Конспекты лекций курса по алгоритмам для студентов MIT, Introduction to algorithms, https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/pages/lecture-notes/
+###
+8. Лямбда-исчисление - математическая модель, которая служит основой для архитектуры компьютеров и многих языков программирования -- Владимир А. Башкин (ЯрГУ), Лямбда-исчисление (рус.)
 http://www.lib.uniyar.ac.ru/edocs/iuni/20180409.pdf
-8. Книга об основах языка С++ для начинающих -- Андрей В. Столяров, Введение в язык С++ (рус.)
+9. Книга об основах языка С++ для начинающих -- Андрей В. Столяров, Введение в язык С++ (рус.)
 http://www.stolyarov.info/books/pdf/cppintro5.pdf
 
 ### Статьи
-1. Cоветы начинающим программистам -- (англ.)
+1. Cоветы начинающим программистам (англ.)
 https://grugbrain.dev/
 2. Статья, обсуждающая принципиальные моменты, связанные с понятием "тип данных" в программировании -- Luca Cardelli et al., On understanding types, data abstractions, and polymorphism (англ.)
 http://lucacardelli.name/Papers/OnUnderstanding.A4.pdf
@@ -53,13 +54,15 @@ https://web.archive.org/web/20150906155800/http://www.objectmentor.com/resources
 15. Лекция, критикующая принципы SOLID с точки зрения обозримых эффектов их применения -- Where Does Bad Code Come From?, https://youtu.be/7YpFGkG-u1w
 16. Исторический экскурс в основы программирования через призму их внедрения в различные языки программирования -- Procedural Programming: It's Back? It Never Went Away, https://youtu.be/eEBOvqMfPoI
 17. Интересная иллюстрация ООП в классическом понимании этого термина -- Moldable development, https://youtu.be/Pot9GnHFOVU
-18. Документальный сериал, показывающий полный цикл разработки игры Psychonauts 2 изнутри -- Double Fine PsychOdyssey, [https://youtube.com/playlist?list=PLIhLvue17Sd70y34zh2erWWpMyOnh4UN_](https://youtube.com/playlist?list=PLIhLvue17Sd70y34zh2erWWpMyOnh4UN_)
-19. Большой курс высокоуровневого программирования от Amazon, ведет курс автор EOP -- Efficient Programming with Components, [https://www.youtube.com/playlist?list=PLHxtyCq_WDLXryyw91lahwdtpZsmo4BGD](https://www.youtube.com/playlist?list=PLHxtyCq_WDLXryyw91lahwdtpZsmo4BGD)
-
-20. Введение в объектно-оринтированное программирование на С++ (рус.), [https://www.youtube.com/watch?v=rZcTaRU7AAw&list=PLQOaTSbfxUtBm7DxblJZShqBQnBAVzlXX](https://www.youtube.com/watch?v=rZcTaRU7AAw&list=PLQOaTSbfxUtBm7DxblJZShqBQnBAVzlXX)
-21. Введение в анализ данных в Python -- Тимофей Ф. Хирьянов (МФТИ), Основы программирования и анализа данных на Python (рус.)
+18. Серия видео о том, как компьютеры программируются с нуля -- Build a 65c02-based computer from scratch, https://www.youtube.com/playlist?list=PLowKtXNTBypFbtuVMUVXNR0z1mu7dp7eH
+19. Документальный сериал, показывающий полный цикл разработки игры Psychonauts 2 изнутри -- Double Fine PsychOdyssey, [https://youtube.com/playlist?list=PLIhLvue17Sd70y34zh2erWWpMyOnh4UN_](https://youtube.com/playlist?list=PLIhLvue17Sd70y34zh2erWWpMyOnh4UN_)
+20. Большой курс высокоуровневого программирования от Amazon, ведет курс автор EOP -- Efficient Programming with Components, [https://www.youtube.com/playlist?list=PLHxtyCq_WDLXryyw91lahwdtpZsmo4BGD](https://www.youtube.com/playlist?list=PLHxtyCq_WDLXryyw91lahwdtpZsmo4BGD)
+###
+21. Введение в объектно-оринтированное программирование на С++ (рус.), [https://www.youtube.com/watch?v=rZcTaRU7AAw&list=PLQOaTSbfxUtBm7DxblJZShqBQnBAVzlXX](https://www.youtube.com/watch?v=rZcTaRU7AAw&list=PLQOaTSbfxUtBm7DxblJZShqBQnBAVzlXX)
+22. Введение в анализ данных в Python -- Тимофей Ф. Хирьянов (МФТИ), Основы программирования и анализа данных на Python (рус.)
 https://teach-in.ru/course/python-programming-and-data-analysis-basics
 
+###
 И несколько любопытных каналов о программировании:
 1. https://www.youtube.com/@CodeAesthetic/videos
 2. https://www.youtube.com/@Tsoding/videos
