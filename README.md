@@ -13,7 +13,8 @@ https://people.inf.ethz.ch/wirth/AD.pdf
 https://classes.cs.uoregon.edu/14S/cis607pl/Papers/fundamental-1967.pdf
 6. Вводный курс по программированию, затрагивающий философские аспекты фундаментальных элементов программирования -- Alex A. Stepanov et al., Elements of programming - EOP (англ.)
 http://elementsofprogramming.com/eop.pdf
-7. Конспекты лекций курса по алгоритмам для студентов MIT, Introduction to algorithms, https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/pages/lecture-notes/
+7. Конспекты лекций курса по алгоритмам для студентов MIT, Introduction to algorithms,
+https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/pages/lecture-notes/
 ###
 8. Лямбда-исчисление - математическая модель, которая служит основой для архитектуры компьютеров и многих языков программирования -- Владимир А. Башкин (ЯрГУ), Лямбда-исчисление (рус.)
 http://www.lib.uniyar.ac.ru/edocs/iuni/20180409.pdf
@@ -35,6 +36,8 @@ https://hackerbits.com/wp-content/uploads/2016/11/hacker_bits_issue11.pdf
 https://floooh.github.io/2018/06/02/one-year-of-c.html
 7. Статья, посвященная фундаментальным основам шаблонов проектирования от "гуру" объектно-ориентированного программирования Дядюшки Боба, с ним вы еще столкнетесь неоднократно -- Robert C. "Uncle Bob" Martin, Design principles and design patterns (англ.)
 https://web.archive.org/web/20150906155800/http://www.objectmentor.com/resources/articles/Principles_and_Patterns.pdf
+8. Статья об истоках функциональных языков программирования от авторая языка Fortran -- John Backus, Can programming be liberated from the von Neumann style? (англ.)
+http://worrydream.com/refs/Backus-CanProgrammingBeLiberated.pdf
 
 ### Видео
 1. Рассуждения о применимости технологии "блокчейн" в сфере денежного обращения и децентрализации -- Cryptocurrency: What is the Blockchain Threat Model?, https://youtu.be/kbYutOsrpvs

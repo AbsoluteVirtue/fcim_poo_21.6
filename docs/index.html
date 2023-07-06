@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Объектно-ориентированное программирование, методические указания</title>
+    <link rel="stylesheet" href="https://fred-wang.github.io/MathFonts/LatinModern/mathfonts.css" />
+</head>
+
+<body bgcolor="FFFFFF" link="006666" alink="8B4513" vlink="006666">
+    <table width="75%" align="center" border="0" cellpadding="2">
+        <tr>
+            <td width="80%">
+                <div align="right">
+                    <font size="4">"Structured programming – don’t use unrestrained GOTO;<br>
+                        functional programming – don’t use assignment;<br>
+                        object-oriented programming – don’t use pointers to functions."<br>
+                    </font>Robert C. Martin
+                </div>
+                <div align="justify">
+                    <p>Когда говорят об <b>абстракции</b> в обыденности, подразумевают что-то эфемерное, идеальное, не
+                        существующее в физическом мире. Между тем абстракция является очень важным инструментом в
+                        программировании. На простом примере попробуем понять почему. Вот знакомая всем запись,</p>
+                    <div align="center"><math display="inline">
+                            <mi>y</mi>
+                            <mo>=</mo>
+                            <mi>f</mi>
+                            <mo>(</mo>
+                            <mi>x</mi>
+                            <mo>)</mo>
+                        </math>.
+                    </div>
+                    </p>
+                    <p>Здесь есть несколько абстрактных элементов. Переменные <math display="inline"><mi>x</mi></math>
+                        и <math display="inline"><mi>y</mi></math>
+                        сами по себе являются абстракциями возможных конкретных значений. Функция <math display="inline"><mi>f</mi></math> является абстрактным
+                        механизмом преобразования значения переменной <math display="inline"><mi>x</mi></math> в значение переменной <math display="inline"><mi>y</mi></math>. Знак равенства
+                        указывает на то, что в данном контексте
+                        применение функции <math display="inline"><mi>f</mi></math> к аргументу равносильно значению переменной <math display="inline"><mi>y</mi></math>. Это позволяет сокращать записи математических выражений или значительно их упрощать. Например,
+                    </p>
+                    <div align="center"><math display="inline">
+                        <mi>4</mi><msup><mi>x</mi><mi>4</mi></msup><mo>-</mo><msup><mi>x</mi><mi>2</mi></msup><mo>-</mo><mi>x</mi><mo>+</mo><mi>2</mi>
+                        </math>;
+                    </div>
+                    <p>выражение выше можно упростить с помощью абстракции,</p>
+                    <div align="center"><math display="inline">
+                        <mi>y</mi><mo>=</mo><mi>2</mi><msup><mi>x</mi><mi>2</mi></msup><mo>+</mo><mi>x</mi><mo>+</mo><mi>1</mi>;
+                        </math>;
+                    </div>
+                    <p>тогда изначальное выражение можно переписать,</p>
+                    <div align="center"><math display="inline">
+                        <msup><mi>y</mi><mi>2</mi></msup><mo>-</mo><mi>y</mi><mo>+</mo><mi>2</mi>
+                        </math>.
+                    </div>
+                    <p>Скрыв подробности функции в переменной <math display="inline"><mi>y</mi></math> можно сосредоточиться на работе с квадратичной функцией, при необходимости раскрывая определение переменной <math display="inline"><mi>y</mi></math>. Использование абстракции в выражениях называется <b>комбинацией</b> [Башкин].</p>
+                    <p>В программировании абстракцию приходится применять похожим образом. Код ниже это иллюстрирует.</p>
+                    <pre><code>
+push    rbp
+mov     rbp, rsp
+mov     edi, OFFSET FLAT:.string "Hello, World!"
+mov     eax, 0
+call    printf
+mov     eax, 0
+pop     rbp
+                    </code></pre>
+                    <p>Неопытным взглядом сложно понять что именно происходит, особенно если не знать инструкции, которые используются в этом фрагменте. При этом, существует механизм, создающий абстракцию этих инструкций, который приводит весь фрагмент к другому виду:</p>
+                    <pre><code>
+printf(“Hello, World!”);
+                    </code></pre>
+                    <p>
+                        Новая запись предельно краткая, но полностью скрывает происходящее в момент применения функции
+                        <code>printf</code> к аргументу. Тем не менее, такая форма является более предпочтительной,
+                        потому что в подавляющем большинстве случаев программиста не столько интересует конкретный набор
+                        инструкций, сколько окончательный результат. Под таким углом полезность абстракций очевидна.
+                    </p>
+                    <p>
+                        Эту концепцию поначалу трудно представить, когда речь идет о типах данных. И тем не менее, программирование в значительной степени состоит из взаимодействий с различными уровнями абстракций типов.
+                    </p>
+                    <h4>Оглавление</h4>
+                    <ol>
+                        <li><a href="/oop_2021/chapter1">Абстрактные типы данных</a></li>
+                        <li>Сокрытие данных и инкапсуляция</li>
+                        <li>Конструкторы</li>
+                        <li>Перегрузка функций</li>
+                        <li>Перегрузка операторов</li>
+                        <li>Полиморфизм, первая часть</li>
+                        <li>Наследование</li>
+                        <li>Полиморфизм, вторая часть</li>
+                        <li>Шаблоны типов</li>
+                        <li>Полиморфизм, третья часть</li>
+                    </ol>
+                    <h4>Библиография</h4>
+                    <ol>
+                        <li>Башкин, В. А., “Лямбда-выражения”, Лямбда-исчисление, 2018, с. 8.</li>
+                        <li>Вики-конспекты(а), “Двоичная куча”, ИТМО, 4 сентября, 2022,
+                            [<a href="https://neerc.ifmo.ru/wiki/index.php?title=Двоичная_куча">neerc.ifmo.ru</a>].
+                        </li>
+                        <li>Вики-конспекты(б), “Красно-черное дерево”, ИТМО, 4 сентября, 2022,
+                            [<a href="https://neerc.ifmo.ru/wiki/index.php?title=Красно-черное_дерево">neerc.ifmo.ru</a>].
+                        </li>
+                        <li>Вики-конспекты(в), “Хеш-таблица”, ИТМО, 4 сентября, 2022,
+                            [<a href="https://neerc.ifmo.ru/wiki/index.php?title=Хеш-таблица">neerc.ifmo.ru</a>].
+                        </li>
+                        <li>Вики-конспекты(г), “Лямбда-исчисление”, ИТМО, 4 сентября, 2022,
+                            [<a href="https://neerc.ifmo.ru/wiki/index.php?title=Лямбда-исчисление">neerc.ifmo.ru</a>].
+                        </li>
+                        <li>Овчинников, А. В., “Множество, замкнутое относительно операции”, Теория групп. Лекционный
+                            курс, Москва, 2016, с. 10.</li>
+                        <li>Степанов, А. А., “Наибольшая общая мера: последние 2500 лет”, 2010.</li>
+                        <li>ANSI, “ISO-IR-6: ASCII Graphic Character Set”, ANSI, December 1, 1975.</li>
+                        <li>Brinkerhoff, D. A., “Introduction to files and I/O streams”, Streams, Object-Oriented
+                            Programming Using C++, Weber State University, 2015-2022,
+                            [<a href="https://icarus.cs.weber.edu/~dab/cs1410/textbook/14.Streams/introduction.html">icarus.cs.weber.edu</a>].
+                        </li>
+                        <li>Cardelli, L., Wegner, P., “On Understanding Types, Data Abstraction, and Polymorphism”,
+                            Computing Surveys, Vol 17 n. 4, 1985, pp. 471-522.</li>
+                        <li>Chu, I., “Dynamic Dispatch in Object Oriented Languages”, Concepts of Programming Languages, Course notes,
+                            [<a href="https://condor.depaul.edu/ichu/csc447/notes/wk10/Dynamic2.htm">condor.depaul.edu</a>].
+                        </li>
+                        <li>Clarkson, M. R. et al., “Type Inference”, OCaml Programming: Correct + Efficient +
+                            Beautiful, 
+                            [<a href="https://cs3110.github.io/textbook/cover.html">cs3110.github.io</a>].
+                        </li>
+                        <li>Cormen, T. H., et al., “Common divisors and greatest common divisors”, Number-Theoretic
+                            Algorithms, Introduction to Algorithms, 4th ed., 2022, p. 906.</li>
+                        <li>CPP(a) Reference, “Value categories”, May 20, 2023,
+                            [<a href="https://en.cppreference.com/w/cpp/language/value_category">en.cppreference.com</a>].
+                        </li>
+                        <li>CPP(b) Reference, “Operator overloading”, May 18, 2023,
+                            [<a href="https://en.cppreference.com/w/cpp/language/operators">en.cppreference.com</a>].
+                        </li>
+                        <li>CPP(c) Reference, “Virtual” function specifier, June 1, 2022,
+                            [<a href="https://en.cppreference.com/w/cpp/language/virtual">en.cppreference.com</a>].
+                        </li>
+                        <li>CPP(d) Reference, “Placeholder type specifiers”, May 5, 2023,
+                            [<a href="https://en.cppreference.com/w/cpp/language/auto">en.cppreference.com</a>].
+                        </li>
+                        <li>CPP(e) Reference, “Iterator library”, June 17, 2023,
+                            [<a href="https://en.cppreference.com/w/cpp/iterator">en.cppreference.com</a>].
+                        </li>
+                        <li>CPP(f) Reference, “std::variant”, April 17, 2023,
+                            [<a href="https://en.cppreference.com/w/cpp/utility/variant">en.cppreference.com</a>].
+                        </li>
+                        <li>CPP(g) Reference, “Smart pointers”, July 6, 2020,
+                            [<a href="https://en.cppreference.com/book/intro/smart_pointers">en.cppreference.com</a>].
+                        </li>
+                        <li>CPP(h) Reference, “std::shared_ptr”, Dynamic memory management, March 2, 2023,
+                            [<a href="https://en.cppreference.com/w/cpp/memory/shared_ptr">en.cppreference.com</a>].
+                        </li>
+                        <li>Gill, P. E., et al., “Reference Counting”, Iotr documentation, August 27, 2003,
+                            [<a href="http://www.ccom.ucsd.edu/~peg/papers/iotrdoc/reference_counting.html">ccom.ucsd.edu</a>].
+                        </li>
+                        <li>Goldberg, A., Kay, A., “The Smalltalk World and Its Primitives”, Smalltalk-72 instruction
+                            manual, Palo Alto Research Center, Xerox, March, 1976, p.48.</li>
+                        <li>Hinnant, H. E., et al., “A Brief Introduction to Rvalue References”, June 12, 2006,
+                            [<a href="https://www.open-std.org/jtc1/sc22/wg21/docs/papers/2006/n2027.html">open-std.org</a>].
+                        </li>
+                        <li>IBM, “Restrictions on default arguments (C++ only)”, March 23, 2021,
+                            [<a href="https://www.ibm.com/docs/en/zos/2.1.0?topic=only-restrictions-default-arguments-c">ibm.com</a>].
+                        </li>
+                        <li>Knuth, D. E., “The Greatest Common Divisor”, Rational Arithmetic, Arithmetic, The Art of
+                            Computer Programming, vol. 2, 3rd ed., 1998, p. 338.</li>
+                        <li>McJones, P., Stepanov, A., “Foundations. Values”, Elements of Programming, Semigroup Press,
+                            2019, p. 2.</li>
+                        <li>Moore, P., “Rational.hpp”, Boost Libraries Documentation,
+                            [<a href="https://www.boost.org/doc/libs/1_55_0/boost/rational.hpp">boost.org</a>].                            
+                        </li>
+                        <li>Polacek, M., “Understanding when not to std::move in C++”,
+                            [<a href="https://developers.redhat.com/blog/2019/04/12/understanding-when-not-to-stdmove-in-c">developers.redhat.com</a>].
+                        </li>
+                        <li>Pomeranz, A., “Inheritance and access specifiers”, Inheritance, LearnC++, March 24, 2022,
+                            [<a href="https://www.learncpp.com/cpp-tutorial/inheritance-and-access-specifiers/">learncpp.com</a>].
+                        </li>
+                        <li>Radford, M., ”C++ Interface Classes - An Introduction”, Overload 12(62), ACCU, August, 2004,
+                            [<a href="https://accu.org/journals/overload/12/62/radford_233/">accu.org</a>].
+                        </li>
+                        <li>Ritchie, D.M., “The Development of the C Language”, History of Programming Languages, 2nd
+                            ed., ACM Press, 1996.</li>
+                        <li>Standard C++ Foundation, “Inheritance – Multiple and Virtual Inheritance”, Standard C++
+                            Foundation Wiki,
+                            [<a href="https://isocpp.org/wiki/faq/multiple-inheritance">isocpp.org</a>].
+                        </li>
+                        <li>Strachey, C., “Fundamental Concepts in Programming Languages”, Higher-Order and Symbolic
+                            Computation, 13, 2000, p. 13.</li>
+                        <li>Stroustrup, B., Sutter, H., “C++ Core Guidelines”, International Standardization
+                            Organization C++, 2022,
+                            [<a href="http://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines">isocpp.github.io</a>].
+                        </li>
+                        <li>WG14 / N1256, “Types”, Concepts, Language, ISO/IEC 9899:TC3, Committee Draft, 2007, p. 33.
+                        </li>
+                        <li>Whitney(a), T., et al., “delete operator”, Built-in operators, precedence and associativity,
+                            C++ Language Reference, Microsoft Docs, August 3, 2021,
+                            [<a href="https://docs.microsoft.com/en-us/cpp/cpp/delete-operator-cpp?view=msvc-170">docs.microsoft.com</a>].
+                        </li>
+                        <li>Whitney(b), T., et al., “__interface”, Classes and Inheritance, C++ Language Reference,
+                            Microsoft Docs, August 3, 2021,
+                            [<a href="https://docs.microsoft.com/en-us/cpp/cpp/interface?view=msvc-170">docs.microsoft.com</a>].
+                        </li>
+                        <li>Wirth, N., “Representation of Arrays, Records, and Sets”, Fundamental Data Structures,
+                            Algorithms and Data Structures, 1985, p. 21.</li>
+                    </ol>
+
+                    <br>&nbsp;<br>
+
+                    <p>
+                        Copyright &copy; 2023 Брынзан, Л. В.<br>
+                        GNU General Public License<br>
+                        “Commons Clause” License Condition v1.0<br>
+                        GPL Attribution-ShareAlike 4.0 International<br>
+                    </p>
+                </div>
+            </td>
+        </tr>
+    </table>
+</body>
+
+</html>
