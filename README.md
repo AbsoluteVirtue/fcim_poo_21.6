@@ -36,7 +36,7 @@ https://hackerbits.com/wp-content/uploads/2016/11/hacker_bits_issue11.pdf
 https://floooh.github.io/2018/06/02/one-year-of-c.html
 7. Статья, посвященная фундаментальным основам шаблонов проектирования от "гуру" объектно-ориентированного программирования Дядюшки Боба, с ним вы еще столкнетесь неоднократно -- Robert C. "Uncle Bob" Martin, Design principles and design patterns (англ.)
 https://web.archive.org/web/20150906155800/http://www.objectmentor.com/resources/articles/Principles_and_Patterns.pdf
-8. Статья об истоках функциональных языков программирования от авторая языка Fortran -- John Backus, Can programming be liberated from the von Neumann style? (англ.)
+8. Статья об истоках функциональных языков программирования от автора языка Fortran -- John Backus, Can programming be liberated from the von Neumann style? (англ.)
 http://worrydream.com/refs/Backus-CanProgrammingBeLiberated.pdf
 
 ### Видео
