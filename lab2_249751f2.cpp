@@ -57,6 +57,8 @@ private:
     // необходимые поля с данными здесь
 };
 
+void print(const abstract_data_t&);
+
 // код для проверки правильности выполнения задания:
 int main(int argc, char const *argv[]) {
     int array[] = {1, 4, 7, 9};
@@ -64,8 +66,7 @@ int main(int argc, char const *argv[]) {
     assert(4 == a.length());
     assert(1 == a.at(0));
     assert(9 == a.at(10));
-    for(size_t i = 0; i < a.length(); i++) 
-        std::cout << a.at(i) << " ";
+    print(a);
     abstract_data_t b(a);
     assert(abstract_data_t::is_equal(a, b));
     b.clear();
