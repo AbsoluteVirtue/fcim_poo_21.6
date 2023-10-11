@@ -46,13 +46,11 @@ public:
     abstract_data_t(const abstract_data_t&);
     void clear();
     int at(int);
-    static bool is_equal(
-        const abstract_data_t&, const abstract_data_t&);
     void resize(size_t);
     void assign(size_t, int);
     size_t length();
     bool empty();
-    void swap(const abstract_data_t&);
+    void swap(abstract_data_t&);
 private:
     // необходимые поля с данными здесь
 };

@@ -1,5 +1,5 @@
 /* 
-Лабораторная работа 5 - Шаблоны типов
+Лабораторная работа 6 - Шаблоны типов
 
 Используя код из предыдущей лабораторной работы необходимо создать шаблонный тип данных.
 
@@ -21,10 +21,10 @@
 
 template <typename T>
 class iterator {
-private:
-    T *p{nullptr};
 public:
-    // конструкторы, деструктор, определение всех нужных методов здесь
+    // методы из предыдущей лабораторной работы здесь
+private:
+    // необходимые поля с данными здесь
 };
 
 template <typename T>
@@ -40,6 +40,8 @@ public:
     virtual iterator<T> find(const T&) = 0;
     virtual iterator<T> insert(iterator<T>, const T&) = 0;
     virtual iterator<T> erase(iterator<T>) = 0;
+    virtual void assign(std::initializer_list<T> &) = 0;
+    static size_t erase(abstract_data_t<T>&, const T&);
 };
 
 template <typename T> 
@@ -58,6 +60,8 @@ public:
     Iter find(const T&) override;
     Iter insert(Iter, const T&) override;
     Iter erase(Iter) override;
+    void assign(std::initializer_list<T> &) override;
+    static size_t erase(abstract_data_t<T>&, const T&);
 private:
     // необходимые поля здесь
 };
