@@ -40,6 +40,7 @@ https://web.archive.org/web/20150906155800/http://www.objectmentor.com/resources
 http://worrydream.com/refs/Backus-CanProgrammingBeLiberated.pdf
 
 ### Видео
+1. Короткие видео об основах С++ от Яндекса и МФТИ, https://www.youtube.com/@user-kd3vy7vs8l/playlists
 1. Рассуждения о применимости технологии "блокчейн" в сфере денежного обращения и децентрализации -- Cryptocurrency: What is the Blockchain Threat Model?, https://youtu.be/kbYutOsrpvs
 2. Введение в декомпиляцию С++ от создателя сайта godbolt.org -- What Has My Compiler Done for Me Lately? Unbolting the Compiler's Lid, https://youtu.be/bSkpMdDe4g4
 3. Исторический взгляд на функциональное программирование от автора SICP -- Programming is (should be) fun!, https://youtu.be/2MYzvQ1v8Ww
@@ -57,13 +58,14 @@ http://worrydream.com/refs/Backus-CanProgrammingBeLiberated.pdf
 15. Лекция, критикующая принципы SOLID с точки зрения обозримых эффектов их применения -- Where Does Bad Code Come From?, https://youtu.be/7YpFGkG-u1w
 16. Исторический экскурс в основы программирования через призму их внедрения в различные языки программирования -- Procedural Programming: It's Back? It Never Went Away, https://youtu.be/eEBOvqMfPoI
 17. Интересная иллюстрация ООП в классическом понимании этого термина -- Moldable development, https://youtu.be/Pot9GnHFOVU
-18. Серия видео о том, как компьютеры программируются с нуля -- Build a 65c02-based computer from scratch, https://www.youtube.com/playlist?list=PLowKtXNTBypFbtuVMUVXNR0z1mu7dp7eH
-19. Документальный сериал, показывающий полный цикл разработки игры Psychonauts 2 изнутри -- Double Fine PsychOdyssey, [https://youtube.com/playlist?list=PLIhLvue17Sd70y34zh2erWWpMyOnh4UN_](https://youtube.com/playlist?list=PLIhLvue17Sd70y34zh2erWWpMyOnh4UN_)
-20. Большой курс высокоуровневого программирования от Amazon, ведет курс автор EOP -- Efficient Programming with Components, [https://www.youtube.com/playlist?list=PLHxtyCq_WDLXryyw91lahwdtpZsmo4BGD](https://www.youtube.com/playlist?list=PLHxtyCq_WDLXryyw91lahwdtpZsmo4BGD)
-###
-21. Введение в объектно-оринтированное программирование на С++ (рус.), [https://www.youtube.com/watch?v=rZcTaRU7AAw&list=PLQOaTSbfxUtBm7DxblJZShqBQnBAVzlXX](https://www.youtube.com/watch?v=rZcTaRU7AAw&list=PLQOaTSbfxUtBm7DxblJZShqBQnBAVzlXX)
-22. Введение в анализ данных в Python -- Тимофей Ф. Хирьянов (МФТИ), Основы программирования и анализа данных на Python (рус.)
-https://teach-in.ru/course/python-programming-and-data-analysis-basics
+18. Документальный сериал, показывающий полный цикл разработки игры Psychonauts 2 изнутри -- Double Fine PsychOdyssey, [https://youtube.com/playlist?list=PLIhLvue17Sd70y34zh2erWWpMyOnh4UN_](https://youtube.com/playlist?list=PLIhLvue17Sd70y34zh2erWWpMyOnh4UN_)
+### Курсы
+1. Серия видео о том, как компьютеры программируются с нуля -- Build a 65c02-based computer from scratch, [https://www.youtube.com/playlist?list=PLowKtXNTBypFbtuVMUVXNR0z1mu7dp7eH](https://www.youtube.com/playlist?list=PLowKtXNTBypFbtuVMUVXNR0z1mu7dp7eH)
+2. Константин И. Владимиров, С++ для второго курса МФТИ (рус.), [https://www.youtube.com/playlist?list=PL3BR09unfgciJ1_K_E914nohpiOiHnpsK](https://www.youtube.com/playlist?list=PL3BR09unfgciJ1_K_E914nohpiOiHnpsK)
+3. Короткие видео об основах С++ от Яндекса/МФТИ (рус.), [https://www.youtube.com/@user-kd3vy7vs8l/playlists](https://www.youtube.com/@user-kd3vy7vs8l/playlists)
+4. Введение в объектно-оринтированное программирование на С++ (рус.), [https://www.youtube.com/watch?v=rZcTaRU7AAw&list=PLQOaTSbfxUtBm7DxblJZShqBQnBAVzlXX](https://www.youtube.com/watch?v=rZcTaRU7AAw&list=PLQOaTSbfxUtBm7DxblJZShqBQnBAVzlXX)
+5. Большой курс высокоуровневого программирования от Amazon, ведет курс автор EOP -- Efficient Programming with Components, [https://www.youtube.com/playlist?list=PLHxtyCq_WDLXryyw91lahwdtpZsmo4BGD](https://www.youtube.com/playlist?list=PLHxtyCq_WDLXryyw91lahwdtpZsmo4BGD)
+6. Введение в анализ данных в Python -- Тимофей Ф. Хирьянов (МФТИ), Основы программирования и анализа данных на Python (рус.), [https://teach-in.ru/course/python-programming-and-data-analysis-basics](https://teach-in.ru/course/python-programming-and-data-analysis-basics)
 
 ###
 И несколько любопытных каналов о программировании:
