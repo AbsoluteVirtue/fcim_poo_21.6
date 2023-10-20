@@ -43,35 +43,16 @@ private:
     // необходимые поля с данными здесь
 };
 
-class riterator {
-public:
-    // рекомендуемые прототипы функций:
-    ~riterator();
-    riterator();
-    riterator(const riterator &);
-    riterator(int *);
-    riterator &operator++();
-    riterator operator++(int);
-    riterator &operator--();
-    riterator operator--(int);
-    int& operator*();
-    int* operator->();
-    friend bool operator==(const riterator &, const riterator &);
-    friend bool operator!=(const riterator &, const riterator &);
-private:
-    // необходимые поля с данными здесь
-};
-
 class abstract_data_t {
 public:
     // методы из предыдущей лабораторной работы здесь
 
     // рекомендуемые прототипы функций:
     abstract_data_t(iterator, iterator);
-    iterator begin();
-    iterator end();
-    riterator rbegin();
-    riterator rend();
+    auto begin();
+    auto end();
+    auto rbegin();
+    auto rend();
     static bool is_equal(const abstract_data_t&, const abstract_data_t&);
     void assign(iterator, iterator);
 private:

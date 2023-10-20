@@ -53,10 +53,6 @@ public:
     // методы из предыдущей лабораторной работы, переопределение всех нужных методов здесь
 
     // рекомендуемые прототипы функций:
-    Iter begin() override;
-    Iter end() override;
-    Iter rbegin() override;
-    Iter rend() override;
     Iter find(const T&) override;
     Iter insert(Iter, const T&) override;
     Iter erase(Iter) override;
