@@ -58,7 +58,6 @@ int main(int argc, char const *argv[]) {
     const int b[3] = {13, 17, 19};
     v->extend(YOUR_VARIANT(b, 3));
     assert(8 == v->length());
-    std::cout << a;
     abstract_data_t *w = new YOUR_VARIANT();
     assert(w->empty());
     *w = *v;
@@ -68,5 +67,4 @@ int main(int argc, char const *argv[]) {
     w->pop();
     assert(17 == w->back());
     assert(7 == w->length());
-    std::cout << b;
 }

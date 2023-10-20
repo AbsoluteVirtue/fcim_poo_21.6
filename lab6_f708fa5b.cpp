@@ -77,7 +77,6 @@ int main(int argc, char const *argv[]) {
     a.erase(a.rbegin());
     assert(a.find(19) == a.end());
     assert(8 == a.length());
-    std::cout << a;
     YOUR_VARIANT<char> b = "abra";
     assert(0 == b.back());
     b.erase(b.rbegin());
@@ -89,10 +88,8 @@ int main(int argc, char const *argv[]) {
     assert(b.rbegin() == b.find(0));
     b[0] = 'A';
     assert('A' == b.front());
-    std::cout << b;
     YOUR_VARIANT<std::string> c({"Hello", "world"});
     c[0].append(",");
     c.insert(c.find("world"), " ");
     c[c.length()].append("!");
-    std::cout << c;
 }
