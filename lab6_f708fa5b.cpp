@@ -65,7 +65,7 @@ int main(int argc, char const *argv[]) {
     b.push('c');
     assert('c' == *b.rbegin());
     b.insert(b.end(), 'a');
-    assert('a' == b.rbegin());
+    assert('a' == *b.rbegin());
     b.extend(YOUR_VARIANT<char>("dabra"));
     assert(b.rbegin() == b.find(0));
     b[0] = 'A';
@@ -73,5 +73,5 @@ int main(int argc, char const *argv[]) {
     YOUR_VARIANT<std::string> c({"Hello", "world"});
     c[0].append(",");
     c.insert(c.find("world"), " ");
-    c[c.length()].append("!");
+    c[c.length() - 1].append("!");
 }
