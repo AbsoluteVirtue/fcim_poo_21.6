@@ -42,6 +42,7 @@ public:
     abstract_data_t(size_t);
     abstract_data_t(const int[], size_t);
     abstract_data_t(const abstract_data_t&);
+    abstract_data_t(abstract_data_t &&);
     void clear();
     int at(int);
     void resize(size_t);
