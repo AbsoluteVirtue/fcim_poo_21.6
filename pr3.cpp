@@ -112,10 +112,6 @@ public:
     friend void swap(var &a, var &b) {
         a.swap(b);
     }
-    friend std::ostream &operator<<(std::ostream &os, var a) {
-        os << a.x;
-        return os;
-    }
     var operator+(var other) {
         return this->x + other.x;
     }
@@ -137,8 +133,7 @@ int main() {
     swap(a, b);   // friend swap
     ::swap(a, b); // std::swap
 
-    std::cout << a + b; // friend operator << this->operator +
+    auto c = a + b; // this->operator +
 
     var *p = new var{2}; // this->operator new
-    std::cout << *p;
 }
