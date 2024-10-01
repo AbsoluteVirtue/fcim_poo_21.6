@@ -92,6 +92,14 @@ public:
         }
         return os;
     }
+
+    // алгоритмы из стнадартной библиотеки
+    bool contains(int v) {
+        return std::any_of(data, data + size(), [=](int x) { return v == x; });    
+    }
+    size_t count(int v) {
+        return std::count(data, data + size(), v);
+    }
 };
 
 int main()
