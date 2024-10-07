@@ -1,0 +1,218 @@
+<html>
+<!-- http://www.concentric.net/~Ttwang/tech/sorthash.htm -->
+<body>
+
+<center><h1>Sorted Linear Hash Table</h1></center>
+<center>Thomas Wang, March 1997</center>
+<center>last update July 1997</center>
+<hr>
+
+<!-- if you reached here by searching the word 'hash' for an ulterior purpose,-->
+<!-- then please quit while you still can.-->
+
+<h2>Abstract</h2>
+
+<p>
+In this article, we will examine the construct of the Sorted Linear
+Hash Table.  Sorted Linear Hash Table is an expandable hash table data
+structure with fixed insertion cost.  Two hash tables containing the
+same key-value pairs will have identical data traversal order, regardless
+of insertion order differences.
+</p>
+
+
+<h2>Introduction</h2>
+
+<p>
+Hash table is a high performance data structure used for data look up.
+Key-value pairs can be inserted into the hash table, and given a key, its
+associated value can be very quickly retrieved.  
+</p>
+
+<p>
+A secondary function of the hash table is to produce the key-value pairs
+contained in the hash table sequentially.  The traversal ordering refers to
+the sequence of key-value pairs that are returned.
+</p>
+
+<p>
+For two hash tables containing identical key-value pairs, it seems
+intuitively that their traversal ordering should be identical.  For hash
+tables to be used as values, stable traversal ordering is required.
+However, not all hash table implementations support stable traversal ordering.
+</p>
+
+<p>
+A part of the definition of hash table involves
+<a href="inthash.htm">hash function</a>.
+A hash function maps a key to an integer.  As key-value pairs are stored in 
+array of buckets, this integer determines which bucket the key-value pair
+will be stored.
+</p>
+
+<p>
+Commonly in a simple hash table implementation, the hash table bucket
+address is calculated as follows:
+</p>
+
+<pre>
+bucket_address = hash(key) % hash_table_size;
+</pre>
+
+<p>
+By taking the remainder of the hash table size, the bucket address is
+assured to never exceed the size of hash table.  The bucket is
+represented by a linked list of key-value pairs.
+</p>
+
+<p>
+The simple hash table implementation does not have the capability to
+expand its table size.  Each insertion will cause performance degradation
+as the table fills up.  To avoid the performance degradation, the hash
+table will need to be expanded per each hash table insertion.  The
+Sorted Linear Hash Table does this precisely.
+</p>
+
+
+
+<h2>Sorted Linear Hash Table</h2>
+
+<p>
+Linear Hashing was originally developed by W. Litwin in 1980.  Sorted
+Linear Hash Table is one version of Linear Hashing.
+</p>
+
+<p>
+Recall earlier, key-value pairs are stored in an array of key-value lists.
+The key-value lists are often called 'buckets'.  The array
+index is often mentioned as the 'bucket address'.
+</p>
+
+<p>
+In Sorted Linear Hash Table, the bucket array size is always
+identical to the number of entries in the hash table.  Therefore the
+average number of entries per bucket is expected to be 1.
+</p>
+
+<p>
+Each insertion causes one new bucket added at the end of the array.
+Similarly each deletion causes one bucket to be removed at the end of the
+array.
+</p>
+
+<p>
+The bucket array consists of two partitions, the front partition, and
+the expansion partition.  The sizes of the front partition are always
+powers of 2.  Some valid front partition sizes are 0, 1, 2, 4, 8, 16...
+If a hash table has 7 entries, the front partition size would 4, and
+the expansion partition size would be 3.
+</p>
+
+<pre>
+[ ] are front partition entries.
+( ) are expansion partition entries.
+The arrow shows the direction for key-value entries splitting.
+
+
+[0] [1]          Front partition size is 2.  Expansion partition size is 0.
+
+
+ /-------\
+ I       V
+[0] [1] (2)      Split from bucket 0 some entries to bucket 2.
+
+
+     /-------\
+     I       V
+[0] [1] (2) (3)  Split from bucket 1 some entries to bucket 3.
+
+
+
+[0] [1] [2] [3]  Double the front partition.
+
+</pre>
+
+<p>
+The bucket address calculation is performed as follows:
+</p>
+
+<pre>
+if (hash(key) % front_partition_size &gt;= split_from_index)
+  bucket_address = hash(key) % front_partition_size;
+else
+  bucket_address = hash(key) % (2 * front_partition_size);
+</pre>
+
+<p>
+Looking at the detail of increasing hash table from size 2 to size 3
+from the above graph, entries are split from bucket 0 to bucket 2.
+All entries in bucket 0 have the property that hash(key) mod 2 equals 0.
+Notice that if hash(key) mod 2 is 0, then hash(key) mod 4 must be either
+0 or 2.
+</p>
+
+<pre>
+0 mod 4 = 0
+2 mod 4 = 2
+4 mod 4 = 0
+6 mod 4 = 2
+8 mod 4 = 0 ...
+</pre>
+
+<p>
+So as a result, about half entries remain in bucket 0, half entries are
+split off to bucket 2.  This is how splitting works.  For merging, the
+operation is the exact reverse of splitting.
+</p>
+
+<p>
+Key-value entries inside a bucket are sorted by their key comparison
+relationship.  This is where the name "Sorted Linear Hash Table" comes
+from.
+</p>
+
+<p>
+The traversal operation consists of looking at each bucket in increasing
+order, then travel through each bucket by key sorted order.  For keys
+that have well defined comparison functions, the Sorted Linear Hash
+Table will ensure there is only one traversal order for a set of keys.
+</p>
+
+
+<h2>Hash Function Selection</h2>
+
+<p>
+Since Sorted Linear Hash Table uses front partition with power of 2 sizes,
+it is more vulnerable to bad hash function choices.  The article
+<a href="primehash.htm#badhash">Prime Double Hash Table</a>
+mentions one example of a bad hash function implementation.
+Some good hash function construction methods are mentioned in the article
+<a href="inthash.htm">Integer Hash Function</a>.
+Hash function selection is important, as a bad choice can cause some
+collections to hash to only a few buckets.  This condition is hard to
+detect as only some data sets would trigger the degenerate behavior.
+</p>
+
+
+<h2>Implementation</h2>
+
+<p>
+A C++ implementation of the Sorted Linear Hash Table is in the
+<a href="/web/20060112115812/http://www.concentric.net/~Ttwang/macro/macrolib.htm">Simple C++ Macro Library</a>.
+To instantiate the macro to source code, use the macro processor located
+in the article called
+<a href="/web/20060112115812/http://www.concentric.net/~Ttwang/macro/macro.htm">Simple C++ Macro Processor</a>.
+</p>
+
+
+<h2>Conclusion</h2>
+
+<p>
+In this article, we presented the design of the Sorted Linear Hash Table.
+Sorted Linear Hash Table always produces an unique traversal ordering
+for a set of keys.  Sorted Linear Hash Table is a general purpose
+hash table data structure with high performance, if the
+hash function used is of high quality.
+</p>
+</body>
+</html>
