@@ -3,22 +3,12 @@
 ### Книги и сборники
 1. Вводный курс по программированию в data-oriented парадигме, рассматривает альтернативный объектно-ориентированному подход к написанию программ -- R. Fabian, Data-Oriented Design (англ.)
 https://www.dataorienteddesign.com/dodbook/
-2. Вводный курс по программированию для студентов MIT, хороший справочник по фундаментальным элементам программирования, данная версия содержит примеры кода, написанные на JavaScript -- Gerald J. Sussman et al., Structure and interpretation of computer programs - SICP (англ.)
-https://sourceacademy.org/sicpjs/prefaces03
-3. Сборник статей, обсуждающих высокоуровневое программирование от одного из авторов стандартной библиотеки контейнеров С++ -- Alex A. Stepanov, Notes on programming (англ.)
+2. Сборник статей, обсуждающих высокоуровневое программирование от одного из авторов стандартной библиотеки контейнеров С++ -- Alex A. Stepanov, Notes on programming (англ.)
 http://stepanovpapers.com/notes.pdf
-4. Вводный курс по программированию от автора языка Pascal -- Niklaus Wirth, Algorithms + data structures = programming (англ.)
-https://people.inf.ethz.ch/wirth/AD.pdf
-5. Сборник статей, обсуждающих математические основы языков программирования -- Cristopher Strachey, Fundamental concepts in programming languages (англ.)
+3. Сборник статей, обсуждающих математические основы языков программирования -- Cristopher Strachey, Fundamental concepts in programming languages (англ.)
 https://classes.cs.uoregon.edu/14S/cis607pl/Papers/fundamental-1967.pdf
-6. Вводный курс по программированию, затрагивающий философские аспекты фундаментальных элементов программирования -- Alex A. Stepanov et al., Elements of programming - EOP (англ.)
-http://elementsofprogramming.com/eop.pdf
-7. Конспекты лекций курса по алгоритмам для студентов MIT, Introduction to algorithms,
-https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/pages/lecture-notes/
-8. Лямбда-исчисление - математическая модель, которая служит основой для архитектуры компьютеров и многих языков программирования -- Владимир А. Башкин (ЯрГУ), Лямбда-исчисление (рус.)
+4. Лямбда-исчисление - математическая модель, которая служит основой для архитектуры компьютеров и многих языков программирования -- Владимир А. Башкин (ЯрГУ), Лямбда-исчисление (рус.)
 http://www.lib.uniyar.ac.ru/edocs/iuni/20180409.pdf
-9. Книга об основах языка С++ для начинающих -- Андрей В. Столяров, Введение в язык С++ (рус.)
-http://www.stolyarov.info/books/pdf/cppintro5.pdf
 
 ### Статьи
 1. Cоветы начинающим программистам (англ.)
@@ -79,18 +69,12 @@ https://youtu.be/Pot9GnHFOVU
 [https://youtube.com/playlist?list=PLIhLvue17Sd70y34zh2erWWpMyOnh4UN_](https://youtube.com/playlist?list=PLIhLvue17Sd70y34zh2erWWpMyOnh4UN_)
 
 ### Курсы
-1. Серия видео о том, как компьютеры программируются с нуля -- Build a 65c02-based computer from scratch, 
-[https://www.youtube.com/playlist?list=PLowKtXNTBypFbtuVMUVXNR0z1mu7dp7eH](https://www.youtube.com/playlist?list=PLowKtXNTBypFbtuVMUVXNR0z1mu7dp7eH)
-2. Константин И. Владимиров, С++ для второго курса МФТИ (рус.),
+1. Константин И. Владимиров, С++ для второго курса МФТИ (рус.),
 [https://www.youtube.com/playlist?list=PL3BR09unfgciJ1_K_E914nohpiOiHnpsK](https://www.youtube.com/playlist?list=PL3BR09unfgciJ1_K_E914nohpiOiHnpsK)
-3. Короткие видео об основах С++ от Яндекса/МФТИ (рус.),
-[https://www.youtube.com/@user-kd3vy7vs8l/playlists](https://www.youtube.com/@user-kd3vy7vs8l/playlists)
-4. Введение в объектно-оринтированное программирование на С++ (рус.),
+2. Введение в объектно-оринтированное программирование на С++ (рус.),
 [https://www.youtube.com/watch?v=rZcTaRU7AAw&list=PLQOaTSbfxUtBm7DxblJZShqBQnBAVzlXX](https://www.youtube.com/watch?v=rZcTaRU7AAw&list=PLQOaTSbfxUtBm7DxblJZShqBQnBAVzlXX)
-5. Большой курс высокоуровневого программирования от Amazon, ведет курс автор EOP -- Efficient Programming with Components,
+3. Большой курс высокоуровневого программирования от Amazon, ведет курс автор EOP -- Efficient Programming with Components,
 [https://www.youtube.com/playlist?list=PLHxtyCq_WDLXryyw91lahwdtpZsmo4BGD](https://www.youtube.com/playlist?list=PLHxtyCq_WDLXryyw91lahwdtpZsmo4BGD)
-6. Введение в анализ данных в Python -- Тимофей Ф. Хирьянов (МФТИ), Основы программирования и анализа данных на Python (рус.),
-[https://teach-in.ru/course/python-programming-and-data-analysis-basics](https://teach-in.ru/course/python-programming-and-data-analysis-basics)
 
 ###
 И несколько любопытных каналов о программировании:
