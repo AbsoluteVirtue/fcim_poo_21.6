@@ -7,7 +7,7 @@ https://www.dataorienteddesign.com/dodbook/
 http://stepanovpapers.com/notes.pdf
 3. Сборник статей, обсуждающих математические основы языков программирования -- Cristopher Strachey, Fundamental concepts in programming languages (англ.)
 https://classes.cs.uoregon.edu/14S/cis607pl/Papers/fundamental-1967.pdf
-4. Лямбда-исчисление - математическая модель, которая служит основой для архитектуры компьютеров и многих языков программирования -- Владимир А. Башкин (ЯрГУ), Лямбда-исчисление (рус.)
+4. Лямбда-исчисление -- Владимир А. Башкин (ЯрГУ), Лямбда-исчисление (рус.)
 http://www.lib.uniyar.ac.ru/edocs/iuni/20180409.pdf
 
 ### Статьи
@@ -29,8 +29,6 @@ https://web.archive.org/web/20150906155800/http://www.objectmentor.com/resources
 http://worrydream.com/refs/Backus-CanProgrammingBeLiberated.pdf
 
 ### Видео
-0. Короткие видео об основах С++ от Яндекса и МФТИ,
-https://www.youtube.com/@user-kd3vy7vs8l/playlists
 1. Рассуждения о применимости технологии "блокчейн" в сфере денежного обращения и децентрализации -- Cryptocurrency: What is the Blockchain Threat Model?,
 https://youtu.be/kbYutOsrpvs
 2. Введение в декомпиляцию С++ от создателя сайта godbolt.org -- What Has My Compiler Done for Me Lately? Unbolting the Compiler's Lid,
@@ -71,9 +69,7 @@ https://youtu.be/Pot9GnHFOVU
 ### Курсы
 1. Константин И. Владимиров, С++ для второго курса МФТИ (рус.),
 [https://www.youtube.com/playlist?list=PL3BR09unfgciJ1_K_E914nohpiOiHnpsK](https://www.youtube.com/playlist?list=PL3BR09unfgciJ1_K_E914nohpiOiHnpsK)
-2. Введение в объектно-оринтированное программирование на С++ (рус.),
-[https://www.youtube.com/watch?v=rZcTaRU7AAw&list=PLQOaTSbfxUtBm7DxblJZShqBQnBAVzlXX](https://www.youtube.com/watch?v=rZcTaRU7AAw&list=PLQOaTSbfxUtBm7DxblJZShqBQnBAVzlXX)
-3. Большой курс высокоуровневого программирования от Amazon, ведет курс автор EOP -- Efficient Programming with Components,
+2. Большой курс высокоуровневого программирования от Amazon, ведет курс автор EOP -- Efficient Programming with Components,
 [https://www.youtube.com/playlist?list=PLHxtyCq_WDLXryyw91lahwdtpZsmo4BGD](https://www.youtube.com/playlist?list=PLHxtyCq_WDLXryyw91lahwdtpZsmo4BGD)
 
 ###
