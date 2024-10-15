@@ -45,19 +45,59 @@ extern "C"
 }
 #endif
 
+#include <stdio.h>
 #include <stdlib.h>
 
 #ifdef ALLOC_TESTING
 #include "alloc-testing.h"
 #endif
 
+int cmp(ListValue a, ListValue b)
+{
+	int x{*(int *)a}, y{*(int *)b};
+	return x - y;
+}
+
 int main()
 {
-    ListEntry *list = NULL;
+	ListEntry *list = NULL;
+	{
+		int a[] = {9, 7, 5, 3, 1};
 
-    int a[] = {9, 7, 5, 3, 1};
+		for (size_t i = 0; i < 5; i++)
+		{
+			list_append(&list, new int{a[i]});
+		}
+	}
 
+	auto entry = list;
+	auto n = list_length(list);
+	for (size_t i = 0; i < n; i++)
+	{
+		printf("%d ", *(int *)list_data(entry));
+		entry = list_next(entry);
+	}
 
+	list_sort(&list, cmp);
+
+	{
+		ListIterator it = {NULL, NULL};
+		list_iterate(&list, &it);
+		for (; list_iter_has_more(&it);)
+		{
+			printf("%d ", *(int *)list_iter_next(&it));
+		}
+	}
+
+	{
+		ListIterator it = {NULL, NULL};
+		list_iterate(&list, &it);
+		for (; list_iter_has_more(&it);)
+		{
+			(delete (int*)list_iter_next(&it)); // delete void* - undefined
+		}
+		list_free(list);
+	}
 }
 
 struct _ListEntry
