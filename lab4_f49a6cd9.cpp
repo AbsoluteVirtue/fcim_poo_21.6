@@ -73,7 +73,9 @@ int main(int argc, char const *argv[])
     assert(abstract_data_t::is_equal(a, b));
     for (auto &&it : b) std::cout << it << " ";
 
-    abstract_data_t c(b.begin(), b.end());
+    abstract_data_t c;
+    c.assign(std::distance(b.begin(), b.end()), 0);
+    std::copy(b.begin(), b.end(), c.begin());
     assert(std::equal(c.begin(), c.end(), b.begin()));
     for (auto it = c.rbegin(); it != c.rend(); ++it) std::cout << *it << " ";
 
