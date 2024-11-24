@@ -1,5 +1,4 @@
 // Copyright 2020 Alexey Kutepov <reximkut@gmail.com>
-// https://github.com/rexim/aids/blob/master/aids.hpp
 // Permission is hereby granted, free of charge, to any person obtaining
 // a copy of this software and associated documentation files (the
 // "Software"), to deal in the Software without restriction, including
@@ -24,7 +23,7 @@
 // aids — 2.2.0 — std replacement for C++. Designed to aid developers
 // to a better programming experience.
 //
-// https://github.com/rexim/aids
+// https://github.com/rexim/aids/blob/master/aids.hpp
 //
 // ============================================================
 //
