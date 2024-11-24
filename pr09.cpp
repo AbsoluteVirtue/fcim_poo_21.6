@@ -1,0 +1,1 @@
+// virtual tables in C and C++
