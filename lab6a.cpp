@@ -17,20 +17,20 @@
 
 template <typename T, /* остальные параметры здесь */>
 class YOUR_VARIANT {
+private:
+    // необходимые поля здесь
 public:
     template <typename T> class iterator;
 
     // методы из предыдущей лабораторной работы, переопределение всех нужных методов здесь
-    // везде добавить шаблоны по необходимости
+    // добавить шаблоны по необходимости
 
-    // рекомендуемые прототипы функций:
-    Iter find(const T&) override;
-    Iter insert(Iter, const T&) override;
-    Iter erase(Iter) override;
-    void assign(std::initializer_list<T> &) override;
-    static size_t erase(abstract_data_t<T>&, const T&);
-private:
-    // необходимые поля здесь
+    // рекомендуемые прототипы новых функций:
+    iterator find(const T&);
+    iterator insert(iterator, const T&);
+    iterator erase(iterator) override;
+    void assign(std::initializer_list<T> &);
+    static size_t erase(YOUR_VARIANT<T>&, const T&);
 };
 
 // код для проверки правильности выполнения задания:
