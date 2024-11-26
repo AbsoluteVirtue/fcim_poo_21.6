@@ -1,7 +1,7 @@
 /* 
 Лабораторная работа 6 - Шаблоны типов
 
-Используя код из предыдущей лабораторной работы необходимо создать шаблонный тип данных.
+Используя код из четвертой лабораторной работы необходимо создать шаблонный тип данных.
 
 Метод find принимает аргумент заданного в шаблоне типа, соответствующий типу данных хранящихся в контейнере элементов, и возвращает итератор на элемент контейнера, значение которого равно значению аргумента.
 
@@ -15,28 +15,13 @@
 #include <string>
 // остальные необходимые библиотеки здесь
 
-template <typename T> class iterator;
-
-template <typename T>
-class abstract_data_t {
+template <typename T, /* остальные параметры здесь */>
+class YOUR_VARIANT {
 public:
-    // методы из предыдущей лабораторной работы здесь
+    template <typename T> class iterator;
 
-    // рекомендуемые прототипы функций:
-    virtual iterator<T> find(const T&) = 0;
-    virtual iterator<T> insert(iterator<T>, const T&) = 0;
-    virtual iterator<T> erase(iterator<T>) = 0;
-    virtual void assign(std::initializer_list<T> &) = 0;
-    static size_t erase(abstract_data_t<T>&, const T&);
-};
-
-template <typename T> 
-inline abstract_data_t<T>::~abstract_data_t() {}
-
-template <typename T, typename Iter = iterator<T>>
-class YOUR_VARIANT : public abstract_data_t<T> {
-public:
     // методы из предыдущей лабораторной работы, переопределение всех нужных методов здесь
+    // везде добавить шаблоны по необходимости
 
     // рекомендуемые прототипы функций:
     Iter find(const T&) override;
