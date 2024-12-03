@@ -44,22 +44,6 @@ void func2(std::initializer_list<T> list)
     }
 }
 
-// C++ 17
-#include <type_traits> // enable_if, conjuction
-
-template<class Head, class... Tail>
-using are_same = std::conjunction<std::is_same<Head, Tail>...>;
-
-template<class Head, class... Tail, class = std::enable_if_t<are_same<Head, Tail...>::value, void>>
-void print_same_type(Head head, Tail... tail)
-{
-    std::cout << head;
-    (std::cout << ... << tail) << "\n";
-}
-// print_same_type("2: ", "Hello, ", "World!");     // OK
-// print_same_type(3, ": ", "Hello, ", "World!");   // no matching function for call to 'print_same_type(int, const char [3], const char [8], const char [7])'
-
-
 // function objects are used to pass code into templates for inlining
 bool func_less_abs(double x, double y)
 {

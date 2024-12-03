@@ -16,7 +16,7 @@
 // остальные необходимые библиотеки здесь
 
 template <typename T, /* остальные параметры здесь */>
-class YOUR_VARIANT {
+class /* название варианта здесь*/ {
 private:
     // необходимые поля здесь
 public:
@@ -28,35 +28,35 @@ public:
     // рекомендуемые прототипы новых функций:
     iterator find(const T&);
     iterator insert(iterator, const T&);
-    iterator erase(iterator) override;
+    iterator erase(iterator);
     void assign(std::initializer_list<T> &);
-    static size_t erase(YOUR_VARIANT<T>&, const T&);
+    static size_t erase(/* название варианта здесь*/<T>&, const T&);
 };
 
 // код для проверки правильности выполнения задания:
-int main(int argc, char const *argv[]) {
-    YOUR_VARIANT<int> a({2, 3, 5, 7});
+int main() {
+    /* название варианта здесь*/<int> a({2, 3, 5, 7});
     a.push(11);
-    assert(11 == a[a.length() - 1]);
+    assert(11 == a[a.size() - 1]);
     a.insert(a.begin(), 1);
     assert(1 == a[0]);
-    a.extend(YOUR_VARIANT<int>({13, 17, 19}));
+    a.extend(/* название варианта здесь*/<int>({13, 17, 19}));
     a.erase(a.rbegin());
     assert(a.find(19) == a.end());
-    assert(8 == a.length());
-    YOUR_VARIANT<char> b = "abra";
+    assert(8 == a.size());
+    /* название варианта здесь*/<char> b = "abra";
     assert(0 == b.back());
     b.erase(b.rbegin());
     b.push('c');
     assert('c' == *b.rbegin());
     b.insert(b.end(), 'a');
     assert('a' == *b.rbegin());
-    b.extend(YOUR_VARIANT<char>("dabra"));
+    b.extend(/* название варианта здесь*/<char>("dabra"));
     assert(b.rbegin() == b.find(0));
     b[0] = 'A';
     assert('A' == b.front());
-    YOUR_VARIANT<std::string> c({"Hello", "world"});
+    /* название варианта здесь*/<std::string> c({"Hello", "world"});
     c[0].append(",");
     c.insert(c.find("world"), " ");
-    c[c.length() - 1].append("!");
+    c[c.size() - 1].append("!");
 }

@@ -33,7 +33,9 @@ public:
 
 inline abstract_data_t::~abstract_data_t() {}
 
-class YOUR_VARIANT : public abstract_data_t {
+class /* название варианта здесь*/ : public abstract_data_t {
+private:
+    // необходимые поля здесь
 public:
     // конструкторы, деструктор, переопределение всех нужных методов здесь
 
@@ -43,22 +45,18 @@ public:
     void push(int) override;
     void pop() override;
     void extend(const abstract_data_t&) override;
-private:
-    // необходимые поля здесь
 };
 
 // код для проверки правильности выполнения задания:
 int main(int argc, char const *argv[]) {
-    const int a[4] = {2, 3, 5, 7};
-    abstract_data_t *v = new YOUR_VARIANT(a, 4);
+    abstract_data_t *v = new /* название варианта здесь*/({2, 3, 5, 7});
     assert(!v->empty());
     v->push(11);
     assert(11 == v->back());
-    assert(11 == (*v)[v->length() - 1]);
-    const int b[3] = {13, 17, 19};
-    v->extend(YOUR_VARIANT(b, 3));
-    assert(8 == v->length());
-    abstract_data_t *w = new YOUR_VARIANT();
+    assert(11 == (*v)[v->size() - 1]);
+    v->extend(/* название варианта здесь*/({13, 17, 19}));
+    assert(8 == v->size());
+    abstract_data_t *w = new /* название варианта здесь*/();
     assert(w->empty());
     *w = *v;
     assert(*w == *v);
@@ -66,5 +64,5 @@ int main(int argc, char const *argv[]) {
     assert(0 == w->front());
     w->pop();
     assert(17 == w->back());
-    assert(7 == w->length());
+    assert(7 == w->size());
 }

@@ -13,7 +13,7 @@
 
 Оператор вывода в поток данных operator<< принимает два аргумента: ссылку на поток данных слева от оператора и ссылку на объект заданного класса справа от оператора. Результатом вызова оператора должно быть копирование информации из объекта справа в поток данных слева от оператора. Оператор возвращает ссылку на измененный поток вывода. Это необходимо для того, чтобы данный оператор можно было вызывать на собственный результат.
 
-Оператор доступа по индексу operator[] принимает единственный аргумент – беззнаковое целое число, обозначающее позицию элемента в массиве. возвращает ссылку на элемент коллекции, находящийся по заданному индексу. В отличие от метода at не проверяет индекс на несоответствие размеру коллекции. В случаях, когда pos >= length(), поведение метода не определено. Асимптотичность метода постоянная – O(1).
+Оператор доступа по индексу operator[] принимает единственный аргумент – беззнаковое целое число, обозначающее позицию элемента в массиве. возвращает ссылку на элемент коллекции, находящийся по заданному индексу. В отличие от метода at не проверяет индекс на несоответствие размеру коллекции. В случаях, когда pos >= size(), поведение метода не определено. Асимптотичность метода постоянная – O(1).
 
 Метод count принимает один аргумент – целое число – и возвращает количество элементов коллекции, значение которых равно значению аргумента.
 
@@ -25,37 +25,37 @@
 #include <sstream>
 // остальные необходимые библиотеки здесь
 
-class abstract_data_t {
+class /* название варианта здесь */ {
+private:
+    // необходимые поля здесь
 public:
     // методы из предыдущей лабораторной работы здесь
 
     // рекомендуемые прототипы функций:
-    abstract_data_t &operator=(const abstract_data_t&);
-    friend bool operator==(const abstract_data_t&, const abstract_data_t&);
-    friend bool operator!=(const abstract_data_t&, const abstract_data_t&);
-    friend bool operator<(const abstract_data_t&, const abstract_data_t&);
-    friend bool operator>(const abstract_data_t&, const abstract_data_t&);
-    friend bool operator<=(const abstract_data_t&, const abstract_data_t&);
-    friend bool operator>=(const abstract_data_t&, const abstract_data_t&);
+    /* название варианта здесь */ &operator=(const /* название варианта здесь */&);
+    friend bool operator==(const /* название варианта здесь */&, const /* название варианта здесь */&);
+    friend bool operator!=(const /* название варианта здесь */&, const /* название варианта здесь */&);
+    friend bool operator<(const /* название варианта здесь */&, const /* название варианта здесь */&);
+    friend bool operator>(const /* название варианта здесь */&, const /* название варианта здесь */&);
+    friend bool operator<=(const /* название варианта здесь */&, const /* название варианта здесь */&);
+    friend bool operator>=(const /* название варианта здесь */&, const /* название варианта здесь */&);
     int &operator[](size_t);
-    friend std::ostream &operator<<(std::ostream&, const abstract_data_t&);
-    friend std::istream &operator>>(std::istream&, abstract_data_t&);
+    friend std::ostream &operator<<(std::ostream&, const /* название варианта здесь */&);
+    friend std::istream &operator>>(std::istream&, /* название варианта здесь */&);
     bool contains(int);
     size_t count(int);
-private:
-    // необходимые поля здесь
 };
 
 // код для проверки правильности выполнения задания:
 int main(int argc, char const *argv[]) {
     std::stringstream ss{"1 3 5 7 9"};
-    abstract_data_t a(5);
+    /* название варианта здесь */ a(5);
     ss >> a;
-    assert(5 == a.length());
+    assert(5 == a.size());
     assert(1 == a[0]);
     assert(9 == a[4]);
     std::cout << a;
-    abstract_data_t b{a};
+    /* название варианта здесь */ b{a};
     assert(a == b);
     assert(3 == b[1]);
     assert(7 == b[3]);
@@ -65,8 +65,8 @@ int main(int argc, char const *argv[]) {
     assert(b < a);
     assert(a > b);
     std::cout << b;
-    abstract_data_t c;
-    assert(0 == c.length());
+    /* название варианта здесь */ c;
+    assert(0 == c.size());
     c = b;
     assert(b == c);
     c[1] = c[2] = 7;
