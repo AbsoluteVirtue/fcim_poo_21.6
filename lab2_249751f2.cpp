@@ -76,4 +76,5 @@ int main(int argc, char const *argv[]) {
     b.swap(d);
     assert(10 == b.size());
     assert(d.empty());
+// example with move semantics
 }
