@@ -1,10 +1,9 @@
-// PART 1, C-style (https://www.youtube.com/watch?v=8SUkrR7ZfTA)
-
 /*
-    this could be done more easily with some built-in with some built in functions, but the tutorial server is DOWN right now and I simply don't know how to do it!!!
+this could be done more easily with some built-in with some built in functions, but the tutorial server is DOWN right now and I simply don't know how to do it!!!
 */
 
 int main() {
+// PART 1, C-style (https://www.youtube.com/watch?v=8SUkrR7ZfTA)
 #ifdef 1_1
     // 1.1, Don't be too clever
     if (Armed ? Vcnt >= threshold : Vcnt <= threshold) 
@@ -288,5 +287,8 @@ int main() {
         retc = '0';     /* number */
     }
 #endif
+
+// PART 2, C++ idioms
+
 }
  
