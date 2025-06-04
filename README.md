@@ -7,8 +7,6 @@ https://www.dataorienteddesign.com/dodbook/
 http://stepanovpapers.com/notes.pdf
 3. Сборник статей, обсуждающих математические основы языков программирования -- Cristopher Strachey, Fundamental concepts in programming languages (англ.)
 https://classes.cs.uoregon.edu/14S/cis607pl/Papers/fundamental-1967.pdf
-4. Лямбда-исчисление -- Владимир А. Башкин (ЯрГУ), Лямбда-исчисление (рус.)
-http://www.lib.uniyar.ac.ru/edocs/iuni/20180409.pdf
 
 ### Статьи
 0. Афоризмы А. Перлиса ("перлизмы") (англ.)
