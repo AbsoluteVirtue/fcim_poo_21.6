@@ -9,6 +9,8 @@ http://stepanovpapers.com/notes.pdf
 https://classes.cs.uoregon.edu/14S/cis607pl/Papers/fundamental-1967.pdf
 4. Вводный курс по написанию собственного языка программирования -- R. Nystrom, Crafting Interpreters (англ.)
 https://craftinginterpreters.com/contents.html
+5. Структура и интерпретация компьютерных программ (JavaScript, англ.) -- G.J. Sussman, SICP
+https://sourceacademy.org/sicpjs/prefaces03
 
 ## Статьи
 0. Афоризмы А. Перлиса ("перлизмы") (англ.)
@@ -29,6 +31,8 @@ https://floooh.github.io/2018/06/02/one-year-of-c.html
 https://web.archive.org/web/20150906155800/http://www.objectmentor.com/resources/articles/Principles_and_Patterns.pdf
 8. Статья об истоках функциональных языков программирования от автора языка Fortran -- J. Backus, Can programming be liberated from the von Neumann style? (англ.)
 http://worrydream.com/refs/Backus-CanProgrammingBeLiberated.pdf
+9. Статья о противоречиях между ООП и обобщенным программированием -- T. Becker, Type erasure (англ.)
+https://www.artima.com/articles/on-the-tension-between-object-oriented-and-generic-programming-in-c
 
 ## Видео
 ### Высокоуровневый обзор проблем современного программирования
