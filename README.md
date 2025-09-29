@@ -54,6 +54,8 @@ https://youtu.be/2MYzvQ1v8Ww
 https://youtu.be/PMpNhbMjDj0
 9. Философский взгляд на возможные причины ухудшения качества программ -- The Thirty Million Line Problem,
 https://youtu.be/kZRE7HIO3vk
+10. Введение в выделение памяти в С++ -- std::allocator is to Allocation what std::vector is to Vexation,
+https://youtu.be/LIb3L4vKZ7U
 
 ### Объектно-ориентированный подход
 1. Мнение о недостатках ООП -- Object-Oriented Programming is Embarrassing: 4 Short Examples,
