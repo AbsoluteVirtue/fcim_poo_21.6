@@ -47,6 +47,8 @@
 Еще одной малоизвестной системой была IMP, идея которой залючалась в создании специальных формальных грамматик, где каждая "фраза" могла играть роль процедуры, семантиеское определение которой можно было написать в рамках других определений, доступных на том этапе. Алан Кей увидел в этом возможный "мост" между "процедурными" и "объектными" системами: каждый объект мог быть синтаксическим интерпретатором сообщений, которые ему посылаются. Благодаря этой одной идее можно было получить бескончено расширяемый язык, аналогично формальным грамматикам.
 
 Чтобы более четко себе представить такую систему, можно посомтреть на компьютерную сеть, где одни компьютеры отправляют другим компьютерам запросы. Чтобы правильно обработать запрос и ответить на него, адресат должен понимать сообщение в запросе. По аналогии объекты в "объектном" языке могли играть роль "сервера", который предоставляет услуги другим объектам. Объект сам определял: предоставлять услугу или нет -- в зависимости от установленных отношений между адресатом и адресантом.
+
+Такое направление было выбрано для работы над Smalltalk. Революционные проекты 60-х: Sketchpad, Lisp, Burroughs B5000 (позволявший напрямую безопасно выполнять байт-код благодаря комбинации подпроцессов еще до появления Simula), и APL (подробно описанный в книге Айверсона), а также Algol (который уже реализовал рекурсию, вызовы процедур по имени, а не по адресу, блоки кода и их иерархии) -- оказали значительное влияние на выработку нового стиля программирования.
 ### Влияние Lisp на ООП
 Основная идея, которая была заимствована из Lisp -- это комбинация механизма "позднего связывания" и возможности универсальной композиционности вычисляющих элементов, которая "раскрывала простоту программирования" и позволяла писать программы любой сложности.
 
@@ -115,8 +117,10 @@
 
 Algol 60 требовал разделять динамическую привязку подпрограмм от доступа к глобальному статическому состоянию программы. Фишер показал, как можно обобщить оба этих механизма и с помощью такой абстракции симулировать большое разнообразие сред управления. Например, задачу по хранению замыканий в "стековой" памяти ("funarg problem") Фишер предложил решить с помощью таблицы, в которой соответствующие ссылки на глобальное состояние ассоциируются с выражениями и функциями, которые должны быть в последтствии вычислены. Таким образом, свободные переменные, на которые замыкание ссылается, будут правильными участками памяти, которые подразумевает код программы. Похожий подход позже получит общее название "ленивая оценка". Алан Кей называл это "рефлектным дизайном."
 
-## Зарождение парадигмы ООП
+## Кристаллизация парадигмы ООП
 Сокрытие деталей реализации (то, как объекты были реализованы с SIMULA 67) естественным образом привело к тому, что для сообщений необходимо было определять обобщенное (generic) поведение. В функциональном мире для обозначения такого механизма использовалось слово "полиморфизм", которое означало функции, принимающие аргументы произвольного типа. Алан Кей ту же самую идею распространял на сообщения -- вид и форма сообщения принимающему объекту заранее не известны.
+
+Управление программой передается объекту, который упоминается в сообщении первым (аналогично спискам в Lisp, где голова списка обрабатывается отдельно от всех последующих элементов рекурсивно). Таким образом, класс может решать какую часть сообщения обработать, а какую игнорировать, по своему усмотрению. Это означает, что состояние объектов полностью защищено от неправильных изменений извне.
 
 Сокрытие состояния объекта естественным образом привело к тому, что для изменения состояния необходимо было отказаться от операции присваивания.
 
@@ -126,17 +130,12 @@ Algol 60 требовал разделять динамическую привя
 
 > "Правда, большинство людей использует сеттеры просто для симуляции присваивания во внутреннюю переменную, а это противоречит духу и намерению настоящего ООП."
 
-Because control is passed to the class before any of the rest of the message is considered---the class 
-can decide not to receive at its discretion----complete protection is retained. Smalltalk-72 objects are 
-"shiny" and impervious to attack.
+Объекты правильней рассматривать не как контейнеры, отделы которых можно изменять, а как историю изменений во времени, аналогично банковскому счету. Есть полная история всех предыдущих версий объекта, текущая версия, а также -- возможность предсказать будущие версии объекта. Во всех этих версиях отношения между элементами объекта полностью согласованы. В такой системе не может быть "состояний гонки" (race condition), например, потому что объект является видимым только в стабильном состоянии, а во время вычислений -- невидимым.  
 
-Of course, the whole idea of Smalltalk (and OOP in general) is to define everything intensionally. 
-And this was the direction of movement as we learned how to program in the new style. There were a number of revolutionary architectures to see in the early 60s — Sketchpad, Lisp (basically Lisp 1.5), the B5000 (a computer that could directly execute byte-codes completely safely, and was essentially a multiprocess “Simula machine” before there was a Simula), and APL (not yet implemented, but in Iverson’s book). And, even Algol (with its recursion, call by name, nested block structure, etc. was revolutionary at the time). (And there was quite a lot more to see as well, especially some of the meta systems for generating languages from metalanguages, etc.)
+В итоге, четыре техники -- защищенное состояние, полиморфизм, экземпляры классов и методы-как-цели -- в совокупности сделали Smalltalk очень мощным инструментом. Ни одна из этих техник не подразумевает чисто-ООП язык. Это можно было уже тогда реализовать и в Lisp, и в Algo 68 (с некоторыми оговорками). Задача объектно-ориентированные языков состоит, скорее, в том, чтобы помогать программисту фокусировать свое внимание на тех идеях и техниках, которые сделают его более продуктивным. 
 
-Four techniques used together--persistent state, polymorphism, instantiation, and methods-as-goals for the object--account for much of the power. None of these require an "object-oriented language" to be employed--ALGOL 68 can almost be turned to this style--and OOPL merely focuses the designer's mind in a particular fruitful direction. However, doing encapsulation right is a commitment not just to abstraction of state, but to eliminate state oriented metaphors from programming.
+> "Из этого следует, что правильно примененная инкапсуляция должна не просто обобщать состояние (т.е. быть абстракцией значений в памяти), а убрать из программирования саму идею манипуляции состоянием."
 
-But objects do have "world lines" of changes in time. This can be thought of as a history of versions of the object in which the -relationships- are in accord. There are no race conditions in this scheme ... an object is only visible when it is stable and no longer computing.
+В конечном итоге, ООП является не более, чем отправкой сообщений объектам, инкапсуляцией для защиты и сокрытия состояния объектов, и поздним связыванием для полиморфного поведения и "ленивых" вычислений.  
 
-P.S.: Smalltalk seems much more a notation, that can do nothing but build domain specific languages. Ruby isn't object oriented at the level Smalltalk is, is still falls back to procedural constructs and special syntax for many things. Smalltalk, is pure, objects all the way down, at every level, even the simplest and most common domain specific language of all, predicate logic. When you create a domain specific language in Smalltalk, your code never looks different than code provided by the compiler writer himself, it's one syntax to rule them all.
-
-Smalltalk shares this trait with languages such as Lisp and Scheme, truly growable languages that put you, the programmer, in charge of what language you want, not some compiler writer who might take six more years to add some feature you just got to have now. When you need a new language feature in Smalltalk, you simply add it. It's a feeling that once you've become accustomed to, you can't live without, and one you don't quite get with Ruby.
+> "Ядро идеи, которую я вынужден теперь называть 'настоящим ООП' -- а именно инкапсулированные модули на всех уровнях с взаимодействием посредством сообщений -- все еще актуально, потому что -- это абстрактное представление коплексных систем."
