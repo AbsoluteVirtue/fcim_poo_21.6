@@ -14,7 +14,11 @@
 1. Точно такая же система использовалась в Sketchpad для описания "мастера" экземпляров.
 2. Похожая идея использовалась в SIMULA 67 для развития концепции процесса и окончательного варианта с классами.
 
-Эту идею Алан Кей принес с собой в университет Юты, куда его пригласили на позицию аспиранта. Первым его заданием стало прочитать диссертацию Сазерленда о Sketchpad, а вторым -- разобраться, почему копия компилятора Algol, которая лежала в департаменте, не запускалась на местных компьютерах. При ближайшем рассмотрении оказалось, что это вовсе не Algol, а какой-то никому не известный язык SIMULA, написанный на базе Algol. Таким образом, основные представления об организации процессов в компьютерных программах сложились под влиянием этих трех систем. Под впечатлением от Sketchpad, а также от статьи Гордона Мура, в которой появилось предсказание о темпах роста производительности компьютеров (см. "Закон Мура"), Алан Кей принял решение разработать концепцию персонального компьютера. Для этого нужно было разработать собственный язык, который воплощает новые идеи, подчерпнутые из других работ, в жизнь в новой парадигме.
+Эту идею Алан Кей принес с собой в университет Юты, куда его пригласили на позицию аспиранта. Первым его заданием стало прочитать диссертацию Сазерленда о Sketchpad, а вторым -- разобраться, почему копия компилятора Algol, которая лежала в департаменте, не запускалась на местных компьютерах. При ближайшем рассмотрении оказалось, что это вовсе не Algol, а какой-то никому не известный язык SIMULA, написанный на базе Algol.
+
+> "От SIMULA я заимствовал идею заменить связывание значений параметров и присваивание значений переменным на "цели". Худшее, что можно разрешить программисту -- это ковыряться во внутреннем состоянии объекта, даже если состояние представлено абстрактно. Вместо этого объекты должны быть представлениями высокоуровневого поведения, которые удобно использовать в качестве динамических компонентов." 
+
+Таким образом, основные представления об организации процессов в компьютерных программах сложились под влиянием этих трех систем. Под впечатлением от Sketchpad, а также от статьи Гордона Мура, в которой появилось предсказание о темпах роста производительности компьютеров (см. "Закон Мура"), Алан Кей принял решение разработать концепцию персонального компьютера. Для этого нужно было разработать собственный язык, который воплощает новые идеи, подчерпнутые из других работ, в жизнь в новой парадигме.
 ### Объектно-ориентированный подход
 > "Новая парадигма разработки для решения сложных проблем профессиональными программистами и для решения простых проблем новичками. Объектно-ориентированный дизайн -- это удачная попытка качественно улучшить эффективность процесса моделирования сложных динамических систем и пользовательских отношений с этими системами, которые стали возможны благодаря кремниевому взрыву."
 
@@ -71,18 +75,17 @@
 
 Идея интерпретатора Lisp с циклом "eval-apply" была реализована в Smalltalk в качестве универсального вычислительного механизма на уровне каждого объекта. Объект получал возможность независимо от других объектов интерпретировать инструкции, для него предназначенные. Другими словами, язык предоставлял возможность объектам парсить текстовые сообщения сразу, интерпретировать их и исполнять токены напрямую. Это было сделано, в первую очередь, для того, чтобы позволить писать программы в разных стилях: парсер позволял легко расширять его возможности, добавляя объектам новые виды "поведения", а также предельно ясного описания механизмов вычисления значений выражений.
 
-Пример разных стилей:
-
 Классы в Smalltalk выглядели как функции и могли использоваться вместо функций, сохраняя возможность создавать на их основе экземпляры с собственной областью памяти (как "замыкания" в Lisp). Это позволяло писать эквивалентные программы в разных стилях. Например, факториал можно было выразить экстенсивно (как отдельный класс fact):
 
     to fact n (^if :n=O then 1 else n'fact n-l) 
 или интенсивно, в рамках класса integer: 
 
     (... *! >> (^:n=0 >> (1)(n-1)!) )
-А
-it’s worth pondering the split of “eval” and “apply” in McCarthy’s interpreter. “Apply” is tantamount to sending a message to an object, especially if parameter evaluation can be controlled on the receiving end by the object itself, and especially if the receiver is a closure. Now just make this whole mechanism as loosely bound as the rest of the ideas in Lisp, and you have a very simple basis for a different look at computation and programming.
+Алан Кей особенно подчеркивал важность идей, заложенных в Lisp:
 
-Вычисление производилось методом "pattern-matching" аналогично Lisp: 
+> "Если задуматься о паре процессов “eval” и “apply”, которые составляют интерпретатор [Lisp]: “apply”, по сути, отправляет сообщение какому-то объекту, особенно в случае, если вычисление значения параметра можно доверить самому принимающему объекту, и если принимающий объект является замыканием. Остается только ослабить зависимости между всеми элементами этого механизма, как сделано для других идей в Lisp, и получится простой фундамент для иного взгляда на вычислимость и программирование."
+
+Вычисление в Smalltalk-71 производилось методом "pattern-matching" аналогично Lisp: 
 
     to T 'and' :y do 'y' 
     to F 'and' :y do F
@@ -104,31 +107,35 @@ it’s worth pondering the split of “eval” and “apply” in McCarthy’s i
 5. Класс содержит описание поведения всех своих экземпляров (в виде объектов).
 6. Обработка списка инструкций (программы) заключается в передаче управления первому объекту в списке, который рассматривает весь оставшийся список как сообщение для себя.
 
-Smalltalk is a recursion on the notion of computer itself. Instead of dividing "computer stuff" into things each less strong than the whole--such as data structures, procedures, and functions that are the usual paraphernalia of programming languages--each Smalltalk object is a recursion of the entire possibilities of the computer. Questions of concrete representation can thus be postponed almost indefinitely because we are mainly concerned that the computers behave appropriately, and are interested in particular strategies only if the results are off or come back too slowly.
+Дизайн Smalltalk должен был быть рекурсией понятия "компьютер" целиком. Алан Кей хотел отойти от практики разделения программ на структуры данных, процедуры, функции и т.п., общепринятые в других языках программирования. Ведь затем их надо связывать друг с другом для получения нужного эффекта. Без таких связей, независимо друг от друга, эти фундаментальные элементы были бесполезны. Функции не имеют смысла без данных, структуры не имеют смысла без операций над своими данными. 
 
-how objects could be characterized as 
-universal computers without having to have any exceptions in the central metaphor. What seemed to 
-be needed was complete control over what was passed in a message send; in particular, when and in 
-what environment did expressions get evaluated? An elegant approach was suggested in a CMU thesis of Dave Fisher [Fisher 1970] on the synthesis 
-of control structures. ALGOL60 required a separate link for dynamic subroutine linking and for access 
-to static global state. Fisher showed how a generalization of these links could be used to simulate a 
-wide variety of control environments. One of the ways to solve the "funarg problem" of LISP is to 
-associate the proper global state link with expressions and functions that are to be evaluated later so that the free variables referenced are the ones that were actually implied by the static form of the language. The notion of "lazy evaluation" is anticipated here as well. 
-Nowadays this approach would be called reflective design.
+Поэтому каждый объект в Smalltalk должен предоставлять возможности всего компьютера. Благодаря этому любая часть программы может игнорировать конкретные объекты (типы данных), которые используются в ней, ведь они взаимозаменяемы. Главным является то, что они правильно себя ведут, а не то, как именно их поведение описано внутри конкретного класса.
 
-Сокрытие деталей реализации (то, как объекты были реализованы с SIMULA 67):
-This led to a style of finding generic behaviors for message symbols. "Polymorphism" is the 
-official term (I believe derived from Strachey), but it is not really apt as its original meaning applied 
-only to functions that could take more than one type of argument. Because control is passed to the class before any of the rest of the message is considered---the class 
+Другими словами, объект в Smalltalk -- это универсальная вычислительная единица, поэтому особенно важным было следить за тем, где (в какой среде исполнения -- замыкании) и когда (насколько поздно) вычисляются значения выражений. Это зависело от того, какие данные передаются в сообщении конкретному объекту. В диссертации Дейва Фишера о структурах управления в языках программирования Алан Кей нашел элегантное решение этой задачи.
+
+Algol 60 требовал разделять динамическую привязку подпрограмм от доступа к глобальному статическому состоянию программы. Фишер показал, как можно обобщить оба этих механизма и с помощью такой абстракции симулировать большое разнообразие сред управления. Например, задачу по хранению замыканий в "стековой" памяти ("funarg problem") Фишер предложил решить с помощью таблицы, в которой соответствующие ссылки на глобальное состояние ассоциируются с выражениями и функциями, которые должны быть в последтствии вычислены. Таким образом, свободные переменные, на которые замыкание ссылается, будут правильными участками памяти, которые подразумевает код программы. Похожий подход позже получит общее название "ленивая оценка". Алан Кей называл это "рефлектным дизайном."
+
+## Зарождение парадигмы ООП
+Сокрытие деталей реализации (то, как объекты были реализованы с SIMULA 67) естественным образом привело к тому, что для сообщений необходимо было определять обобщенное (generic) поведение. В функциональном мире для обозначения такого механизма использовалось слово "полиморфизм", которое означало функции, принимающие аргументы произвольного типа. Алан Кей ту же самую идею распространял на сообщения -- вид и форма сообщения принимающему объекту заранее не известны.
+
+Сокрытие состояния объекта естественным образом привело к тому, что для изменения состояния необходимо было отказаться от операции присваивания.
+
+> "Большинство значений переменных внутри экземпляра находятся в динамических отношениях друг с другом, эти отношения поддерживаются деталями реализации. Поэтому давать возможность изменять состояние объекта напрямую извне опасно."
+
+Алан Кей ввел правило для каждого объекта: как минимум включать в свой интерфейс метод-сеттер. Это позволяет контролировать процесс изменения внутреннего состояния объекта и сохранять динамические отношения между локальными или статическими переменными класса.
+
+> "Правда, большинство людей использует сеттеры просто для симуляции присваивания во внутреннюю переменную, а это противоречит духу и намерению настоящего ООП."
+
+Because control is passed to the class before any of the rest of the message is considered---the class 
 can decide not to receive at its discretion----complete protection is retained. Smalltalk-72 objects are 
 "shiny" and impervious to attack.
-
-> "От SIMULA я заимствовал идею заменить связывание значений параметров и присваивание значений переменным на "цели". Худшее, что можно разрешить программисту -- это ковыряться во внутреннем состоянии объекта, даже если состояние представлено абстрактно. Вместо этого объекты должны быть представлениями высокоуровневого поведения, которые удобно использовать в качестве динамических компонентов."  
 
 Of course, the whole idea of Smalltalk (and OOP in general) is to define everything intensionally. 
 And this was the direction of movement as we learned how to program in the new style. There were a number of revolutionary architectures to see in the early 60s — Sketchpad, Lisp (basically Lisp 1.5), the B5000 (a computer that could directly execute byte-codes completely safely, and was essentially a multiprocess “Simula machine” before there was a Simula), and APL (not yet implemented, but in Iverson’s book). And, even Algol (with its recursion, call by name, nested block structure, etc. was revolutionary at the time). (And there was quite a lot more to see as well, especially some of the meta systems for generating languages from metalanguages, etc.)
 
+Four techniques used together--persistent state, polymorphism, instantiation, and methods-as-goals for the object--account for much of the power. None of these require an "object-oriented language" to be employed--ALGOL 68 can almost be turned to this style--and OOPL merely focuses the designer's mind in a particular fruitful direction. However, doing encapsulation right is a commitment not just to abstraction of state, but to eliminate state oriented metaphors from programming.
 
+But objects do have "world lines" of changes in time. This can be thought of as a history of versions of the object in which the -relationships- are in accord. There are no race conditions in this scheme ... an object is only visible when it is stable and no longer computing.
 
 P.S.: Smalltalk seems much more a notation, that can do nothing but build domain specific languages. Ruby isn't object oriented at the level Smalltalk is, is still falls back to procedural constructs and special syntax for many things. Smalltalk, is pure, objects all the way down, at every level, even the simplest and most common domain specific language of all, predicate logic. When you create a domain specific language in Smalltalk, your code never looks different than code provided by the compiler writer himself, it's one syntax to rule them all.
 
