@@ -58,15 +58,19 @@ https://youtu.be/kZRE7HIO3vk
 https://youtu.be/LIb3L4vKZ7U
 
 ### Объектно-ориентированный подход
-1. Мнение о недостатках ООП -- Object-Oriented Programming is Embarrassing: 4 Short Examples,
+1. Инкапсуляция, наследование, полиморфизм на микроконтроллерах -- Cost of Abstractions in Embedded Systems,
+https://youtu.be/m2uGMI3c91c
+2. Мнение о недостатках ООП -- Object-Oriented Programming is Embarrassing: 4 Short Examples,
 https://youtu.be/IRTfhkiAqPw
-2. Мнение о достоинствах ООП -- Object-Oriented Programming is Good*,
+3. Мнение о достоинствах ООП -- Object-Oriented Programming is Good*,
 https://youtu.be/0iyB0_qPvWk
-3. Интересная иллюстрация ООП в классическом понимании этого термина -- Moldable development,
+4. Обзор полиморфизма в С++ от виртуальных функций до concept -- Rethink Polymorphism in C++,
+https://youtu.be/zI0DOKN6zr0
+5. Интересная иллюстрация ООП в классическом понимании этого термина -- Moldable development,
 https://youtu.be/Pot9GnHFOVU
-4. Обсуждение мифов, связанных с "чистым" подходом к написанию программ в ООП -- "Clean" Code, Horrible Performance,
+6. Обсуждение мифов, связанных с "чистым" подходом к написанию программ в ООП -- "Clean" Code, Horrible Performance,
 https://youtu.be/tD5NrevFtbU
-5. Лекция, критикующая принципы SOLID с точки зрения обозримых эффектов их применения -- Where Does Bad Code Come From?,
+7. Лекция, критикующая принципы SOLID с точки зрения обозримых эффектов их применения -- Where Does Bad Code Come From?,
 https://youtu.be/7YpFGkG-u1w
 
 ### Разное
