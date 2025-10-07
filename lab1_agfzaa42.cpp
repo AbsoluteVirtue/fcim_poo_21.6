@@ -77,7 +77,7 @@ void clear(tree *n) {
 
 #define count 10
 
-int main(void) {
+int main() {
 
     tree root = NULL;
     int a[count] = {6, 3, 8, 7, 2, 5, 1, 0, 9, 4};

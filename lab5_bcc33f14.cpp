@@ -48,15 +48,17 @@ public:
 };
 
 // код для проверки правильности выполнения задания:
-int main(int argc, char const *argv[]) {
-    abstract_data_t *v = new /* название варианта здесь*/({2, 3, 5, 7});
+using container = /* название варианта здесь */;
+
+int main() {
+    abstract_data_t *v = new container({2, 3, 5, 7});
     assert(!v->empty());
     v->push(11);
     assert(11 == v->back());
     assert(11 == (*v)[v->size() - 1]);
-    v->extend(/* название варианта здесь*/({13, 17, 19}));
+    v->extend(container({13, 17, 19}));
     assert(8 == v->size());
-    abstract_data_t *w = new /* название варианта здесь*/();
+    abstract_data_t *w = new container();
     assert(w->empty());
     *w = *v;
     assert(*w == *v);

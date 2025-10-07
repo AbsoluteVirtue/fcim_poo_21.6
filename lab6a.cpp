@@ -34,28 +34,30 @@ public:
 };
 
 // код для проверки правильности выполнения задания:
+using container = /* название варианта здесь */;
+
 int main() {
-    /* название варианта здесь*/<int> a({2, 3, 5, 7});
+    container<int> a({2, 3, 5, 7});
     a.push(11);
     assert(11 == a[a.size() - 1]);
     a.insert(a.begin(), 1);
     assert(1 == a[0]);
-    a.extend(/* название варианта здесь*/<int>({13, 17, 19}));
+    a.extend(container<int>({13, 17, 19}));
     a.erase(a.rbegin());
     assert(a.find(19) == a.end());
     assert(8 == a.size());
-    /* название варианта здесь*/<char> b = "abra";
+    container<char> b = "abra";
     assert(0 == b.back());
     b.erase(b.rbegin());
     b.push('c');
     assert('c' == *b.rbegin());
     b.insert(b.end(), 'a');
     assert('a' == *b.rbegin());
-    b.extend(/* название варианта здесь*/<char>("dabra"));
+    b.extend(container<char>("dabra"));
     assert(b.rbegin() == b.find(0));
     b[0] = 'A';
     assert('A' == b.front());
-    /* название варианта здесь*/<std::string> c({"Hello", "world"});
+    container<std::string> c({"Hello", "world"});
     c[0].append(",");
     c.insert(c.find("world"), " ");
     c[c.size() - 1].append("!");

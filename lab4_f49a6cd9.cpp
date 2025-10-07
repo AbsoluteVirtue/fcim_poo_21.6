@@ -58,21 +58,22 @@ public:
     void assign(iterator, iterator);
 };
 
-int main(int argc, char const *argv[])
-{
-    /* название варианта здесь*/ a({19, 47, 74, 91});
+using container = /* название варианта здесь */;
+
+int main() {
+    container a({19, 47, 74, 91});
     for (auto it = a.begin(); it != a.end(); ++it) std::cout << *it << " ";
 
-    /* название варианта здесь*/ b(a.begin(), a.end());
+    container b(a.begin(), a.end());
     assert(a == b);
     for (auto &&it : b) std::cout << it << " ";
 
-    /* название варианта здесь*/ c;
+    container c;
     c.assign(std::distance(b.begin(), b.end()), 0);
     std::copy(b.begin(), b.end(), c.begin());
     assert(std::equal(c.begin(), c.end(), b.begin()));
     for (auto it = c.rbegin(); it != c.rend(); ++it) std::cout << *it << " ";
 
-    /* название варианта здесь*/ d(c.rbegin(), c.rend());
+    container d(c.rbegin(), c.rend());
     for (auto &&it : d) std::cout << it << " ";
 }

@@ -63,7 +63,7 @@ public:
 // код для проверки правильности выполнения задания:
 using container = /* название варианта здесь */;
 
-int main(int argc, char const *argv[]) {
+int main() {
     int array[] = {1, 4, 7, 9};
     container a(array, 4);
     assert(4 == a.size());
