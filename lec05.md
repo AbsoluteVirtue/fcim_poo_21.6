@@ -1,19 +1,45 @@
 # Наследование
-## Наследование в Smalltalk 76
+Концепция наследования появилась на заре программирования, еще в 1960-е годы, но широкое распространиение получила благодаря языку Simula. Как говорилось в одной из предыдущих частей, для обозначения связи между подпроцессами в язык были введены понятия "класс" и "подкласс". Причем, "подклассы процессов представляли собой описания со своими собственными операциями и локальными данными (аналогично объектам-функциям в Lisp)," при этом уже включая свойства родительского процесса, расширяя его возможности.
+
+    class Page;
+    begin
+        class Print_Block(Width,Length);integer Width, Length;
+        begin
+        ref(Print_Block)Next;
+        text array Contents(1:Length);
+        integer Count;
+        for Count:=1 step 1 until Length do Contents(Count):-Blanks(Width)
+        end--of--Print_Block;
+
+        Print_Block class Title_Block(Title);text Title;
+        begin
+        Contents(Length//2):=Title
+        end--of--Title_Block;
+
+        Print_Block class Text_Block;
+        begin
+        for Count:=1 step 1 until Length do
+        begin
+            InImage;
+            Contents(Count):=Intext(Width)
+        end
+        end--of--Text_Block;
+    end..of..Page;
+    new Page;
+Строки *Print_Block class Title_Block* и *Print_Block class Text_Block* указывают на то, что процессы типа Title_Block и Text_Block расширяют процесс Print_Block, который выступает их "префиксом".
+
+Алан Кей говорит о наследовании так:
+
+> "Программирование с помощью наследования показывает силу дифференцированного описания. Например, есть общее понятие 'облако', представленное объектом. Программист может создать облако прямоугольной формы, таким образом дифференцировав его, получая объект 'прямоугольник', который один в один как облако, за исключением..."
+
+Наследование в Simula-67 было обобщением идеи блоков в Algol 60. Но то, как оно было реализовано, не устраивало Алана Кея (слишком тесная связь между префиксом и подклассом, линейная иерархия, трудности в использовании в интерактивных приложениях с поступенчатой компиляцией, где необходима возможность изменять "горячий" код), поэтому в Smalltalk семантику наследования пришлось немного изменить.
+
+Дэн Ингаллс, который писал реализацию Smalltalk, повторил принцип наследования из Simula, но внес в него необходимые изменения. Ниже представлен пример кода с наследованием в Smalltalk-76.
+
     Class new title: 'Window'; 
-        fields= 'frame'; 
+        fields='frame'; 
         asFollows!
-    Scheduling 
-    startup
-        [frame contains: stylus => 
-            self enter.
-            repeat:
-                [frame contains: stylus loc => 
-                    [keybard active => [self keyboard]
-                    stylus down => [self pendown]] 
-                self outside => []
-                stylus down => [^self leave]]]
-            ^false]
+        ...
     Default Event Responses
     enter [self show] 
     leave 
@@ -25,7 +51,7 @@
 
     Class new title= 'DocWindow'; 
         subclassof: Window; 
-        flelds= 'document scrollbar edit Menu'; 
+        flelds='document scrollbar edit Menu'; 
         asFollows!
     Event Responses
     enter [self show.editMenu show.scrollbar show] 
@@ -39,111 +65,48 @@
     Image
     show [super show.self showDoc]
     showDoc [doucument showin: frame at: scrollbar position] 
-    title [^document title]
+Класс DocWindow является подклассом класса Window, а значит предоставляет те же самые методы, расширяя функционал "окна" своими дополнительными методами, которые присущи только окну "документа".
 
-Simula-67 added 
-inheritance as a generalization to the ALGOL-60 block structure. This was a great idea. But it did 
-have some drawbacks: minor ones, like name clashes in multiple threaded lists (no one uses threaded 
-lists anymore), and major ones, like a rigidity in the extended type structures, a need to qualify types, 
-only a single path of inheritance, and difficulty in adapting to an interactive development system with 
-incremental compiling and other needs for instant changes.
+Технически реализация наследования Алана Кея устраивала, но сама логика наследования оставляла желать лучшего. Например, нет четкого семантического разделения между наследованием класса и инстанциированием класса. В обоих случаях появляется объект со свойствами родительского класса. Отсюда и неясность относительно пользы одного из подходов относительно другого. К тому же, наследование позволяет выразить достаточно много идей одним и тем же синтаксисом, что может потом навредить программе, так как совсем не очевидно, какую именно из идей выражает программист в каждом конкретном случае, если применяет наследование.
 
-Not all useful 
-questions could be answered by following a static chain. Some of them required a kind of"inheritance" 
-or "inferencing" through dynamically bound "parts" (that is, instance variables). Multiple inheritance 
-also looked important.
+Больше всего Алан Кей сомневался насчет полезности статического наследования. Основой Smalltalk было динамическое связывание значений, а значит конкретный тип объекта во время компиляции не должен быть известен. Тип аргумента должен определяться из контекста только во время вызова метода объекта, как и тип самого объекта. Также, Алан Кей считал, что множественное наследование важно поддерживать в языке (если "обычное" наследование позволяет много раз наследовать один и тот же родительский класс, множественное наследование позволяет одному дочернему классу иметь несколько родительских классов одновременно). 
 
-Because things can be done with a dynamic language that are difficult with a 
-statically compiled one, I just decided to leave inheritance out as a feature in Smalitalk-72, knowing 
-that we could simulate it back using Smalltalk's LISPlike flexibility. The biggest contributer to these 
-AI ideas was Larry Tesler, who used what is now called "slot inheritance" extensively in his various 
-versions of early desktop publishing systems. Nowadays, this would be called a "delegation-style" 
-inheritance scheme [Lieberman].
-
-Dan Ingalls had come up with a scheme that was Simula-like 
-in its semantics but could be incrementally changed on the fly to be in accord with our goals of close 
-interaction. I was not completely thrilled with it because it seemed that we needed a better theory 
-about inheritance entirely (and still do). For example, inheritance and instancing (which is a kind of 
-inheritance) muddles both pragmatics (such as factoring code to save space) and semantics (used for 
-way too many tasks such as: specialization, generalization, speciation, and so forth).
-
+В итоге, наследование не стали включать как механизм в следующую версию языка -- Smalltalk-72, так как "его можно симулировать другими способами, используя уже готовые возможности языка, который повторял гибкость Lisp." Пример такой симуляции можно видеть в том, как методы относятся к объектам. Определение произвольного метода в Smalltalk можно написать как угодно. Так, метод print может ничего не выводить. Чтобы дать какие-то гарантии относительно ожидаемого поведения метода, можно инстанциировать класс "Method", назвать класс-экземпляр "Print", благодаря чему все экземпляры Print тоже будут методами. Изменять тело таких методов уже будет нельзя, но его можно будет расширять, добавляя действия помимо вывода информации. Это позволит защитить "значение" метода, разрешив добавлять реализации. Такой вид наследования был предложен Ларри Теслером для "экспертных систем" -- искуственного интеллекта еще в ранних 1970-х. 
 ## C++ в 1979-1991 гг.
-The features of 
-Simula were almost ideal for the purpose and I was particularly impressed by the way the concepts 
-of the language helped me think about the problems in my application. The class concept allowed me 
-to map my application concepts into the language constructs in a direct way, that made my code more 
-readable than I had seen in any other language.
+> "Smalltalk подталкивает программистов на использование наследования как основным, если не единственным, способом организовывать код программы и организовывать классы в иерархии с общим корнем. В С++ классы являются типами данных, и наследование -- это не единственный способ организовать код программы."
 
-During writing and initial debugging, I acquired a great respect for the expressiveness of Simula's 
-type system and the ability of its compiler's ability to catch type errors. The observation was that a 
-type error almost invariably reflected either a silly programming error or a conceptual flaw in the design. In contrast, I had found Pascal's type system worse than 
-useless--a strait jacket that caused more problems than it solved by forcing me to warp my designs 
-to suit an implementation-oriented artifact.
+Эта цитата принадлежит Бъярне Строуструпу, оригинальному автору языка С++. Он неоднократно говорил, что многие идеи для С++ подчерпнул из Simula, включая классы как пользовательские типы данных, наследование как способ выделять отношения между типами данных. И самое главное -- ООП тоже, по мнению Строуструпа, пришел в С++ из Simula -- первого объектно-ориентированного языка.
 
-SIMULA's link times for separately compiled classes were abysmal: It 
-took longer to compile 1/30th of the program and link it to a precompiled version of the rest than it 
-took to compile and link the program as a monolith.  The cost 
-arose from several language features and their interactions: run-time type checking, guaranteed 
-initialization of variables, concurrency support, and garbage collection of both user-allocated objects 
-and procedure activation records. For example, measurements showed that more than 80 percent of 
-the time was spent in the garbage collector despite the fact that resource management was part of the 
-simulated system so that no garbage was ever produced. 
+"У Бэкуса была хорошая идея: программы должны быть написаны для людей, а не для машин, в первую очередь. Так появился Fortran. Но с легкой руки его последователей эта идея зашла слишком далеко. Появились отдельные языки для бухгалтерии, для логистики, для науки. Сотни языков выстраивали концепции какой-то отдельно взятой области. В результате получился хаос: у них не было возможности обмениваться данными, не было возможности использовать несколько языков одновременно. Так продолжалось, пока не появился Кристен Найгард с языком Simula. Он позволил создавать свои собственные типы данных, свои собственные абстракции -- так появилось ООП."
+### Влияние Simula на С++
+Строуструп очень высоко оценивал вохможности языка Simula. Он впервые познакомился с языком во время работы над своей диссертацией, для которой он писал симуляции сетевых приложений. Так как Simula был языком для симуляций, она почти идеально подходила для целей Струструпа. Языковые концепции очень хорошо подходили к задачам, которые необходимо было решать. Классы позволяли создавать объекты, которые имитировали реальные сущности: "компьютер", "сетевое подключение", "пакет с данными" и т.п. Это делало код легко читаемым, в отличие от того, к чему Строуструп привык в других языках (он особенно выделял Паскаль как пример плохо спроектированного языка). Его также поразила экспрессивность ошибок в обращении к типам данных. Ошибка компиляции практически всегда указывала на недоработку в дизайне класса
 
-1. 
-A good tool would have Simula's support for program organization--that is, classes, some 
-form of class hierarchies, some form of support for concurrency, and strong (that is, static) 
-checking of a type system based on classes. This I saw as support for the process of inventing 
-programs, as support for design rather than just support for implementation. 
-2. A good tool would produce programs that ran as fast as BCPL programs and shared BCPL's 
-ability to easily combine separately compiled units into a program. A simple linkage convention is essential for combining units written in languages such as C, ALGOL 68, FORTRAN, BCPL, 
-assembler, and so on, into a single program and, thus, not to get caught by inherent limitations 
-in a single language. 
-3. A good tool should also allow for highly portable implementations. My experience was that 
-the "good" implementation I needed would typically not be available until "next year" and only 
-on a machine I couldn't afford. This implied that a tool must have multiple sources of 
-implementations (no monopoly would be sufficiently responsive to users of "unusual" ma- 
-chines and to poor graduate students), that there should be no complicated run-time support 
-system to port, and that there should be only very limited integration between the tool and its 
-host operating system. 
+К сожалению Simula был не без своих недостатков, главным из которых была производительность. Причем, как в ходе работы программы, так и во время компиляции. Например, перекомпиляция одного класса занимала больше времени, чем перекомпиляция всей программы целиком. Другой проблемой была проверка типов данных в ходе работы программы, а также сбор "мусора". По наблюдениям Строуструпа, 80% всего времени уходило на сбор мусора, даже если никакого мусора программа не производила.  
 
-The features provided in the initial 1980 implementation can be summarized: 
-1. classes 
-2. derived classes 
-3. public/private access control 
-4. constructors and destructors 
-5. call and return functions (Section 15.2.4.8) 
-6. friend classes 
-7. type checking and conversion of function arguments 
-During 1981 three more features were added: 
-8. inline functions 
-9. default arguments 
-10. overloading of the assignment operator 
+Этот опыт подтолкнул Строуструпа на создание своего собственного инструмента для программирования, который бы сохранил все положительные стороны Simula и исправил отрицательные моменты.
 
-People had made data members public to avoid the function call overhead incurred by 
-a constructor for simple classes where only one or two assignments are needed for initialization. The 
-immediate cause for the inclusion of inline functions into C with Classes was a project that couldn't 
-afford function call overhead for some classes involved in real-time processing.
+1. Такой инструмент должен помогать организовать код программы с помощью классов и иерархий классов, с помощью сопроцессовости и статической проверки типов данных. То есть, классы становились главным инструментом дизайна приложений.
+2. Хороший инструмент производить программы с высокой степенью быстродействия. Скорость выполнения должна быть сопоставима с ассемблерными языками. Это касается и компиляции. Компиляция также должна поддерживать комбинирование подпрограмм, написанных на разных языках, в одну программу. 
+3. Хороший инструмент производит портативные программы.
+> "Мой личный опыт показал, что 'хорошая реализация' чего-то, что мне было нужно, всегда была недоступна 'до следующего года', а тогда -- только для компьютеров, которые я не мог себе позволить."
 
-I 
-have no recollection of discussions, no design notes, and no recollection of any implementation 
-problems about the introduction of static ("strong") type checking into C with Classes. The C with 
-Classes syntax and rules, the ones subsequently adopted for the ANSI C standard, simply appeared 
-fully formed in the first C with Classes implementation.
+Из этого следовало, что хороший инструмент должен поддерживать множество различных компьютерных систем для общей доступности. 
+### Основные возможности первой реализации С++ (1980-81)
+1. Классы.
+2. Подклассы (наследование). 
+3. Доступ к полям классов (public/private).  
+4. Конструкторы и деструкторы
+5. Функции-декораторы (call/return, позже были убраны из языка).  
+6. Дружественные классы (friend). 
+7. Статическая проверка типов, статическое приведение типов аргументов.
+8. Встраиваимые функции (inline). 
+9. Аргументы по-умолчанию. 
+10. Перегрузка оператора присваивания. 
 
-Another early attempt to tighten C with Classes' type rules was to disallow "information destroy- 
-ing" implicit conversions. Like others, I had been badly bitten by implicit long to :i.nt and 5.nt to 
-char conversions. I decided to try to ban all implicit conversions that were not value preserving; that 
-is, to require an explicit conversion operator wherever a larger object was stored into a smaller. The 
-experiment failed miserably. Every C program I looked at contained large numbers of assignments 
-of :i.nts to char variables.
-
-> A programming language serves two related purposes: it provides a vehicle for the programmer to specify 
-actions to be executed and a set of concepts for the programmer to use when thinking about what can be done. 
-The first aspect ideally requires a language that is "close to the machine," so that all important aspects of a 
-machine are handled simply and efficiently in a way that is reasonably obvious to the programmer. The C 
-language was primarily designed with this in mind. The second aspect ideally requires a language that is 
-"close tO the problem to be solved" so that the concepts of a solution can be expressed directly and concisely. 
-The facilities added to C to create C++ were primarily designed with this in mind. 
+Первая реализация С++ была всего лишь расширением языка С и называлась "С с классами". Строуструп написал парсер, который генерировал код на языке С. Этот код затем компилировался любым С-компилятором. Как заметил Строуструп,
+> "Язык программирования служит двум целям: позволяет программисту описать действия, которые компьютер должен выполнить, при этом предоставляя программисту набор концепций для обдумывания способов решения поставленной задачи. Первая цель требует близкий к 'железу' язык, чтобы все важные аспекты реализации решались просто и быстро. За это отвечал язык С. Вторая цель требует язык, близкий к поставленной задаче по своей выразительности. Это было добавлено в язык С для создания С++.
+## Наследование реализации и наследование интерфейса
+В то время как Smalltalk рассматривает классы в качестве собрания операций, доступных их объектам, Simula и С++ видят классы как конкретный интерфейс, предоставляемый множеству объектов (экземпляров соответствующего подкласса). В результате класс в Smalltalk способен обрабатывать сообщения с операциями, которые он не поддерживает, в то время как С++ гарантирует пользователю, что компилятор позволит вызывать только те методы, определение которых присутствует в классе.
 
 The derived class concept is C++'s version of Simula's prefixed class notion and thus a sibling of 
 Smalltalk's subclass concept. The names derived class and base class were chosen because I never 
