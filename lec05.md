@@ -108,132 +108,177 @@
 ## Наследование реализации и наследование интерфейса
 В то время как Smalltalk рассматривает классы в качестве собрания операций, доступных их объектам, Simula и С++ видят классы как конкретный интерфейс, предоставляемый множеству объектов (экземпляров соответствующего подкласса). В результате класс в Smalltalk способен обрабатывать сообщения с операциями, которые он не поддерживает, в то время как С++ гарантирует пользователю, что компилятор позволит вызывать только те методы, определение которых присутствует в классе.
 
-The derived class concept is C++'s version of Simula's prefixed class notion and thus a sibling of 
-Smalltalk's subclass concept. The names derived class and base class were chosen because I never 
-could remember what was sub and what was super and observed that I was not the only one with this 
-particular problem. It was also noted that many people found it counterintuitive that a subclass 
-typically has more information than its superclass. Even without virtual functions, derived classes in C with Classes were useful for building new data 
-structures out of old ones and for associating operations with the resulting types. In the absence of virtual functions, a user could use objects of a derived class and treat base classes 
-as implementation details (only). Alternatively, an explicit type field could be introduced in a base 
-class and used together with explicit type casts.
+В С++ наследование -- механизм создания "производного" класса (подкласса) -- повторяло идею классов с префиксами из Simula. Изначально подклассы использовали для создания новых структур данных из существующих (таким образом новая структура содержала всю информацию своей базовой структуры, и расширяла ее). 
 
-Access is granted by declaring a function in the public part of a class declaration, or by specifying 
-a function or a class as a friend. Initially, only classes could be friends, thus granting access to all 
-member functions of the friend class, but later it was found convenient to be able to grant access 
-(friendship) to individual functions. In particular, it was found useful to be able to grant access to 
-global functions.
+    class Base {
+        int x;
+    public:
+        void f();
+    };
 
- If you want to inherit an implementation only, you 
-use private derivation in C++. Public derivation gives users of the derived class access to the interface 
-provided by the base class. Private derivation leaves the base as an implementation detail; even the 
-public members of the private base class are inaccessible except through the interface explicitly 
-provided for the derived class. To provide "semitransparent scopes" a mechanism was provided to 
-allow individual public names from a private base class to be made public.
+    void check(Base b) { b.f(); }
 
-many features were considered that later appeared in C++ . These included virtual functions, static members, templates, and multiple inheritance. 
+    class Derived : public Base {
+        int y;
+    public: 
+        void g();
+    };
+
+    Derived d;
+    check(d); // можно вызвать, т.к. тип Derived приводим к типу Base в этом контексте
+Это также помогало ассоциировать существующие операции с новыми (производными) типами данных: можно было использовать производные классы в ситуациях, где требовались их базовые классы (так как наследуется реализация базового класса).
+
+Характер наследования -- степень открытости отношений между двумя классами можно дополнительно ограничить. Если нужно наследовать только реализацию (код другого класса), наследование объявляется *private*.
+   
+    class Base {
+        int x;
+    public:
+
+        void f() {}
+    };
+
+    class Derived : private Base {
+        int y;
+    public:
+        void g() { f(); } // легально использовать функцию внутри подкласса
+    };
+
+    Derived d;
+    d.f();  // нелегально использовать функцию как интерфейс подкласса
+            // error: 'void Base::f()' is inaccessible within this context
+### Дружественные классы и функции
+Параллельно производным классам в язык добавили механизм "дружественных" классов. Идея заключается в том, что реализацию класса можно раскрыть другому классу, обозначив сторонний класс как *friend*.  
+
+    class Derived; // класс должен быть объявлен
+
+    class Base {
+        int x;
+    public:
+        friend Derived; // объявленный ранее класс можно сделать дружественным
+    };
+
+    class Derived {
+        int y;
+    public: 
+        void g(Base b) {
+            b.x = 0; // private-атрибут класса Base можно изменить в дружественном классе 
+        }
+    };
+В последствии от дружественных классов перешли к дружественным функциям, чтобы сделать механизм раскрытия состояния более гибким. В первую очередь, дружественные функции используются при специализации глобальных функций для своего типа данных.
+
+    int global(int a, int b) {
+        return a + b;
+    }
+
+    class Base {
+        int x;
+    public:
+        friend int global(int a, Base b) {
+            return a + b.x;
+        }
+    };
+
+    Base b;
+    global(4, b); // вызовется перегруженная версия класса Base
+Уже тогда были планы изменить семантику наследования, добавив в язык виртуальные функции, статические методы класса, шаблонные классы и функции, а также множественное наследование.  
+
 > All of these generalizations have their uses, but every "feature" of a language takes time and effort to design, 
-implement, document, and learn .... The base class concept is an engineering compromise, like the C class 
+implement, document, and learn. The base class concept is an engineering compromise, like the C class 
 concept.
+## Основные возможности первой версии С++
+В итоге, помимо всего вышеперечисленного, что было разработано для "С с классами", первая официальная версия языка C++ включала в себя: 
+1. Виртуальные функции.
+2. Перегрузку имен функций и операторов.
+3. Ссылочные типы (для поддержания перегрузки функций и операторов).
+4. Ключевое слово const. 
+5. "Аллокаторы" для выделения на "куче".
+6. Проверку типов выражений во время компиляции (для строгой статической типизации).
+### Ключевое слово const
+По аналогии с операционными системами, в которых отдельные области памяти можно помечать только на чтение или на запись, в С++ это тоже сделали возможным. Любой тип можно объявить как "только для чтения", добавив ключевое слово *const*. 
 
-The most unusual for its time--aspect of Cfront was that it generated C code. This has caused 
-no end of confusion. Cfront generated C because I needed extreme portability for an initial imp|e- 
-mentation and I considered C the most portable assembler around. I could easily have generated some 
-internal back-end format or assembler from Cfront, but that was not what my users needed. No 
-assembler or compiler back-end served more than maybe a quarter of my user community and there 
-was no way that ! could produce the, say, six back-ends needed
+Одним из важных преимуществ в использовании констант было то, что процесс мог оптимизировать использование памяти и не выделять память под них, так как их можно заменять конкретными значениями в любом контексте. Соответственно, константы стали лучшей альтернативой макросам для объявления имен как константных значений в определенных случаях.
 
-The major additions to C with Classes introduced to produce C++ were: 
-Virtual functions 
-Function name and operator overloading 
-References 
-Constants (const) 
-User-controlled free-store memory control 
-Improved type checking 
-In addition, the notion of call and return functions (Section 15.2.4.8) was dropped due to lack of use, 
-and many minor details were changed to produce a cleaner language.
+    #define MV 5
+    // или:
+    extern const int MC = 5;
+    // вторая строка скомпилируется в символ
+    MC:
+        .long   5
+    main:
+        push    rbp
+        mov     rbp, rsp
+        mov     eax, 5      # символьная подстановка вместо переменной
+        pop     rbp
+        ret
+### Аллокаторы
+Возможность определять свои аллокаторы для классов оказалась достаточно востребованной. Практика показывала, что привычное использование *malloc*/*free* приводило к тому, что память на "куче" постепенно фрагментировалась (небольшие участки занятой памяти чередуются с небольшими участками выделенной памяти, что может привести к ситуации, когда на "куче" заканчиваются блоки большого объема, хотя сама "куча" имеет много свободного места), так как динамическое выделение маленьких объектов происходило по многу раз в рамках небольшого количества классов. Аллокатор позволял зарезервировать определенную область памяти на "куче" под все нужды класса. Это приводит к тому, что "куча" перестает фрагментироваться. 
+### Взаимная совместимость между С и С++
+В дизайне языка С++ остро стоял вопрос совместимости с языком С. Насколько сильно должен отличаться С++ от С, и насколько близко должны быть программы, написанные на С, к аналогичным программам на С++? В итоге, за правило было принято "быть как можно ближе к С, но не слишком близко". Это на практике означает, что код, написанный на стандартной версии языка С (ANSI C), должен компилироваться на С++ (Строуструп говорил, что первым настоящим тестом С++ была успешная компиляция ядра операционной системы, которое написано на С).
+### Виртуальные функции
+Виртуальные функции были добавлены в язык для того, чтобы определять абстрактные базовые классы ("ABC"). Строуструп говорил, что: 
+> Абстрактный тип данных определяет своего рода "черный ящик". После определения он с программой не взаимодействует. Единственный способ его адаптировать под нужды программы -- изменить определение. Это делает абстрактные типы данных очень стабильными.
 
-The most obvious new feature in C++, and certainly the one that had the greatest impact on the style 
-of programming one could use for the language, was virtual functions. 
-> "An abstract data type defines a sort of black box. Once it has been defined, it does not really interact with 
-the rest of the program. There is no way of adapting it to new uses except by modifying its definition. This 
-can lead to severe inflexibility.
+Пользователи жаловались, что реализация того или иного класса имела тенденцию "просачиваться" наружу, из-за чего при изменении реализации приходилось перекомпилировать весь код, который использовал данный класс. Возникла необходимость отделить интерфейс от реализации. Нужно было создать такую систему, в которой есть классы-интерфейсы (очень редко изменяются, так как не содержат реализации) и классы-реализации (изменяются часто, но не используются нигде напрямую).
 
-References were introduced primarily to support operator overloading. C passes every function 
-argument by value, and where passing an object by value would be inefficient or inappropriate the 
-user can pass a pointer. This strategy doesn't work where operator overloading is used. In that case, 
-notational convenience is essential so that a user cannot be expected to insert address-of operators if 
-the objects are large. 
+Строуструп принял решение ввести правило, по которому можно было не включать реализацию в абстрактный класс, но предоставлять ее по запросу пользователям абстрактного класса из другого класса, который наследуется от абстрактного. Это делается с помощью виртуальных функций.
 
-n operating systems, it is common to have access to some piece of memory controlled directly or 
-indirectly by two bits: one that indicates whether a user can write to it and one that indicates whether 
-a user can read it. This idea seemed to me directly applicable to C++ and I considered allowing every 
-type to be specified readonly or writeonly
+    class Base {
+    public:
+        virtual void f();
+    };
 
- [ had experimented further with const in C with Classes and found 
-that const was a useful alternative to macros for representing constants only ifa global consts were 
-implicitly local to their compilation unit. Only in that case could the compiler easily deduce that their 
-value really didn't change and allow simple consts in constant evaluations and thus avoid allocating 
-space for such constants and use them in constant expressions.
+    class Derived : public Base {
+        int x;
+    public:
+        void f();
+    };
+В данном примере функция *f* в базовом классе объявлена виртуальной для того, чтобы ее можно было определить в любом производном классе. Класс *Derived* наследует класс *Base*, наследуя и виртуальную функцию *f*. Имея собственное определение этой функции, он может быть использован в рамках вычислительного процесса в тех случаях, когда пользователь обращается к классу *Base*.  
 
-I found per-class allocators and deallocators very effective. The fundamental idea is that free store 
-memory usage is dominated by the allocation and deallocation of lots of small objects from very few 
-classes. Take over the allocation of those objects in a separate allocator and you can save both time 
-and space for those objects and also reduce the amount of fragmentation of the general free store.
+    void check(Base &b) {
+        b.f();
+    }
+    // несмотря на то, что вызывается функция f класса Base, выполняется код функции f класса Derived
+    Derived d;
+    check(d);
+Это возможно благодаря тому, что для всей иерархии генерируется *виртуальная таблица* которая связывает имена всех виртуальных функций с их реализациями во всех производных классах.
 
-Another side of the compatibility issue was more critical: "In which ways must C++ differ from 
-C to meet its fundamental goals?" and also "In which ways must C++ be compatible with C to meet 
-its fundamental goals?" Both sides of the issue are important, and revisions were made in both 
-directions during the transition from C with Classes to C++, shipped as release 1.0. Slowly and 
-painfully an agreement emerged that there would be no gratuitous incompatibilities between C++ and 
-ANSI C (when it became a standard) [Stroustrup 1986b], but that there was such a thing as an 
-incompatibility that was not gratuitous. Naturally, the concept of "gratuitous incompatibilities" was 
-a topic of much debate and took up a disproportional part of my time and effort. This principle has 
-lately been known as "C++: As close to C as possible but no closer."
+    vtable for Derived:
+            .quad   0
+            .quad   typeinfo for Derived
+            .quad   Derived::f()
+    vtable for Base:
+            .quad   0
+            .quad   typeinfo for Base
+            .quad   Base::f()
+    typeinfo for Derived:
+            .quad   vtable for __cxxabiv1::__vmi_class_type_info+16
+            .quad   typeinfo name for Derived
+            .long   0
+            .long   1
+            .quad   typeinfo for Base
+            .quad   0
+    typeinfo name for Derived:
+            .string "7Derived"
+    typeinfo for Base:
+            .quad   vtable for __cxxabiv1::__class_type_info+16
+            .quad   typeinfo name for Base
+    typeinfo name for Base:
+            .string "4Base"
+Таким образом, важность абстрактных классов заключается в том, что они позволяют четко разграничить код, который полагается на интерфейс, и код, который реализует этот же интерфейс. Дополнительным преимуществом явдяется то, что меньше информации используется для определения процесса, а значит меньше кода нужно компилировать в случае изменений в программе.
 
-> 'Theory and tools more advanced than a blackboard have not been given much space in the description 
-of the history of C++. ! tried to use YACC (an LALR(1 ) parser generator) for the grammar work, and 
-was defeated by C's syntax (Section 15.2.4.5). I looked at denotational semantics, but was again 
-defeated by quirks in C. 
+Цитируя Строуструпа,
+> ООП -- это программирование через наследование. Аюстрактные данные -- это программирование с использованием пользовательских типов. За редким исключением, ООП может и должно быть надмножеством абстракции данных.
 
-> Object-oriented programming is programming using inheritance. Data abstraction is programming using 
-user-defined types. With few exceptions, object-oriented programming can and ought to be a superset of data 
-abstraction. These techniques need proper support to be effective. Data abstraction primarily needs support 
-in the form of language features and object-oriented programming needs further support from a programming 
-environment. To be general purpose, a language supporting data abstraction or object-oriented programming 
-must enable effective use of traditional hardware. 
+Если сравнивать то, как наследование устроено в Simula с тем, как оно было в Smalltalk, наследование в С++ ближе к первому случаю.
 
-> a Simula or C++ class specifies a fixed interface to a set of objects (of any derived class) whereas a Smalltalk 
-class specifies an initial set of operations for objects (of any subclass). In other words, a Smalltalk class is a 
-minimal specification and the user is free to try operations not specified whereas a C++ class is an exact 
-specification and the user is guaranteed that only operations specified in the class declaration will be accepted 
-by the compiler. 
+Класс определяет конкретный набор функций как интерфейс, который реализуется набором конкретных объектов (производных классов). В Smalltalk же класс определяет набор операций для объектов (подклассов). Другими словами, класс в Smalltalk -- это минимальная "спецификация" (формальное описание), и пользователь может попробовать обратиться к объекту с запросом, который не может быть обработан, так как им на самом деле не поддерживается. В С++ класс авно указывает только те операции, которые он поддерживает, и это проверяется компилятором. 
 
-Things to add to C++:
-1. Parametrized types.
-2. Exceptions.
-3. Multiple inheritance.
-
-The main features of 2.0 were first presented in Stroustrup [1987c] and summarized in the revised 
-version of that paper [Stroustrup ] 989b], which accompanied 2.0 as part of its documentation: 
-1. multiple inheritance, 
-2. type-safe linkage, 
-3. better resolution of overloaded functions, 
-4. recursive definition of assignment and initialization, 
-5. better facilities for user-defined memory management, 
-6. abstract classes, 
-7. static member functions, 
-8. const member functions, 
-9. protected members (first provided in release 1.2), 
-10. overloading of operator ->, and 
-11. pointers to members (first provided in release 1.2). 
-
+Здесь важно отметить, что эта идея прямо противоречит тому, как ООП определял Алан Кей, для кого, в первую очередь, поздние вычисления являлись важнейшей характеристикой ООП. Но для Строуструпа момент динамического (то есть, не проверяемого компилятором) поведения был принципиальным. Он принял решение,
+> Отказаться от всех форм динамического вычисления за исключением виртуальных функций, так как динамическое вычисление не подходит статически-типизируемому языку, где производительность имеет критическое значение.
+### Множественное наследование
 The original and fundamental reason for considering multiple inheritance was simply to allow two 
 classes to be combined into one in such a way that objects of the resulting class would behave as 
 objects of either base class
-
-Basically, I rejected all forms of dynamic resolution beyond the use of virtual functions as 
-unsuitable for a statically typed language under severe efficiency constraints. Maybe, I should at this 
-point have revived the notion of cal 1 and return functions 
 
 Multiple inheritance in C++ became controversial [Cargill 1991; Carroll 1991; Waldo 1991; 
 Sakkinen 1992] for several reasons. The arguments against it centered around the real and imaginary 
@@ -245,20 +290,7 @@ too seriously. Multiple inheritance doesn't solve all of your problems, but it d
 it is quite cheap, and sometimes it is very convenient to have. Grady Booth [Booch 1991 ] expresses 
 a slightly stronger sentiment: "Multiple inheritance is like a parachute, you don't need it very often, 
 but when you do it is essential."
-
-A common complaint about C++ was (and is) that private data is visible and that when private data 
-is changed then code using that class must be recompiled. Often this complaint is expressed as 
-"abstract types in C++ aren't really abstract." What I hadn't realized was that many people thought 
-that because they could put the representation of an object in the private section of a class declaration 
-then they actually hadto put it there. This is clearly wrong (and that is how I failed to spot the problem 
-for years). If you don't want a representation in a class, thus making the class an interface only, then 
-you simply delay the specification of the representation to some derived class and define only virtual 
-functions.
-
-The importance of the abstract class concept is that it allows a cleaner separation between a user 
-and an implementor than is possible without it. This limits the amount of recompilation necessary 
-after a change and also the amount of information necessary to compile an average piece of code. 
-
+### Шаблоны
 > For many people, the largest single problem using C++ is the lack of an extensive standard library. A major 
 problem in producing such a library is that C++ does not provide a sufficiently general facility for defining 
 "container classes" such as lists, vectors, and associative arrays. 
@@ -267,7 +299,7 @@ There are two approaches for providing such classes/types: One can either rely o
 and inheritance, as Smalltalk does, or one can rely on static typing and a facility for arguments of type 
 type. The former is very flexible, but carries a high run-time cost, and more importantly, defies attempts 
 to use static type checking to catch interface errors. Therefore, the latter approach was chosen. 
-
+### Исключения
 The following assumptions were made for the design: 
 • Exceptions are used primarily for error handling. 
 • Exception handlers are rare compared to function definitions. 
