@@ -276,47 +276,103 @@ concept.
 Здесь важно отметить, что эта идея прямо противоречит тому, как ООП определял Алан Кей, для кого, в первую очередь, поздние вычисления являлись важнейшей характеристикой ООП. Но для Строуструпа момент динамического (то есть, не проверяемого компилятором) поведения был принципиальным. Он принял решение,
 > Отказаться от всех форм динамического вычисления за исключением виртуальных функций, так как динамическое вычисление не подходит статически-типизируемому языку, где производительность имеет критическое значение.
 ### Множественное наследование
-The original and fundamental reason for considering multiple inheritance was simply to allow two 
-classes to be combined into one in such a way that objects of the resulting class would behave as 
-objects of either base class
+Первоначально идея множественного наследования заключалась в том, что несколько классов можно было комбинировать внутри общего подкласса, чтобы подкласс мог себя вести как любой из своих суперклассов.
 
-Multiple inheritance in C++ became controversial [Cargill 1991; Carroll 1991; Waldo 1991; 
-Sakkinen 1992] for several reasons. The arguments against it centered around the real and imaginary 
-complexity of the concept, the utility of the concept, and the impact of multiple inheritance on other 
-extensions and tool building. In addition, proponents of multiple inheritance can, and do, argue over 
-exactly what multiple inheritance is supposed to be and how it is best supported in a language. I think, 
-as I did then, that the fundamental flaw in these arguments is that they take multiple inheritance far 
-too seriously. Multiple inheritance doesn't solve all of your problems, but it doesn't need to because 
-it is quite cheap, and sometimes it is very convenient to have. Grady Booth [Booch 1991 ] expresses 
-a slightly stronger sentiment: "Multiple inheritance is like a parachute, you don't need it very often, 
-but when you do it is essential."
+    class Base {
+    public:
+        void f();
+    };
+
+    class OtherBase {
+    public:
+        void g();
+    };
+    
+    void check(Base &b, OtherBase o) {
+        b.f();
+        o.g();
+    }
+
+    class Derived : public Base, public OtherBase {
+    // множественное наследование позволяет включать реализацию из нескольких классов
+        int y;
+    };
+
+    Derived d;
+    // в классе Derived не объявлены функции f и g, но они доступны через него
+    check(d, d);
+У этой идеи есть как сторонники, так и противники. Противники указывают на две потенциальные проблемы. Первая проблема заключается в том, что если из самого объекта не возможно получить информацию о том, сколько у него суперклассов, очень трудно себе представить и учитывать все зависимости в такой иерархии. Также не очень понятна практическая польза от такого наследования. К тому же, использование классов, которые имеют больше одного предка, в других частях программы может привести к проблемам, которые тяжело диагностировать.
+
+Примером такой проблемы является "ромбовидное" (diamond) наследование. Выглядит оно примерно так.
+
+    class Base {
+        int x;
+    };
+
+    class MiddleLeft : public Base {};
+
+    class MiddleRight : public Base {};
+
+    class Derived : public MiddleLeft, public MiddleRight {
+        int y;
+    public:
+        void f();
+    };
+Теперь вопрос стоит следующим образом: сколько переменных *x* в классе *Derived*? 
+
+Тем не менее, были пользователи, которые ценили возмжность использовать множественное наследование когда это остро необходимо. Как говорил Грэди Буч, 
+> Множественное наследование как паращют: часто он не нужен, но когда нужен, хорошо чтобы он был.
 ### Шаблоны
-> For many people, the largest single problem using C++ is the lack of an extensive standard library. A major 
-problem in producing such a library is that C++ does not provide a sufficiently general facility for defining 
-"container classes" such as lists, vectors, and associative arrays. 
+В С++ долгое время не было своей стандартной библиотеки со структурами данных и алгоритмами. Основной причиной этого было отсутствие статического полиморфизма в явном виде, который бы устраивал Строуструпа. Нужны были механизмы создания обобщенных контейнеров и функций, а от виртуальных функций отказались, так как они статически не проверяли типы аргументов. 
 
-There are two approaches for providing such classes/types: One can either rely on dynamic typing 
-and inheritance, as Smalltalk does, or one can rely on static typing and a facility for arguments of type 
-type. The former is very flexible, but carries a high run-time cost, and more importantly, defies attempts 
-to use static type checking to catch interface errors. Therefore, the latter approach was chosen. 
+> Есть два подхода к созданию generic-классов: либо через динамическую типизацию и наследование, как в Smalltalk, или через статическую типизацию и механизм параметризации типов. Первый способ очень гибкий, но обходится дорого и, что важнее, не позволяет определять ошибки вызова методов при компиляции. Поэтому в С++ выбрали второй способ.
 ### Исключения
-The following assumptions were made for the design: 
-• Exceptions are used primarily for error handling. 
-• Exception handlers are rare compared to function definitions. 
-• Exceptions occur infrequently compared to function calls. 
-These assumptions, together with the requirement that C++ with exceptions should cooperate 
-smoothly with languages without exceptions, such as C and FORTRAN, led to a design with multilevel 
-propagation. The view is that not every function should be a firewall and that the best error-handling 
-strategies are those where only designated major interfaces are concerned With nonlocal error handling 
-issues. 
+Еще один механизм, который использовал наследование в С++ -- это обработка исключительных ситуаций. Для этого в язык доавили иерархию исключений как классов. Их дизайн опирался на следующие предположения.
+* исключения используются, в первую очередь, для обработки ошибок
+* обработчики исключений встречаются в коде редко
+* исключения происходят редко относительно того, как часто вызываются функции
+* исключения не должны пагубно влиять на взаимную совместимость С++ с языками типа С или Fortran, где нет исключений
 
-During the design, the most contentious issue turned out to be whether the exception handling 
-mechanism should support termination semantics or resumption semantics; that is, whether it should 
-be possible for an exception handler to require execution to resume from the point where the exception 
-was thrown. The main resumption vs. termination debate took place in the ANSI C++ committee. 
-After a discussion that lasted for about a year, the exception handling proposal as presented in the 
-ARM (that is, with termination semantics) was voted into C++ by an overwhelming majority. The 
-key to that consensus were presentations of experience data based on decades of use of systems that 
-supported both resumption and termination semantics by representatives of DEC, Sun, Texas 
-Instruments, IBM, and others. Basically, every use of resumption had represented a failure to keep 
-separate levels of abstraction disjoint. 
+Результатом стал дизайн исключений, где они передавались на многих уровнях. Не каждая функция должна ловить исключения, и лучшие стратегии обработки ошибок, как правило, применяют для этого специальные интерфейсы.
+
+Больше всего споров вызвал вопрос относительно того, должны ли исключения завершать или продолжать процесс при возникновении исключительной ситуации с того места, где это произошло. Основываясь на опыте пользователей других систем, в которых встречались оба подхода, в итоге комитет С++ пришел к единому мнению, что исключения должны завершать процесс по умолчанию.
+
+Пример обработки исключений представлен ниже.
+
+    class Exception {
+    public:
+        virtual const char* error() const = 0;
+    };
+
+    class WrongFormatException : public Exception {
+    public:
+        const char* error() const {}
+    };
+
+    class WrongLengthException : public Exception {
+    public:
+        const char* error() const {}
+    };
+
+    class WrongFormatAndLengthException : public WrongFormatException, public WrongLengthException {};
+
+    void check() {
+        throw WrongLengthException();
+    }
+
+    try {
+        check();
+    } catch (const Exception& e) {
+        std::println(e.error());
+    }
+Так как все классы образуют общую иерархию, блок *try-catсh* может обрабатывать любое из исключений, общим предком которых является класс Exception. Если же стратегия обработки для разных классов в рамках одной иерархии отличается, их можно ловить выборочно, от более специального к менее:
+
+    try {
+        check();
+    } catch (const WrongFormatException& e) {
+        // здесь обработается только этот тип и его дочерние типы
+    } catch (const WrongLengthException& e) {
+        // здесь обработается только этот тип и его дочерние типы
+    } catch (const Exception& e) {
+        std::println(e.error());
+    }
