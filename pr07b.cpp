@@ -1,4 +1,5 @@
-// Iterators, part 2
+// Итераторы, чаcть 2
+
 #include <algorithm>
 #include <cassert>
 #include <initializer_list>
