@@ -116,3 +116,7 @@
         }
         return k;
     }
+
+## Runtime vs compile-time
+
+https://youtu.be/uM72qP5Wh18?si=hOVvsbEIF3rHe2RV&t=485
