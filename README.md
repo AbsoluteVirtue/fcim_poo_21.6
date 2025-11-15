@@ -52,6 +52,7 @@ https://journals.sagepub.com/doi/abs/10.1177/0956797614524581
 47. Data Abstraction and Hierarchy, https://www.cs.tufts.edu/~nr/cs257/archive/barbara-liskov/data-abstraction-and-hierarchy.pdf
 48. Single Responsibility Principle, https://blog.cleancoder.com/uncle-bob/2014/05/08/SingleReponsibilityPrinciple.html
 49. Principles for Computer System Design, https://bwlampson.site/Slides/TuringLecture.htm
+50. John Carmack on Inlined Code, http://number-none.com/blow/john_carmack_on_inlined_code.html
 
 ## Лекции
 1. Move semantics, https://www.youtube.com/watch?v=vLinb2fgkHk
@@ -90,6 +91,10 @@ https://journals.sagepub.com/doi/abs/10.1177/0956797614524581
 34. How to get the benefits of Rust traits for dynamic polymorphism in C++, https://www.youtube.com/watch?v=uM72qP5Wh18
 35. Where does bad code come from, https://youtu.be/7YpFGkG-u1w
 36. Breaking Dependencies: SOLID, https://youtu.be/Ntraj80qN2k
+37. The Past, Present and Future of Programming Languages, https://www.youtube.com/watch?v=8-3QwoAmyuk
+38. Functional Data Structures in C++, https://www.youtube.com/watch?v=OsB09djvfl4
+39. Functional Design Patterns, https://www.youtube.com/watch?v=srQt1NAHYC0
+40. A Crash Course in Category Theory, https://youtu.be/JH_Ou17_zyU
 
 ## Shorts
 1. Intro to Lambda Calculus: Syntax, evaluation, terminology, https://www.youtube.com/watch?v=b5VhYkvOk30
