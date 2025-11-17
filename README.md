@@ -53,6 +53,11 @@ https://journals.sagepub.com/doi/abs/10.1177/0956797614524581
 48. Single Responsibility Principle, https://blog.cleancoder.com/uncle-bob/2014/05/08/SingleReponsibilityPrinciple.html
 49. Principles for Computer System Design, https://bwlampson.site/Slides/TuringLecture.htm
 50. John Carmack on Inlined Code, http://number-none.com/blow/john_carmack_on_inlined_code.html
+51. How do commitees invent?, http://www.melconway.com/Home/Committees_Paper.html
+52. In-depth: static code analysis, https://www.gamedeveloper.com/programming/in-depth-static-code-analysis
+53. Why I don't spend time with modern C++ anymore, https://hackerbits.com/wp-content/uploads/2016/11/hacker_bits_issue11.pdf
+54. One year of C, https://floooh.github.io/2018/06/02/one-year-of-c.html
+55. Type erasure, https://www.artima.com/articles/on-the-tension-between-object-oriented-and-generic-programming-in-c
 
 ## Лекции
 1. Move semantics, https://www.youtube.com/watch?v=vLinb2fgkHk
@@ -95,6 +100,13 @@ https://journals.sagepub.com/doi/abs/10.1177/0956797614524581
 38. Functional Data Structures in C++, https://www.youtube.com/watch?v=OsB09djvfl4
 39. Functional Design Patterns, https://www.youtube.com/watch?v=srQt1NAHYC0
 40. A Crash Course in Category Theory, https://youtu.be/JH_Ou17_zyU
+41. Understanding, Using and Improving std::generator, https://www.youtube.com/watch?v=l9qKGGgnZYg
+42. std::allocator is to Allocation what std::vector is to Vexation, https://youtu.be/LIb3L4vKZ7U
+43. Writing cache friendly C++, https://youtu.be/Nz9SiF0QVKY
+44. Psychological Warfare in Reverse Engineering, https://youtu.be/HlUe0TUHOIc
+45. Want fast C++? Know your hardware!, https://youtu.be/BP6NxVxDQIs
+46. Modern C and What We Can Learn From It, https://youtu.be/QpAhX-gsHMs
+47. Generic programming considered harmful, https://www.youtube.com/watch?v=jXQ6WtYmfZw
 
 ## Shorts
 1. Intro to Lambda Calculus: Syntax, evaluation, terminology, https://www.youtube.com/watch?v=b5VhYkvOk30
@@ -132,3 +144,4 @@ https://journals.sagepub.com/doi/abs/10.1177/0956797614524581
 
 ## Опросы
 1. The 2025 Developer Survey, https://survey.stackoverflow.co/2025
+2. TIOBE Index, https://www.tiobe.com/tiobe-index/
