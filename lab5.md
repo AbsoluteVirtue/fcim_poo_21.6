@@ -12,9 +12,11 @@
 
     class abstract_data_t {
     public:
-        // методы из предыдущей лабораторной работы здесь как чисто виртуальные
-
+        // методы из предыдущей лабораторной работы здесь как чисто виртуальные:
+        virtual bool empty() const = 0;
+        virtual size_t size() const = 0;
         virtual ~abstract_data_t() = 0;
+        
         virtual int &front() = 0;
         virtual int &back() = 0;
         virtual void push(int) = 0;
