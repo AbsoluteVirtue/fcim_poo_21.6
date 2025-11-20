@@ -60,12 +60,3 @@ https://youtu.be/kbYutOsrpvs
 
 Документальный сериал, показывающий полный цикл разработки игры Psychonauts 2 изнутри -- Double Fine PsychOdyssey,
 [https://youtube.com/playlist?list=PLIhLvue17Sd70y34zh2erWWpMyOnh4UN_](https://youtube.com/playlist?list=PLIhLvue17Sd70y34zh2erWWpMyOnh4UN_)
-
-##
-И несколько любопытных каналов о программировании:
-1. https://www.youtube.com/@CodeAesthetic/videos
-2. https://www.youtube.com/@Tsoding/videos
-3. https://www.youtube.com/@Reducible/videos
-4. https://www.youtube.com/@denniscosgrove8978/videos
-5. https://www.youtube.com/@simondev758/videos
-6. https://www.youtube.com/@contextfree/videos
