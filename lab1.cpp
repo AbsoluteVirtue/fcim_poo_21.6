@@ -1,3 +1,8 @@
+/*
+    Лабораторная работа 1
+    Абстрактные типы данных
+*/
+
 #include <stdio.h>
 #include <stddef.h>
 #include <stdlib.h>
