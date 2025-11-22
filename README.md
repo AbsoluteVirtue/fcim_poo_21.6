@@ -107,6 +107,8 @@ https://journals.sagepub.com/doi/abs/10.1177/0956797614524581
 45. Want fast C++? Know your hardware!, https://youtu.be/BP6NxVxDQIs
 46. Modern C and What We Can Learn From It, https://youtu.be/QpAhX-gsHMs
 47. Generic programming considered harmful, https://www.youtube.com/watch?v=jXQ6WtYmfZw
+48. Thinking Above the Code, https://www.youtube.com/watch?v=-4Yp3j_jk8Q
+49. Thinking outside the box of code, https://www.youtube.com/watch?v=CoW6Rk7Nx2M
 
 ## Shorts
 1. Intro to Lambda Calculus: Syntax, evaluation, terminology, https://www.youtube.com/watch?v=b5VhYkvOk30
