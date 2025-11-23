@@ -58,6 +58,22 @@ https://journals.sagepub.com/doi/abs/10.1177/0956797614524581
 53. Why I don't spend time with modern C++ anymore, https://hackerbits.com/wp-content/uploads/2016/11/hacker_bits_issue11.pdf
 54. One year of C, https://floooh.github.io/2018/06/02/one-year-of-c.html
 55. Type erasure, https://www.artima.com/articles/on-the-tension-between-object-oriented-and-generic-programming-in-c
+56. A Stream IO System, https://cseweb.ucsd.edu/classes/fa01/cse221/papers/ritchie-stream-io-belllabs84.pdf
+57. A Literate Program, https://dl.acm.org/doi/pdf/10.1145/5948.315654
+58. The UNIX Time-Sharing System, https://dsf.berkeley.edu/cs262/unix.pdf
+59. Deferred execution and lazy evaluation, https://learn.microsoft.com/en-us/dotnet/standard/linq/deferred-execution-lazy-evaluation
+60. The mechanical evaluation of expressions, https://www.cs.cmu.edu/~crary/819-f09/Landin64.pdf
+61. A Curious Course on Coroutines and Concurrency, https://www.dabeaz.com/coroutines/Coroutines.pdf
+62. A beginner's guide to C++ ranges and views, https://hannes.hauswedell.net/post/2019/11/30/range_intro/
+63. Кратко про библиотеку ranges в С++, https://habr.com/ru/companies/otus/articles/841456/
+64. The Incremental Garbage Collection of Processes, http://home.pipeline.com/~hbaker1/Futures.html
+65. Futures and Promises, http://dist-prog-book.com/chapter/2/futures.html
+66. Incremental Consistency Guarantees for Replicated Objects, https://www.usenix.org/system/files/conference/osdi16/osdi16-guerraoui.pdf
+67. Operation Costs in CPU Clock Cycles, http://ithare.com/infographics-operation-costs-in-cpu-clock-cycles/
+68. Gallery of Processor Cache Effects, https://igoro.com/archive/gallery-of-processor-cache-effects/
+69. Cache: a place for concealment and safekeeping, https://manybutfinite.com/post/intel-cpu-caches/
+70. Bit Twiddling Hacks, https://graphics.stanford.edu/~seander/bithacks.html
+71. Handles are the better pointers, https://floooh.github.io/2018/06/17/handles-vs-pointers.html
 
 ## Лекции
 1. Move semantics, https://www.youtube.com/watch?v=vLinb2fgkHk
@@ -109,6 +125,16 @@ https://journals.sagepub.com/doi/abs/10.1177/0956797614524581
 47. Generic programming considered harmful, https://www.youtube.com/watch?v=jXQ6WtYmfZw
 48. Thinking Above the Code, https://www.youtube.com/watch?v=-4Yp3j_jk8Q
 49. Thinking outside the box of code, https://www.youtube.com/watch?v=CoW6Rk7Nx2M
+50. Pipeline-oriented programming, https://www.youtube.com/watch?v=ipceTuJlw-M
+51. Understanding, Using and Improving std::generator, https://www.youtube.com/watch?v=l9qKGGgnZYg
+52. I made Coroutines from scratch, https://www.youtube.com/watch?v=sYSP_elDdZw
+53. Async vs Multithreading, https://www.youtube.com/watch?v=IGv5WYYmyfo
+54. Data-Oriented Design and C++, https://www.youtube.com/watch?v=rX0ItVEVjHc
+55. CPU design effects, https://youtu.be/ICKIMHCw--Y
+56. Writing cache friendly C++, https://www.youtube.com/watch?v=Nz9SiF0QVKY
+57. Practical Data Oriented Design, https://youtu.be/IroPQ150F6c
+58. Intro to Data-Oriented Design for Games, https://www.youtube.com/watch?v=WwkuAqObplU
+59. Data oriented design in practice, https://www.youtube.com/watch?v=NWMx1Q66c14
 
 ## Shorts
 1. Intro to Lambda Calculus: Syntax, evaluation, terminology, https://www.youtube.com/watch?v=b5VhYkvOk30
@@ -122,6 +148,7 @@ https://journals.sagepub.com/doi/abs/10.1177/0956797614524581
 9. The Amazing Power of C++26's Template For Statements, https://www.youtube.com/watch?v=yaWiGLSDc64
 10. Panic vs Error, https://www.youtube.com/watch?v=TQOLosBgX20
 11. Casey Muratori on getting rid of the OOP mindset, https://www.youtube.com/watch?v=GKYCA3UsmrU
+12. Don't Model the Problem, https://www.youtube.com/watch?v=WcAWZGyB32U
 
 ## Документация
 1. libstdc++ Source Documentation, https://gcc.gnu.org/onlinedocs/gcc-4.6.2/libstdc++/api/index.html
