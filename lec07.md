@@ -24,4 +24,83 @@
 ## Динамический и статический полиморфизм
 Из примеров выше можно сделать некоторые выводы. Во-первых, шаблоны образуют формальную грамматику -- набор правил для замены символов или комбинаций символов, определяемых другими правилами, которые, в свою очередь, также определены какими-то правилами. Во-вторых, шаблоны позволяют писать определения, которые не зависят от конкретных типов, а зависят от абстракций. Аналогично типам, которые зависят от абстрактных типов в иерархиях наследования, шаблоны позволяют создавать семейства типов. Эти семейства типов можно использовать для написания полиморфного кода. 
 
-# Концепции
+# Обобщенное программирование
+Важным следствием из возможности писать полиморфные функции и параметризовать типы данных является потенциал к декомпозиции программ на компоненты, которые можно определять отдельно друг от друга и затем комбинировать в произвольной последовательности, при условии, что отдельные компоненты согласуются с требованиями четко определенного интерфейса.
+
+Reuse has been successful in the area of libraries. However, these libraries have the characteristic that they use fully specified interfaces that support a pre-determined set of types, and make little or no attempt to operate on arbitrary user types. Generic programming recognizes that dramatic productivity improvements must come from reuse without modification, as with the successful libraries. Breadth of use, however, must come from the separation of underlying data types, data structures, and algorithms, allowing users to combine components of each sort from either the library or their own code. Accomplishing this requires more than just simple, abstract interfaces -- it requires that a wide variety of components share the same interface so that they can be substituted for one another. It is vital that we go beyond the old library model of reusing identical interfaces with pre-determined types, to one which identifies the minimal requirements on interfaces and allows reuse by similar interfaces which meet those requirements but may differ quite widely otherwise. 
+
+We call the set of axioms satisfied by a data type and a set of operations on it a concept. Examples of concepts might be an integer data type with an addition operation satisfying the usual axioms; or a list of data objects with a first element, an iterator for traversing the list, and a test for identifying the end of the list. Highly reusable components must be programmed assuming a minimal collection of such concepts, and that the concepts used must match as wide a variety of concrete program structures as possible.
+
+STL achieves the performance objectives by using the C++ template mechanism to tailor concept references to the underlying concrete structures at compile time instead of resolving generality at runtime. However, it must be extended far beyond its current domain in order to achieve full industrialization of software development. 
+
+The development of built-in types and operators on them in programming languages over the years has led to relatively consistent definitions which match both programmer intuition and our
+underlying mathematical understanding. Therefore, concepts which match the semantics of built-in types and operators provide an excellent foundation for generic programming.
+## Regular types
+> User-defined types behave like built-in types.
+
+The built-in types in C++ vary substantially in the number and semantics of the
+built-in operators they support, so this is far from a rigorous definition. However, we
+observe that there is a core set of built-in operators which are defined for all built-in
+types (see table).  We attempt to identify the essential semantics of these operations, which
+we call the fundamental operations on a type T.
+### Copy, Assignment, and Equality
+1. T a = b; assert(a==b);
+2. T a; a = b; ⇔ T a = b;
+3. T a = c; T b = c; a = d; assert(b==c);
+4. T a = c; T b = c; zap(a); assert(b==c && a!=b);
+### Equality of Regular Types
+The equivalence,
+
+    x == y ⇔ ∀ predicate P, P(x) == P(y)
+doesn't hold for the right-to-left case, even if P is restricted to well behaved predicates, for the simple reason that
+there are far too many predicates P to make this a useful basis for deciding equality.
+
+Computer hardware generally defines an equality relation on the
+built-in types which it implements efficiently. This equality relation is normally
+bitwise equality (although there are sometimes minor deviations like distinct positive
+and negative zero representations). Starting from this basis, there is a natural default
+equality for types composed of simpler types, i.e. equality of corresponding parts of the composite objects.
+
+Objects which are naturally variable sized must be constructed in C++ out of multiple simple structs, connected by pointers. In such
+cases, we say that the object has remote parts. Our second caveat then is that an equality
+operator should ignore inessential components.
+
+> Two objects are equal if their corresponding parts are equal (applied
+recursively), including remote parts (but not comparing their addresses), excluding
+inessential components, and excluding components which identify related objects.
+
+Most of us would intuitively assume that a visible accessor function, that is a
+public function which returns the value of some component of a composite type,
+would be a reasonable function which should satisfy the above condition. However,
+
+    r1 == r2 ⇒ r1.p == r2.p
+    (1,2) == (2,4) ⇒ 1 == 2
+First, we could avoid defining an equality operator (perhaps
+defining an equiv function with the mathematical definition instead). Second, we
+could avoid making p and q visible parts of our rational number type. Finally, we
+could require that any rational number represented by this type is always in reduced
+form, i.e. its numerator and denominator have no common divisors.
+## Концепции
+If we are to
+succeed in producing widely reusable components, idiosyncratic interfaces are no
+longer usable. A component programmer must be able to make some fundamental
+assumptions about the interfaces she uses, without ever seeing their implementations
+or even imagining their applications. Similarly, her eventual users must provide the
+types implementing those interfaces, and if the same types are to interface with a
+variety of generic components, the interfaces must be consistent with one another.
+
+    x == y ⇒ ∀ “reasonable” function foo, foo(x)==foo(y)
+What is a reasonable function? For optimization purposes, there are several
+classes of functions we would like to capture. First are the standard operators on
+built-in types that do not have side effects, for example a+b, c-d, or p%q. Second are
+the visible member accesses, e.g. s.first or c->imaginary. A third class is the wellknown pure functions, e.g. abs(x), sqrt(y), and cos(z). The ultimate solution,
+then, must be to identify the important attributes, and allow programmers to specify
+them explicitly. 
+
+For regular types, we therefore require that constructors, destructors, and
+assignment operators be linear (average-case) in the area (i.e. the total size of all
+parts) of the object involved. Similarly, we require that the equality operator have
+linear worst-case complexity. (The average-case complexity of equality is typically
+nearly constant, since unequal objects tend to test unequal in an early part.)
+
+The term "generic" historically comes from Ada, when Musser and Stepanov were developing the Ada Generic Library, which separated data representation from algorithms and data abstraction methods. Booch was doing something similar before them, also in Ada, but he was using "taxonomies" (without looking it up, I assume it means some kind of inheritance). Basically, what they where trying to do was to define a family of algorithms (a bunch of concrete implementations that are related in some major way), and make those concrete algorithms "hidden", using abstract algorithms instead. This abstracted algorithm is what they called a "generic" algorithm. For example, sorting linked lists can be a generic function, because singly- and doubly-linked lists  have the same underlying data structure with small differences that are irrelevant when sorting. In short, generic is not about how you get the abstraction, it's about what can be considered "roughly the same" -- what parts of a data type you can ignore in each particular case, which is where concepts come in. They explicitly state  what properties of a type are required in each case, and by elimination -- which properties of types can be ignored in this or that case.
