@@ -74,6 +74,7 @@ https://journals.sagepub.com/doi/abs/10.1177/0956797614524581
 69. Cache: a place for concealment and safekeeping, https://manybutfinite.com/post/intel-cpu-caches/
 70. Bit Twiddling Hacks, https://graphics.stanford.edu/~seander/bithacks.html
 71. Handles are the better pointers, https://floooh.github.io/2018/06/17/handles-vs-pointers.html
+72. Fundamentals of generic programming, https://stepanovpapers.com/DeSt98.pdf
 
 ## Лекции
 1. Move semantics, https://www.youtube.com/watch?v=vLinb2fgkHk
@@ -149,6 +150,7 @@ https://journals.sagepub.com/doi/abs/10.1177/0956797614524581
 10. Panic vs Error, https://www.youtube.com/watch?v=TQOLosBgX20
 11. Casey Muratori on getting rid of the OOP mindset, https://www.youtube.com/watch?v=GKYCA3UsmrU
 12. Don't Model the Problem, https://www.youtube.com/watch?v=WcAWZGyB32U
+13. Stop telling me about _Generic, https://www.youtube.com/watch?v=oEL9x6pP4FM
 
 ## Документация
 1. libstdc++ Source Documentation, https://gcc.gnu.org/onlinedocs/gcc-4.6.2/libstdc++/api/index.html
