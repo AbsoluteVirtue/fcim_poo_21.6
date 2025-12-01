@@ -86,15 +86,14 @@
 > Для многих людей главная проблема в использовании С++ заключается в отсутствии обширной стандартной библиотеки. Большой трудностью в создании такой библиотеки является то, что С++ не предоставляет достаточно общий способ для определения "классов-контейнеров" типа списка, вектора, ассоциативного массива и т.п.
 
 Шаблоны стали таким "общим способом", потому что они позволили создавать абстрактные классы без наследования, пожертвовав динамическим полиморфизмом в пользу проверяемости кода компилятором.
-
+## Библиотеки в контексте обобщенного программирования
 Reuse has been successful in the area of libraries. However, these libraries have the characteristic that they use fully specified interfaces that support a pre-determined set of types, and make little or no attempt to operate on arbitrary user types. Generic programming recognizes that dramatic productivity improvements must come from reuse without modification, as with the successful libraries. Breadth of use, however, must come from the separation of underlying data types, data structures, and algorithms, allowing users to combine components of each sort from either the library or their own code. Accomplishing this requires more than just simple, abstract interfaces -- it requires that a wide variety of components share the same interface so that they can be substituted for one another. It is vital that we go beyond the old library model of reusing identical interfaces with pre-determined types, to one which identifies the minimal requirements on interfaces and allows reuse by similar interfaces which meet those requirements but may differ quite widely otherwise. 
 
 We call the set of axioms satisfied by a data type and a set of operations on it a concept. Examples of concepts might be an integer data type with an addition operation satisfying the usual axioms; or a list of data objects with a first element, an iterator for traversing the list, and a test for identifying the end of the list. Highly reusable components must be programmed assuming a minimal collection of such concepts, and that the concepts used must match as wide a variety of concrete program structures as possible.
 
 STL achieves the performance objectives by using the C++ template mechanism to tailor concept references to the underlying concrete structures at compile time instead of resolving generality at runtime. However, it must be extended far beyond its current domain in order to achieve full industrialization of software development. 
 
-The development of built-in types and operators on them in programming languages over the years has led to relatively consistent definitions which match both programmer intuition and our
-underlying mathematical understanding. Therefore, concepts which match the semantics of built-in types and operators provide an excellent foundation for generic programming.
+The development of built-in types and operators on them in programming languages over the years has led to relatively consistent definitions which match both programmer intuition and our underlying mathematical understanding. Therefore, concepts which match the semantics of built-in types and operators provide an excellent foundation for generic programming.
 ## Regular types
 > User-defined types behave like built-in types.
 

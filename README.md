@@ -75,6 +75,10 @@ https://journals.sagepub.com/doi/abs/10.1177/0956797614524581
 70. Bit Twiddling Hacks, https://graphics.stanford.edu/~seander/bithacks.html
 71. Handles are the better pointers, https://floooh.github.io/2018/06/17/handles-vs-pointers.html
 72. Fundamentals of generic programming, https://stepanovpapers.com/DeSt98.pdf
+73. Generic programming, https://www.stepanovpapers.com/genprog.pdf
+74. Higher order functions considered unnecessary for higher order programming, https://cseweb.ucsd.edu/~goguen/pps/utyop.pdf
+75. Rational approach to consciousness, https://academic.oup.com/nc/article/2021/2/niab034/6397521
+76. Functional error handling with OPTIONAL and EXPECTED, https://accu.org/journals/overload/26/143/brand_2462/
 
 ## Лекции
 1. Move semantics, https://www.youtube.com/watch?v=vLinb2fgkHk
@@ -136,6 +140,8 @@ https://journals.sagepub.com/doi/abs/10.1177/0956797614524581
 57. Practical Data Oriented Design, https://youtu.be/IroPQ150F6c
 58. Intro to Data-Oriented Design for Games, https://www.youtube.com/watch?v=WwkuAqObplU
 59. Data oriented design in practice, https://www.youtube.com/watch?v=NWMx1Q66c14
+60. Monads are everywhere, https://www.youtube.com/watch?v=nGhoZzihbHY
+61. Monads in modern C++, https://www.youtube.com/watch?v=cE_YaFMhTK8
 
 ## Shorts
 1. Intro to Lambda Calculus: Syntax, evaluation, terminology, https://www.youtube.com/watch?v=b5VhYkvOk30
@@ -151,6 +157,7 @@ https://journals.sagepub.com/doi/abs/10.1177/0956797614524581
 11. Casey Muratori on getting rid of the OOP mindset, https://www.youtube.com/watch?v=GKYCA3UsmrU
 12. Don't Model the Problem, https://www.youtube.com/watch?v=WcAWZGyB32U
 13. Stop telling me about _Generic, https://www.youtube.com/watch?v=oEL9x6pP4FM
+14. The Truth About Software Development, https://www.youtube.com/watch?v=mbEzhI3cmmo
 
 ## Документация
 1. libstdc++ Source Documentation, https://gcc.gnu.org/onlinedocs/gcc-4.6.2/libstdc++/api/index.html
