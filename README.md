@@ -179,6 +179,7 @@ https://journals.sagepub.com/doi/abs/10.1177/0956797614524581
 8. Object-Oriented Design with Smalltalk, https://scg.unibe.ch/archive/lectures/DucasseLectures/Duca00y1SmalltalkLectures.pdf
 9. The Art and Science of Smalltalk, https://rmod-files.lille.inria.fr/FreeBooks/Art/artAdded174186187Final.pdf
 10. Object-Oriented Programming Using C++, https://icarus.cs.weber.edu/~dab/cs1410/textbook/
+11. Category theory for scientists, https://arxiv.org/pdf/1302.6946
 
 ## Опросы
 1. The 2025 Developer Survey, https://survey.stackoverflow.co/2025
