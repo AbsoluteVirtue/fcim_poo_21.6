@@ -15,12 +15,12 @@
 
     template<class T, T::type n = 0> class X;
 
-    struct SL {
+    struct Q {
         using type = long;
     };
     
-    using U = X<SL>;
-Структура *SL* содержит имя type, которое может быть типом для переменной, инициализированной нулем. 
+    using U = X<Q>;
+Структура *Q* содержит имя type, которое может быть типом для переменной, инициализированной нулем. 
 
 Из примеров выше можно сделать некоторые выводы. Во-первых, шаблоны образуют формальную грамматику -- набор правил для замены символов или комбинаций символов, определяемых другими правилами, которые, в свою очередь, также определены какими-то правилами. Во-вторых, шаблоны позволяют писать определения, которые не зависят от конкретных типов, а зависят от абстракций. Аналогично типам, которые зависят от абстрактных типов в иерархиях наследования, шаблоны позволяют создавать семейства типов. Эти семейства типов можно использовать для написания полиморфного кода.
 ## Макросы и шаблоны
@@ -87,39 +87,41 @@
 
 Шаблоны стали таким "общим способом", потому что они позволили создавать абстрактные классы без наследования, пожертвовав динамическим полиморфизмом в пользу проверяемости кода компилятором.
 ## Библиотеки в контексте обобщенного программирования
-Reuse has been successful in the area of libraries. However, these libraries have the characteristic that they use fully specified interfaces that support a pre-determined set of types, and make little or no attempt to operate on arbitrary user types. Generic programming recognizes that dramatic productivity improvements must come from reuse without modification, as with the successful libraries. Breadth of use, however, must come from the separation of underlying data types, data structures, and algorithms, allowing users to combine components of each sort from either the library or their own code. Accomplishing this requires more than just simple, abstract interfaces -- it requires that a wide variety of components share the same interface so that they can be substituted for one another. It is vital that we go beyond the old library model of reusing identical interfaces with pre-determined types, to one which identifies the minimal requirements on interfaces and allows reuse by similar interfaces which meet those requirements but may differ quite widely otherwise. 
+Цели обобщенного программирования изначально заключались в декомпозиции программ и гибкой комбинации получившихся модулей. Это было возможно и до введения шаблонов, но в большинстве языков программирования достигалось засчет написания библиотек. Библиотеки, как правило, являются специализированными модулями с конкретным интерфейсом, расчитанным на конкретный род задач. Следовательно, интерфесы библиотек часто требуют совершенно конкретные типы данных или сами предоставляют новые типы данных для корректной работы алгоритмов из них.
 
-We call the set of axioms satisfied by a data type and a set of operations on it a concept. Examples of concepts might be an integer data type with an addition operation satisfying the usual axioms; or a list of data objects with a first element, an iterator for traversing the list, and a test for identifying the end of the list. Highly reusable components must be programmed assuming a minimal collection of such concepts, and that the concepts used must match as wide a variety of concrete program structures as possible.
+Из-за этого программисту не доступны способы работы с интерфейсами библиотек, используя собственные типы данных или типы данных, созданные вне конкретного интерфейса. Обобщенное программирование призвано это изменить. В первую очередь, оно позволяет использовать интерфейсы в разных контекстах, не изменяя их реализации. Применение обобщенных интерфейсов для широкого спектра задача возможно благодаря отделению типов данных от структур данных и алгоритмов. Когда структуры данных принимают любой тип данных, а алгоритмы принимают любую структуру данных, пользователь получает возможность комбинировать их в любых конфигурациях.
 
-STL achieves the performance objectives by using the C++ template mechanism to tailor concept references to the underlying concrete structures at compile time instead of resolving generality at runtime. However, it must be extended far beyond its current domain in order to achieve full industrialization of software development. 
+Абстрактных интерфейсов для этого не достаточно, нужен еще один слой абстракции -- интерфейсы, которые являются посредниками между разными компонентами: компоненты взаимодействуют не друг с другом, а с общим интерфейсом, благодаря которому компоненты становятся взаимозаменяемыми. В свою очередь, это становится возможным благодаря минимальному набору требований, которым компоненты должны удовлетворять. Если несколько компонентов удовлетворяет одному и тому же набору требований, они могут быть использованы в одном и том же контексте в качестве интерфейсов, немсотря на то, что сами компоненты не являются подтипами друг друга. 
 
-The development of built-in types and operators on them in programming languages over the years has led to relatively consistent definitions which match both programmer intuition and our underlying mathematical understanding. Therefore, concepts which match the semantics of built-in types and operators provide an excellent foundation for generic programming.
-## Regular types
-> User-defined types behave like built-in types.
+Стандартная библиотека шаблонов С++ использует механизм шаблонов для достижения целей обобщенного программирования -- она создает набор "концепций", которые описывают требования, предъявляемые интерфейсом к передаваемым конкретным объектам, и проверяют соответствие требованиям на стадии компиляции. Концепции, как правило, повторяют семантику встроенных в язык типов данных и операторов, так как программисты интуитивно ожидают от новых компонентов поведения, которое присуще большинству уже существующих готовых решений. 
+## Регулярные типы
+Обобщенное программирование использует понятие "регулярного типа".
+> Регулярные типы -- это типы, определенные пользователем, которые ведут себя как встроенные типы.
 
-The built-in types in C++ vary substantially in the number and semantics of the
-built-in operators they support, so this is far from a rigorous definition. However, we
-observe that there is a core set of built-in operators which are defined for all built-in
-types (see table).  We attempt to identify the essential semantics of these operations, which
-we call the fundamental operations on a type T.
-### Copy, Assignment, and Equality
-1. T a = b; assert(a==b);
-2. T a; a = b; ⇔ T a = b;
-3. T a = c; T b = c; a = d; assert(b==c);
-4. T a = c; T b = c; zap(a); assert(b==c && a!=b);
-### Equality of Regular Types
-The equivalence,
+Встроенные в С++ типы поддерживают большое и разнообразное количество операторов, поэтому полного формального определения регулярных типов быть не может, но все встроенные типы содержат одно "ядро", общее для всех -- набор операторов, которые составляют основу семантики типов данных в С++. Ниже представлена таблица "фундаментальных" операций. 
+### Копирование, присваивание и сравнение 
+#|операция|семантика|инварианты
+|-|-|-|-|
+|1.|конструирование| T a; |
+|2.|копирование| T a = b; | assert(a==b);
+|3.|присваивание| T a; a = b; |⇔ T a = b;
+|4.|равенство| T a = c; T b = c; | assert(b==c && a==b);
+|5.|неравенство| T a = c; T b = c; a = d; | assert(b==c && a!=b);
+|6.|порядок| T a = c; T b = c; zap(a); | assert(a < b);
+### Равенство регулярных типов
+Отношение эквивалентности, записанное так:
 
     x == y ⇔ ∀ predicate P, P(x) == P(y)
-doesn't hold for the right-to-left case, even if P is restricted to well behaved predicates, for the simple reason that
-there are far too many predicates P to make this a useful basis for deciding equality.
+обычно используется в логике для определения отношения "равенства" двух объектов. Если объект *x* равен объекту *у*, для любого предиката (булевой функции) *Р* верно, что значение *Р* от *х* равно значению *Р* от *у*. В программировании такое определение тяжело использовать для определения равенства, так как множество всех возможных предикатов слишком большое, в ущерб практичности.
 
-Computer hardware generally defines an equality relation on the
-built-in types which it implements efficiently. This equality relation is normally
-bitwise equality (although there are sometimes minor deviations like distinct positive
-and negative zero representations). Starting from this basis, there is a natural default
-equality for types composed of simpler types, i.e. equality of corresponding parts of the composite objects.
+Традиционно, сравнение двух объектов в памяти делается побитово, если объекты достаточно просты. Такой способ может подойти в качестве базового способа сравнения, так как два объекта одного типа будут иметь одинаковые значение, если их биты полностью совпадают.
 
+    struct S { int x; double y; };
+    S a, b; a = {.x=1, .y=2}; b = {.y=2, .x=1};
+    assert(a == b);
+В примере выше побитовое сравнение даст правильный результат, так как и объект a, и объект b содержат простые типы данных в одинаковой последовательности, и значения в соответствующих байтах тоже будут совпадать. Но для других видов объектов побитовое сравнение будет давать неверный результат. Например, в коде ниже:
+
+    
 Objects which are naturally variable sized must be constructed in C++ out of multiple simple structs, connected by pointers. In such
 cases, we say that the object has remote parts. Our second caveat then is that an equality
 operator should ignore inessential components.
@@ -140,6 +142,8 @@ could avoid making p and q visible parts of our rational number type. Finally, w
 could require that any rational number represented by this type is always in reduced
 form, i.e. its numerator and denominator have no common divisors.
 ## Концепции
+We call the set of axioms satisfied by a data type and a set of operations on it a concept. Examples of concepts might be an integer data type with an addition operation satisfying the usual axioms; or a list of data objects with a first element, an iterator for traversing the list, and a test for identifying the end of the list. Highly reusable components must be programmed assuming a minimal collection of such concepts, and that the concepts used must match as wide a variety of concrete program structures as possible.
+
 If we are to
 succeed in producing widely reusable components, idiosyncratic interfaces are no
 longer usable. A component programmer must be able to make some fundamental
