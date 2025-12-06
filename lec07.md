@@ -121,48 +121,126 @@
     assert(a == b);
 В примере выше побитовое сравнение даст правильный результат, так как и объект a, и объект b содержат простые типы данных в одинаковой последовательности, и значения в соответствующих байтах тоже будут совпадать. Но для других видов объектов побитовое сравнение будет давать неверный результат. Например, в коде ниже:
 
-    
-Objects which are naturally variable sized must be constructed in C++ out of multiple simple structs, connected by pointers. In such
-cases, we say that the object has remote parts. Our second caveat then is that an equality
-operator should ignore inessential components.
+    struct Node { int x; Node *tail; };
+    Node a, b; assert(a == b);
 
+два объекта одной структуры при побитовом сравнении могут быть равны, но такое сравнение будет некорректным, так как равенство указателей не должно быть условием равенства списков. Для двух списков, сделанных из таких узлов не имеет значения, по каким адресам расположены сами узлы, важно только то, какие значения содержатся в обоих списках.
+
+Таким образом, если структура содержит несущественные для сравнения части, их нужно игнорировать, а значит побитовое сравнение нужно переопределять.
 > Two objects are equal if their corresponding parts are equal (applied
 recursively), including remote parts (but not comparing their addresses), excluding
 inessential components, and excluding components which identify related objects.
 
-Most of us would intuitively assume that a visible accessor function, that is a
-public function which returns the value of some component of a composite type,
-would be a reasonable function which should satisfy the above condition. However,
+Наконец, есть еще одно условие равенства, которое нужно соблюдать. Например, для двух рациональных чисел, 
 
     r1 == r2 ⇒ r1.p == r2.p
     (1,2) == (2,4) ⇒ 1 == 2
-First, we could avoid defining an equality operator (perhaps
-defining an equiv function with the mathematical definition instead). Second, we
-could avoid making p and q visible parts of our rational number type. Finally, we
-could require that any rational number represented by this type is always in reduced
-form, i.e. its numerator and denominator have no common divisors.
+в примере выше есть очевидное противоречие. Числа 1/2 и 2/4 равны, но если сравнить отдельно их числители и знаменатели, результат будет отрицательным. Соответственно, при переопределении сравнения недостаточно просто сравнивать существенные части, сравнивать нужно их простейшие (reduced) формы (в данном примере, оба числа сначала надо свести к форме, в которой у них нет общего делителя).
 ## Концепции
-We call the set of axioms satisfied by a data type and a set of operations on it a concept. Examples of concepts might be an integer data type with an addition operation satisfying the usual axioms; or a list of data objects with a first element, an iterator for traversing the list, and a test for identifying the end of the list. Highly reusable components must be programmed assuming a minimal collection of such concepts, and that the concepts used must match as wide a variety of concrete program structures as possible.
+Концепция в своей первоначальной трактовке -- это набор аксиом, которые должны удовлетворяться типом данных, и набор операций над значениями этого типа данных. Например, целочисленные типы удовлетворяют этим свойствам, так как сопровождаются всеми встроенными арифметическими операциями и всеми свойствами вроде ассоциативности, транзитивности и т.д. Другим примером такого типа может служить упорядоченный список произвольных значений: у списка есть первый элемент, итератор для нахождения следующего элемента и предикат для определения последнего элемента списка.
 
-If we are to
-succeed in producing widely reusable components, idiosyncratic interfaces are no
-longer usable. A component programmer must be able to make some fundamental
-assumptions about the interfaces she uses, without ever seeing their implementations
-or even imagining their applications. Similarly, her eventual users must provide the
-types implementing those interfaces, and if the same types are to interface with a
-variety of generic components, the interfaces must be consistent with one another.
+Если обобщить эти примеры, можно сделать вывод, что любые компоненты должны предполагать минимальный набор концепций, а эти концепции должны подходить максимально вожможному набору структур в программе -- это делает такие компоненты легко взаимозаменяемыми.
 
-    x == y ⇒ ∀ “reasonable” function foo, foo(x)==foo(y)
-What is a reasonable function? For optimization purposes, there are several
-classes of functions we would like to capture. First are the standard operators on
-built-in types that do not have side effects, for example a+b, c-d, or p%q. Second are
-the visible member accesses, e.g. s.first or c->imaginary. A third class is the wellknown pure functions, e.g. abs(x), sqrt(y), and cos(z). The ultimate solution,
-then, must be to identify the important attributes, and allow programmers to specify
-them explicitly. 
+Такие компоненты не могут использоваться специализированными интерфейсами, потому что без обобщения типов данных программист теряет возможность делать предположения о фундаментальных свойствах компонентов интерфейса, не зная детали реализации. То есть, если предполагать, что обобщенным интерфейсом будут пользоваться другие, реализации для интерйеса должны предоставлять сами пользователи посредством конкретных типов данных, а не автор интерфейса. 
+> Тогда, самым правильным решением будет определение в интерфейсе самых важных атрибутов произвольного типа, который следует передавать интерфейсу, и предоставление пользователям интерфейса задавать типы, обладающие такими атрибутами, явно.
 
-For regular types, we therefore require that constructors, destructors, and
-assignment operators be linear (average-case) in the area (i.e. the total size of all
-parts) of the object involved. Similarly, we require that the equality operator have
-linear worst-case complexity. (The average-case complexity of equality is typically
-nearly constant, since unequal objects tend to test unequal in an early part.)
+Для "регулярных" типов данных, такими атрибутами являются конструкторы, деструктор, присваивание, сравнение.
+### Концепции в С++
+Можно заметить, что шаблоны в С++ уже удовлетворяют определению концепции, данное выше. Переданный в качестве шаблонного аргумента тип данных будет отвергнут на стадии компиляции, если он не соответствует обозначенным в шаблоне свойствам и не реализует нужные операции. То есть, шаблоны описывают обобщенный интерфейс, который подбирает подходящую реализацию при инстанциировании шаблона конкретным типом данных или реализуется самим пользователем предварительно.
 
+Тем не менее, описание требований к типам данных в таких интерфейсах оставляет желать лучшего, поэтому с недавнего времени в С++ появилась отдельная библиотека с концепциями -- *concept*. Текущая реализация концепций определяет их как
+> предикаты (функции, возвращающие true или false), которые вычисляются во время компиляции, принимающие типы данных в качестве аргументов.
+
+    template <typename T>
+    concept number = std::integral<T> || std::floating_point<T>;
+
+    template <number Number>
+    auto concept_function(Number a, Number b) { return a + b; }
+Пример выше показывает простой пример определения и использования концепции. Два стандартных предиката integral и floating_point проверяют переданный тип (в данном случае -- шаблонный символ T) на соответствие. Если один из них вернет true, тип, скрывающийся за символом T, можно считать численным. Это правило именнуется number с помощью ключевого слова concept. Функция concept_function использует арифметическую оперцию, которая определена для всех численных типов, соответственно ее можно обобщить с помощью шаблона, объявив шаблонный аргумент Number как ранее созданную концепцию. 
+
+Такая функция теперь не сможет быть инстанциирована, если в нее передать тип данных, который компилятор не считает численным. При попытке вызвать ее для не численного типа компилятор выдаст ошибку. То есть, в отличие от простых шаблонов, концепции позволяют авторам интерфейсов ограничить типы входящих данных, причем явно определять эти ограничения для пользователей.
+
+    concept_function("Number a", "Number b");
+    // candidate template ignored: 
+    // deduced conflicting types for parameter 'Number' 
+    // ('double' vs. 'const char*')
+Несмотря на то, что оператор "+" определен и для строковых данных, в данном случае вызвать функцию будет нельзя, потому что компилятор проверит тип данных на соответствие концепции во время инстанциирования шаблона и прервет компиляцию с соответствующей ошибкой.
+## Виртуальные функции или концепции для создания интерфейсов
+Если вернуться к сравнению динамического и статического полиморфизма в С++, концепции добавляют нюансов, которые нужно иметь ввиду при выборе одного или другого подхода. Ниже показан пример интерфейса, определенного с помощью абстрактного базового класса.
+    
+    class IPin {
+    public:
+        virtual void set() = 0;
+        virtual void reset() = 0;
+    };
+Интерфейс IPin моделирует электрический компонент на схеме, состояние которого может быть одним из двух возможных. Методы класса изменяют это состояние. Для реализации интерфейса абстрактный класс необходимо наследовать.
+
+    class CPin : public IPin {
+    private:
+        std::uint8_t m_pin{0};
+    public:
+        CPin() = delete;
+        CPin(std::uint8_t pin) : m_pin{pin} {}
+        void set() override {
+            CBitSetResetRegister::set_pin(
+                m_pin);
+        }
+        void reset() override {
+            CBitSetResetRegister::reset_pin(
+                m_pin);
+        }
+    };
+Класс CPin реализует данный интерфейс (содержит оба чисто виртуальных метода с определениями), поэтому значения типа CPin можно использовать в качестве аргументов в функциях, которые используют интерфейс IPin.
+
+    class CLed {
+    private:
+        bool  m_state{false};
+        IPin* m_pin{nullptr};
+    public:
+        CLed() = delete;
+        CLed(IPin* pin) : m_pin{pin} 
+        { m_pin->reset(); }
+        // здесь могут быть дополнительные детали реализации
+    };
+Например, класс CLed использует метод reset интерфейса IPin, следовательно объекты типа CLed могут быть сконструированы, используя значения типа CPin.
+
+Добиться такого же эффекта можно с помощью концепции.
+
+    template <class T> 
+    concept IPin = requires (T pin) {
+        { pin.set() } ->
+            std::same_as<void>;
+        { pin.reset() } -> 
+            std::same_as<void>;
+    };
+Шаблон IPin может выполнять роль обобщенного интерфейса, так как аналогично абстрактному классу требует от всех проверяемых типов Т реализации методов с именами set и reset, которые возвращают пустое множество (void).
+
+    template <IPin T> class CLed {
+    private:
+        bool m_state{false};
+        T*   m_pin{nullptr};
+    public:
+        CLed() = delete;
+        CLed(T* pin) : m_pin{pin}
+        { m_pin->reset(); }
+    };
+Клиентский класс CLed теперь можно сделать шаблонным, ограничив шаблонные аргументы концепцией IPin, что заставит любую реализацию интерфейса IPin содержать соответствующие ограничениям концепции IPin методы, иначе код не сможет быть скомпилирован. Класс CPin уже удовлетворяет этим требованиям, поэтому его можно использовать для создания объектов CLed.
+
+    static_assert(IPin<CPin>);
+    CLed<CPin> pinned{new CPin{1}};
+В итоге, концепции позволяют переложить ответственность за реализацию конкретных компонентов на пользователей той или иной библиотеки. Благодаря этому код библиотеки может быть полностью отделен от реализации, так как между реализацией и конечным пользователем появляется слой абстракции, выраженный в обобщенном интерфейсе. 
+
+Концепции одновременно усиливают контроль за реализацией интерфейсов, определяя конкретные проверяемые ограничения, но ослабевают требования к реализациям по сравнению с абстрактными классами. В случае с абстрактным классом реализация обязана соответствовать ему полностью (не должно быть расхождений в типах данных параметров, минимальном количестве методов и т.д.) независимо от кода пользователя (он может не использовать весь интерфейс, но все равно будет тянуть реализацию даже тех методов, которые в коде не применяются).
+
+    struct Imp { void calculate(int x = 0); };
+
+    template <typename T>
+    concept constrained = requires (T a) {
+        { a.calculate() } -> std::same_as<void>;
+    };
+
+    template <constrained C>
+    void client(C arg);
+
+    client(Imp);
+Пример выше это иллюстрирует. Функция client использует концепцию для ограничения типа аргумента, который она принимает: тип должен предоставлять метод calculate, который ничего не принимает и возвращает void. Структура Imp содержит вызываемый метод с таким именем, он возвращает void, но принимает один аргумент. Несмотря на это, он подходит концепции constrained, так как аргумент имеет значение по умолчанию, соответственно, метод можно вызвать без аргументов. Добиться такого же эффекта при реализации абстрактного метода класса нельзя.

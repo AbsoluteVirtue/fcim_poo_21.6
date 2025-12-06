@@ -142,6 +142,8 @@ https://journals.sagepub.com/doi/abs/10.1177/0956797614524581
 59. Data oriented design in practice, https://www.youtube.com/watch?v=NWMx1Q66c14
 60. Monads are everywhere, https://www.youtube.com/watch?v=nGhoZzihbHY
 61. Monads in modern C++, https://www.youtube.com/watch?v=cE_YaFMhTK8
+62. Монады в C#; элементы теории категорий, https://www.youtube.com/watch?v=hPTOe8KRw_A
+63. What is IO monad?, https://youtu.be/fCoQb-zqYDI
 
 ## Shorts
 1. Intro to Lambda Calculus: Syntax, evaluation, terminology, https://www.youtube.com/watch?v=b5VhYkvOk30
