@@ -145,6 +145,7 @@ https://journals.sagepub.com/doi/abs/10.1177/0956797614524581
 62. Монады в C#; элементы теории категорий, https://www.youtube.com/watch?v=hPTOe8KRw_A
 63. What is IO monad?, https://youtu.be/fCoQb-zqYDI
 64. Relative pointers, https://www.youtube.com/watch?v=Z0tsNFZLxSU
+65. From Here To Lambda And Back Again, https://www.youtube.com/watch?v=vMDHpPN_p08
 
 ## Shorts
 1. Intro to Lambda Calculus: Syntax, evaluation, terminology, https://www.youtube.com/watch?v=b5VhYkvOk30
