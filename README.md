@@ -146,6 +146,8 @@ https://journals.sagepub.com/doi/abs/10.1177/0956797614524581
 63. What is IO monad?, https://youtu.be/fCoQb-zqYDI
 64. Relative pointers, https://www.youtube.com/watch?v=Z0tsNFZLxSU
 65. From Here To Lambda And Back Again, https://www.youtube.com/watch?v=vMDHpPN_p08
+66. Jonathan Blow on Programming Language Design, https://www.youtube.com/watch?v=e6crOMC9WCE
+67. Jai Demo and Design Explanation, https://www.youtube.com/watch?v=IdpD5QIVOKQ
 
 ## Shorts
 1. Intro to Lambda Calculus: Syntax, evaluation, terminology, https://www.youtube.com/watch?v=b5VhYkvOk30
