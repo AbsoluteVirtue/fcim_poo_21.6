@@ -148,6 +148,7 @@ https://journals.sagepub.com/doi/abs/10.1177/0956797614524581
 65. From Here To Lambda And Back Again, https://www.youtube.com/watch?v=vMDHpPN_p08
 66. Jonathan Blow on Programming Language Design, https://www.youtube.com/watch?v=e6crOMC9WCE
 67. Jai Demo and Design Explanation, https://www.youtube.com/watch?v=IdpD5QIVOKQ
+68. Rust and the price of ignoring theory, https://www.youtube.com/watch?v=1iPWt1gvT_w
 
 ## Shorts
 1. Intro to Lambda Calculus: Syntax, evaluation, terminology, https://www.youtube.com/watch?v=b5VhYkvOk30
@@ -164,6 +165,7 @@ https://journals.sagepub.com/doi/abs/10.1177/0956797614524581
 12. Don't Model the Problem, https://www.youtube.com/watch?v=WcAWZGyB32U
 13. Stop telling me about _Generic, https://www.youtube.com/watch?v=oEL9x6pP4FM
 14. The Truth About Software Development, https://www.youtube.com/watch?v=mbEzhI3cmmo
+15. My thoughts on Y Combinator, https://www.youtube.com/watch?v=L7x2ufU1c9Y 
 
 ## Документация
 1. libstdc++ Source Documentation, https://gcc.gnu.org/onlinedocs/gcc-4.6.2/libstdc++/api/index.html
@@ -186,6 +188,9 @@ https://journals.sagepub.com/doi/abs/10.1177/0956797614524581
 9. The Art and Science of Smalltalk, https://rmod-files.lille.inria.fr/FreeBooks/Art/artAdded174186187Final.pdf
 10. Object-Oriented Programming Using C++, https://icarus.cs.weber.edu/~dab/cs1410/textbook/
 11. Category theory for scientists, https://arxiv.org/pdf/1302.6946
+
+## Прочее
+1. Advent of Compiler Optimisations 2025, https://www.youtube.com/playlist?list=PL2HVqYf7If8cY4wLk7JUQ2f0JXY_xMQm2
 
 ## Опросы
 1. The 2025 Developer Survey, https://survey.stackoverflow.co/2025
