@@ -149,6 +149,7 @@ https://journals.sagepub.com/doi/abs/10.1177/0956797614524581
 66. Jonathan Blow on Programming Language Design, https://www.youtube.com/watch?v=e6crOMC9WCE
 67. Jai Demo and Design Explanation, https://www.youtube.com/watch?v=IdpD5QIVOKQ
 68. Rust and the price of ignoring theory, https://www.youtube.com/watch?v=1iPWt1gvT_w
+69. Four Languages from Forty Years Ago, https://www.youtube.com/watch?v=mRwHZTNGdoY
 
 ## Shorts
 1. Intro to Lambda Calculus: Syntax, evaluation, terminology, https://www.youtube.com/watch?v=b5VhYkvOk30
