@@ -1,5 +1,4 @@
-# Награды за "головы"
-
+# Источники информации
 ## Статьи
 1. Laptop multitasking hinders classroom learning for both users and nearby peers,
 https://www.sciencedirect.com/science/article/pii/S0360131512002254
@@ -79,6 +78,8 @@ https://journals.sagepub.com/doi/abs/10.1177/0956797614524581
 74. Higher order functions considered unnecessary for higher order programming, https://cseweb.ucsd.edu/~goguen/pps/utyop.pdf
 75. Rational approach to consciousness, https://academic.oup.com/nc/article/2021/2/niab034/6397521
 76. Functional error handling with OPTIONAL and EXPECTED, https://accu.org/journals/overload/26/143/brand_2462/
+77. Think in Math, Write in Code, https://www.jmeiners.com/think-in-math/
+78. C Is Not a Low-level Language, https://queue.acm.org/detail.cfm?id=3212479
 
 ## Лекции
 1. Move semantics, https://www.youtube.com/watch?v=vLinb2fgkHk
@@ -189,6 +190,7 @@ https://journals.sagepub.com/doi/abs/10.1177/0956797614524581
 9. The Art and Science of Smalltalk, https://rmod-files.lille.inria.fr/FreeBooks/Art/artAdded174186187Final.pdf
 10. Object-Oriented Programming Using C++, https://icarus.cs.weber.edu/~dab/cs1410/textbook/
 11. Category theory for scientists, https://arxiv.org/pdf/1302.6946
+12. Data structures in practice, https://github.com/djiangtw/data-structures-in-practice-public
 
 ## Прочее
 1. Advent of Compiler Optimisations 2025, https://www.youtube.com/playlist?list=PL2HVqYf7If8cY4wLk7JUQ2f0JXY_xMQm2
