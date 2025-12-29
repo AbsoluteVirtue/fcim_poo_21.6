@@ -1,4 +1,5 @@
 # Источники информации
+
 ## Статьи
 1. Laptop multitasking hinders classroom learning for both users and nearby peers,
 https://www.sciencedirect.com/science/article/pii/S0360131512002254
@@ -80,6 +81,7 @@ https://journals.sagepub.com/doi/abs/10.1177/0956797614524581
 76. Functional error handling with OPTIONAL and EXPECTED, https://accu.org/journals/overload/26/143/brand_2462/
 77. Think in Math, Write in Code, https://www.jmeiners.com/think-in-math/
 78. C Is Not a Low-level Language, https://queue.acm.org/detail.cfm?id=3212479
+79. Permission structures, https://substack.com/@mattdinan/p-173089195
 
 ## Лекции
 1. Move semantics, https://www.youtube.com/watch?v=vLinb2fgkHk
@@ -151,6 +153,7 @@ https://journals.sagepub.com/doi/abs/10.1177/0956797614524581
 67. Jai Demo and Design Explanation, https://www.youtube.com/watch?v=IdpD5QIVOKQ
 68. Rust and the price of ignoring theory, https://www.youtube.com/watch?v=1iPWt1gvT_w
 69. Four Languages from Forty Years Ago, https://www.youtube.com/watch?v=mRwHZTNGdoY
+70. Rob Pike on software engineering, https://www.youtube.com/watch?v=SlasmhEcXDo
 
 ## Shorts
 1. Intro to Lambda Calculus: Syntax, evaluation, terminology, https://www.youtube.com/watch?v=b5VhYkvOk30
