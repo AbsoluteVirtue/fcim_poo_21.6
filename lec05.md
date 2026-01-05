@@ -376,3 +376,4 @@ concept.
     } catch (const Exception& e) {
         std::println(e.error());
     }
+Более подробно исключения рассматриваются в отдельной главе.
