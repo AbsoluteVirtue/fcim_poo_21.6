@@ -37,3 +37,7 @@ _*.cpp
 *.exe
 *.out
 *.app
+
+# Obsidian
+.obsidian/*
+*.json
