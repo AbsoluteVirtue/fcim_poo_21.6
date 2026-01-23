@@ -55,6 +55,8 @@ https://youtu.be/tD5NrevFtbU
 3. *Платный* курс, посвященный низкоуровневому программированию и особенностям работы микропроцессоров -- C. Muratori, Performance-aware programming, https://www.computerenhance.com/p/welcome-to-the-performance-aware
 
 ## Разное
+Серия видео для начинающих с примерами самых интересных оптимизаций кода компилятором С++ от автора сайта *godbolt.org* -- Advent of Compiler Optimisations 2025, [https://www.youtube.com/playlist?list=PL2HVqYf7If8cY4wLk7JUQ2f0JXY_xMQm2](https://www.youtube.com/playlist?list=PL2HVqYf7If8cY4wLk7JUQ2f0JXY_xMQm2)
+
 Рассуждения о применимости технологии "блокчейн" в сфере денежного обращения и децентрализации -- Cryptocurrency: What is the Blockchain Threat Model?,
 https://youtu.be/kbYutOsrpvs
 

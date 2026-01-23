@@ -196,9 +196,6 @@ https://journals.sagepub.com/doi/abs/10.1177/0956797614524581
 11. Category theory for scientists, https://arxiv.org/pdf/1302.6946
 12. Data structures in practice, https://github.com/djiangtw/data-structures-in-practice-public
 
-## Прочее
-1. Advent of Compiler Optimisations 2025, https://www.youtube.com/playlist?list=PL2HVqYf7If8cY4wLk7JUQ2f0JXY_xMQm2
-
 ## Опросы
 1. The 2025 Developer Survey, https://survey.stackoverflow.co/2025
 2. TIOBE Index, https://www.tiobe.com/tiobe-index/
