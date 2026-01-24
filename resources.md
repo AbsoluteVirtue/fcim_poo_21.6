@@ -36,6 +36,8 @@ https://youtu.be/2MYzvQ1v8Ww
 https://youtu.be/PMpNhbMjDj0
 9. Философский взгляд на возможные причины ухудшения качества программ -- The Thirty Million Line Problem,
 https://youtu.be/kZRE7HIO3vk
+10. Рассуждения о применимости технологии "блокчейн" в сфере денежного обращения и децентрализации -- Cryptocurrency: What is the Blockchain Threat Model?,
+https://youtu.be/kbYutOsrpvs
 
 ### Объектно-ориентированный подход
 1. Мнение о недостатках ООП -- Object-Oriented Programming is Embarrassing: 4 Short Examples,
@@ -57,8 +59,8 @@ https://youtu.be/tD5NrevFtbU
 ## Разное
 Серия видео для начинающих с примерами самых интересных оптимизаций кода компилятором С++ от автора сайта *godbolt.org* -- Advent of Compiler Optimisations 2025, [https://www.youtube.com/playlist?list=PL2HVqYf7If8cY4wLk7JUQ2f0JXY_xMQm2](https://www.youtube.com/playlist?list=PL2HVqYf7If8cY4wLk7JUQ2f0JXY_xMQm2)
 
-Рассуждения о применимости технологии "блокчейн" в сфере денежного обращения и децентрализации -- Cryptocurrency: What is the Blockchain Threat Model?,
-https://youtu.be/kbYutOsrpvs
+Курс от MIT, посвященный заполнению пробелов в образовании технических специалистов, "The Missing Semester",
+https://www.youtube.com/@MissingSemester/videos
 
 Документальный сериал, показывающий полный цикл разработки игры Psychonauts 2 изнутри -- Double Fine PsychOdyssey,
 [https://youtube.com/playlist?list=PLIhLvue17Sd70y34zh2erWWpMyOnh4UN_](https://youtube.com/playlist?list=PLIhLvue17Sd70y34zh2erWWpMyOnh4UN_)
