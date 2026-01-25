@@ -172,6 +172,7 @@ https://journals.sagepub.com/doi/abs/10.1177/0956797614524581
 13. Stop telling me about _Generic, https://www.youtube.com/watch?v=oEL9x6pP4FM
 14. The Truth About Software Development, https://www.youtube.com/watch?v=mbEzhI3cmmo
 15. My thoughts on Y Combinator, https://www.youtube.com/watch?v=L7x2ufU1c9Y 
+16.  Why Go Or Rust On New Projects, https://www.youtube.com/watch?v=p-tb1ZfkwgQ
 
 ## Документация
 1. libstdc++ Source Documentation, https://gcc.gnu.org/onlinedocs/gcc-4.6.2/libstdc++/api/index.html
