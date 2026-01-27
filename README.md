@@ -83,6 +83,7 @@ https://journals.sagepub.com/doi/abs/10.1177/0956797614524581
 78. C Is Not a Low-level Language, https://queue.acm.org/detail.cfm?id=3212479
 79. Permission structures, https://substack.com/@mattdinan/p-173089195
 80. Design principles behind Smalltalk, https://www.cs.virginia.edu/~evans/cs655/readings/smalltalk.html
+81. Subtyping, Subclassing, and Trouble with OOP, https://okmij.org/ftp/Computation/Subtyping/
 
 ## Лекции
 1. Move semantics, https://www.youtube.com/watch?v=vLinb2fgkHk
