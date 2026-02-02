@@ -6,74 +6,88 @@
 Композиция данных и функциональность написанного кода может быть произвольной.
 
 Необходимо написать подробный отчет, в котором объясняются все использованные для выполнения задания механики и свойства языка С++.
+### Контрольные вопросы
+1. Как работает наследование в С++? Как оно влияет на размер объекта производного класса относительно родительского класса?
+2. Для чего используется метка protected в определении класса?
+3. Как наследование связано с идеей над-типов и под-типов?
+4. В чем принципиальная разница между наследованием и явной композицией/агрегацией объектов?
+5. Какие проблемы существуют при использовании множественноо наследования?
+6. Как виды наследования модифицируются с помощью ключевых слов public, protected и private?
 ## Обобщенное программирование, интерфейсы, динамический полиморфизм
-### Дополнительное задание
+### Задание по выбору (опциональное)
 Взяв предыдущую лабораторную работу за основу необходимо создать иерархию наследования, где класс abstract_data_t выступает в роли интерфейса (то есть, является абстрактным базовым классом для другого класса с реализацией). В коде ниже уже присутствует чисто виртуальный метод (деструктор класса abstract_data_t), это нужно для того, чтобы класс компилятором определялся как чисто абстрактный.
-
-    class abstract_data_t {
-    public:
-        // методы из предыдущей лабораторной работы здесь как чисто виртуальные:
-        virtual bool empty() const = 0;
-        virtual size_t size() const = 0;
-        virtual ~abstract_data_t() = 0;
-        
-        virtual int &front() = 0;
-        virtual int &back() = 0;
-        virtual void push(int) = 0;
-        virtual void pop() = 0;
-        virtual void extend(const abstract_data_t&) = 0;
-    };
+```C++
+class abstract_data_t {
+public:
+    // методы из предыдущей лабораторной работы здесь как чисто виртуальные:
+    virtual bool empty() const = 0;
+    virtual size_t size() const = 0;
+    virtual ~abstract_data_t() = 0;
+    
+    virtual int &front() = 0;
+    virtual int &back() = 0;
+    virtual void push(int) = 0;
+    virtual void pop() = 0;
+    virtual void extend(const abstract_data_t&) = 0;
+};
+```
 Для первоначального класса:
 
 Метод front возвращает значение первого элемента коллекции.
-
+```C++
     public:
         int &front() override;
+```
 Метод back возвращает значение последнего элемента коллекции.
-
+```C++
     public:
         int &back() override;
+```
 Метод push принимает один аргумент – целое число – и добавляет значение аргумента в качестве нового элемента в начало (или конец) заданной коллекции.
-
+```C++
     public:
         void push(int) override;
+```
 Метод pop удаляет первый (или последний) элемент из заданной коллекции.
-
+```C++
     public:
         void pop() override;
+```
 Метод extend с одним параметром (ссылкой на другую коллекцию того же типа, что и заданная) добавляет значения аргумента в конец заданной коллекции в том же порядке, в каком они встречаются в коллекции-аргументе.
-
+```C++
     public:
         void extend(const abstract_data_t&) override;
+```
 Т.о. полный интерфейс класса, в зависимости от варианта, будет выглядеть так:
+```C++
+class abstract_data_t {
+public:
+    // методы из предыдущей лабораторной работы здесь как чисто виртуальные
 
-    class abstract_data_t {
-    public:
-        // методы из предыдущей лабораторной работы здесь как чисто виртуальные
+    virtual ~abstract_data_t() = 0;
+    virtual int &front() = 0;
+    virtual int &back() = 0;
+    virtual void push(int) = 0;
+    virtual void pop() = 0;
+    virtual void extend(const abstract_data_t&) = 0;
+};
 
-        virtual ~abstract_data_t() = 0;
-        virtual int &front() = 0;
-        virtual int &back() = 0;
-        virtual void push(int) = 0;
-        virtual void pop() = 0;
-        virtual void extend(const abstract_data_t&) = 0;
-    };
+inline abstract_data_t::~abstract_data_t() {}
 
-    inline abstract_data_t::~abstract_data_t() {}
+class example : public abstract_data_t {
+private:
+    // необходимые поля здесь
+public:
+    // методы из предыдущей лабораторной работы здесь
 
-    class example : public abstract_data_t {
-    private:
-        // необходимые поля здесь
-    public:
-        // методы из предыдущей лабораторной работы здесь
-    
-        int &front() override;
-        int &back() override;
-        void push(int) override;
-        void pop() override;
-        void extend(const abstract_data_t&) override;
-    };
-## Контрольные вопросы
+    int &front() override;
+    int &back() override;
+    void push(int) override;
+    void pop() override;
+    void extend(const abstract_data_t&) override;
+};
+```
+### Контрольные вопросы
 1. С какой целью определяют базовые абстрактные классы?
 2. Что нужно сделать, чтобы класс стал абстрактным?
 3. Что позволяется и что не позволяется делать с абстрактными классами?
