@@ -73,13 +73,15 @@
 Слово "классы" стоит отдельно выделить, так как оно будет иметь большое значение для ООП в дальнейшем.
 
 В первых версиях языка основным элементом дизайна был "процесс". Этот модуль был простейшим элементом в программе, и программа состояла из комбинаций процессов, взаимодействующих друг с другом. Процессы могли быть двух видов: станции (активные компоненты) или клиенты (пассивные компоненты).
-
-        system <identifier> := <station list>
-        station <identifier>;<statement>
-        customer <customer list>
+```BNF
+system <identifier> := <station list>
+station <identifier>;<statement>
+customer <customer list>
+```
 Клиенты можно было организовать в список:
-
-        <identifier>(<list of characteristics>)[<upper limit of customers>] 
+```BNF
+<identifier>(<list of characteristics>)[<upper limit of customers>] 
+```  
 Станция состояла из очереди и сервиса (операций, которые описывали правила обращения и реализовались на языке Algol). Очередь -- это упорядоченное "множество" процессов, где идея множества повторяла похожую концепцию из языка Algol (condition variables), которые манипулировались двумя специальными операциями wait и signal. Сервисы представляли собой абстракцию "работы", а вся программа -- сеть (граф) сервисов.
 
 Клиент состоял из переменных, которые выполняли роль его "характеристик". Все клиенты имели общую переменную "время" и общую процедуру "позиция", которые использовались для симуляций. Клиент создавался сервисом какой-то станции, после чего он передавался в очередь либо этой же, либо другой станции. Из очереди клиент попадает в сервис соответствующей станции. Если сервис не помещал клиент в одну из очередей, клиент удалялся.
@@ -87,24 +89,25 @@
 Со временем множества были изменены таким образом, чтобы в них можно было хранить процессы любых видов. Это делалось с помощью указателей на процессы. Такое "абстрактное множество" было реализовано в виде связного циклического списка и стало основой обобщенных списков в языке. Дополнительным эффектом такого подхода была возможность хранить один и тот же процесс в разных списках одновременно, используя ссылки ("элементарные объекты") на него.
 
 Эти изменения потребовали отказаться от коцепции "сети сервисов", что сделало необходимым инкапсулировать все данные в соотвествующем процессе.
-
-    inspect <process reference>
+```Algol
+inspect <process reference>
         when passenger do ...
         when staff do ...
         otherwise ...
+```
 Система стала коллекцией процессов вместо графа событий и переходов между ними. Каждый процесс был отдельным объектом в памяти. Процессы хранились на стеке, а стек в Algol был не очень удобен для работы таких программ. Программы описывали параллельные процессы, которые на стеке не могли выполняться параллельно. Для решения этой проблемы была написана новая система выделения памяти, где вместо одномерного стека память выделялась в двумерном массиве-таблице. Это позволило создавать процессы не просто как структуры данных, а как полноценные подпрограммы, которые были легко параллелизуемы.
-
-        system Airport := arrivals, counter, fee collector, control, lobby;
-        customer passenger (fee paid) [500];
-                Boolean fee paid;
+```Algol
+system Airport := arrivals, counter, fee collector, control, lobby;
+customer passenger (fee paid) [500];
+        Boolean fee paid;
         station counter;
-        begin accept (passenger) select:
-                (first) if none: exit;
-                hold (normal (2, 0.2));
-                route (passenger) to:
-                        (if fee paid then control else fee collector)
-        end;
-
+begin accept (passenger) select:
+        (first) if none: exit;
+        hold (normal (2, 0.2));
+        route (passenger) to:
+                (if fee paid then control else fee collector)
+end;
+```
 Основным итогом этих переработок стало то, что операции и данные хранились вместе, инкапсулированные в единый процесс.
 > "Данные и операции над ними должны быть вместе, и самые полезные модули в программах содержат и то, и другое."
 
@@ -115,71 +118,71 @@
 Эти изменения привели к тому, что язык эволюционировал в новую версию, более общего назначения, чем просто язык для индустриальных симуляций. Дополнительно в язык был добавлен сборщик мусора, заимствованный из языка Lisp. Это дало возможность назначать стартовые значения для атрибутов процесса при его создании и очищать память, занятую процессом при его удалении.
 
 Механизм параметризации операций не удовлетворял разработчиков компилятора в полной мере, поэтому было принято решение использовать отношения между процессами и подпроцессами для определения типов параметров. Все это в совокупности привело к возникновению понятий "класс" и "подкласс" в языке.
-
-        class Point; real x, y;
-        begin
-        boolean procedure equals(p); ref(Point) p;
-                if p =/= none then 
-                equals := abs(x - p.x) + abs(y - p.y) < 0.00001;
-        real procedure distance(p); ref(Point) p;
-                if p == none then error
-                else distance := sqrt((x - p.x)**2 + (y - p.y)**2);
-        end
-
+```Algol
+class Point; real x, y;
+begin
+boolean procedure equals(p); ref(Point) p;
+        if p =/= none then 
+        equals := abs(x - p.x) + abs(y - p.y) < 0.00001;
+real procedure distance(p); ref(Point) p;
+        if p == none then error
+        else distance := sqrt((x - p.x)**2 + (y - p.y)**2);
+end
+```
 Подклассы процессов представляли собой описания со своими собственными операциями и локальными данными (аналогично объектам-функциям в Lisp).
-
-      class Page;
-      begin
-         class Print_Block(Width,Length);integer Width, Length;
-         begin
+```Smalltalk
+class Page;
+begin
+        class Print_Block(Width,Length);integer Width, Length;
+        begin
             ref(Print_Block)Next;
             text array Contents(1:Length);
             integer Count;
             for Count:=1 step 1 until Length do Contents(Count):-Blanks(Width)
-         end--of--Print_Block;
+        end--of--Print_Block;
 
-         Print_Block class Title_Block(Title);text Title;
-         begin
+        Print_Block class Title_Block(Title);text Title;
+        begin
             Contents(Length//2):=Title
-         end--of--Title_Block;
+        end--of--Title_Block;
 
-         Print_Block class Text_Block;
-         begin
+        Print_Block class Text_Block;
+        begin
             for Count:=1 step 1 until Length do
             begin
                InImage;
                Contents(Count):=Intext(Width)
             end
-         end--of--Text_Block;
-      end..of..Page;
-      new Page;
-
+        end--of--Text_Block;
+end..of..Page;
+new Page;
+```
 Общие свойства классов можно было группировать так, чтобы они применялись позднее, т.о. можно было описывать программы, в которых определение свойств не было известно заранее. Для поддержания этой системы был реализован механизм "виртуального класса". Этот механизм был необходим для предоставления доступа к операциям объекта: параметр (операция) объявлялся на уровне самого верхнего класса; определение параметра включалось в объект подкласса. Такой подход позволял получать обобщенные объекты, поведение которых было частично не определено в ходе работы программы, и которое можно было динамически заменить. Так, в зависимости от используемого подкласса поведение объекта из семейства подклассов могло отличаться. 
 
 Для иллюстрации этой идеи можно использовать знакомый механизм в языке С:
+```C
+struct Point {
+        double x, y;
+        bool (*equals)(struct Point *this, struct Point *p);
+        double (*distance)(struct Point *this, struct Point *p);
+};
 
-        struct Point {
-                double x, y;
-                bool (*equals)(struct Point *this, struct Point *p);
-                double (*distance)(struct Point *this, struct Point *p);
-        };
-
-        bool procedure_equals(struct Point *this, struct Point *p) {
-                if (p != NULL) {
-                        return (fabs(this->x - p->x) + fabs(this->y - p->y)) < 0.00001;
-                }
-                return false;
+bool procedure_equals(struct Point *this, struct Point *p) {
+        if (p != NULL) {
+                return (fabs(this->x - p->x) + fabs(this->y - p->y)) < 0.00001;
         }
+        return false;
+}
 
-        double procedure_distance(struct Point *this, struct Point *p) {
-                assert(p != NULL);
-                return sqrt(pow(this->x - p->x, 2) + pow(this->y - p->y, 2));
-        }
+double procedure_distance(struct Point *this, struct Point *p) {
+        assert(p != NULL);
+        return sqrt(pow(this->x - p->x, 2) + pow(this->y - p->y, 2));
+}
 
-        int main(void) {
-                Point p    = {.x=1, .y=1};
-                p.equals   = procedure_equals;
-                p.distance = procedure_distance;
-        }
-
+int main(void) {
+        Point p    = {.x=1, .y=1};
+        p.equals   = procedure_equals;
+        p.distance = procedure_distance;
+}
+```
 Минусом такого подхода было то, что правила замены невозможно было проверить во время компиляции программы.
