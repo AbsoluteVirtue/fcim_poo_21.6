@@ -157,6 +157,7 @@ https://journals.sagepub.com/doi/abs/10.1177/0956797614524581
 68. Rust and the price of ignoring theory, https://www.youtube.com/watch?v=1iPWt1gvT_w
 69. Four Languages from Forty Years Ago, https://www.youtube.com/watch?v=mRwHZTNGdoY
 70. Rob Pike on software engineering, https://www.youtube.com/watch?v=SlasmhEcXDo
+71. The Only Unbreakable Law, https://www.youtube.com/watch?v=5IUj1EZwpJY
 
 ## Shorts
 1. Intro to Lambda Calculus: Syntax, evaluation, terminology, https://www.youtube.com/watch?v=b5VhYkvOk30
