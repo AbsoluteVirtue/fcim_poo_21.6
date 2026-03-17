@@ -5,6 +5,9 @@ labs/*
 _*.cpp
 *test*.cpp
 
+# Images
+*.png
+
 # Prerequisites
 *.d
 
