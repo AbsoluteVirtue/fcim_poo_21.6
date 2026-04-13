@@ -1,95 +1,103 @@
 # Источники информации
 
 ## Статьи
+### Образование
 1. Laptop multitasking hinders classroom learning for both users and nearby peers,
 https://www.sciencedirect.com/science/article/pii/S0360131512002254
 2. The Pen Is Mightier Than the Keyboard: Advantages of Longhand Over Laptop Note Taking,
 https://journals.sagepub.com/doi/abs/10.1177/0956797614524581
 3. Improved Learning in a Large-Enrollment Physics Class, https://www.science.org/doi/10.1126/science.1201783
-4. Is CppCoreGuidelines C.21 correct?, https://stackoverflow.com/questions/38682675/is-cppcoreguidelines-c-21-correct
-5. Lisp: Good News, Bad News, How to Win Big, https://www.dreamsongs.com/WIB.html
-6. Objects Never? Well, Hardly Ever!, https://cacm.acm.org/magazines/2010/9/98017-objects-never-well-hardly-ever/fulltext
-7. What Made Lisp Different, https://www.paulgraham.com/diff.html
-8. Was Alan Kay wrong? And why does that matter?, https://braythwayt.com/2013/12/22/wrong.html
-9. Domain Specific Languages - Ruby, a Sign Post on the Road to Smalltalk, http://onsmalltalk.com/domain-specific-languages-ruby-a-sign-post-on-the-road-to-smalltalk
-10. Smalltalk: Getting the Message, https://web.archive.org/web/20250326043539/http://www.smalltalk.org/articles/article_20100320_a3_Getting_The_Message.html
-11. A beginner's guide to C++ Ranges and Views, https://hannes.hauswedell.net/post/2019/11/30/range_intro/
-12. Structured bindings in C++17, 5 years later, https://www.cppstories.com/2022/structured-bindings/
-13. Use streams, pipes and redirects, https://learning.lpi.org/en/learning-materials/101-500/103/103.4/103.4_01/
-14. Design By Contract, https://se.inf.ethz.ch/~meyer/publications/old/dbc_chapter.pdf
-15. Gallery of Processor Cache Effects, https://igoro.com/archive/gallery-of-processor-cache-effects/
-16. What Every Programmer Should Know About Memory, https://people.freebsd.org/%7Elstewart/articles/cpumemory.pdf
-17. Concepts: The Future of Generic Programming, https://www.stroustrup.com/good_concepts.pdf
-18. Implementation Inheritance Is Evil, https://medium.com/hackernoon/inheritance-based-on-internal-structure-is-evil-7474cc8e64dc
-19. Uses and Abuses of Inheritance, Part 1, http://www.gotw.ca/publications/mill06.htm
-20. Inheritance — What your mother never told you, https://isocpp.org/wiki/faq/strange-inheritance
-21. Subtyping vs inheritance, https://www.cmi.ac.in/~madhavan/courses/pl2009/lecturenotes/lecture-notes/node28.html
-22. Zero-overhead deterministic exceptions: Throwing values, https://www.open-std.org/jtc1/sc22/wg21/docs/papers/2018/p0709r0.pdf
-23. Is the Agile Manifesto still a thing?, https://www.atlassian.com/agile/manifesto
-24. On the Role of Scientific Thought, https://www.cs.utexas.edu/users/EWD/ewd04xx/EWD447.PDF
-25. Models of Software Acceptance, https://www.dreamsongs.com/Files/AcceptanceModels.pdf
-26. C++20 Modules — Complete Guide, https://itnext.io/c-20-modules-complete-guide-ae741ddbae3d
-30. Can programming be liberated from the von Neumann Style?, http://worrydream.com/refs/Backus-CanProgrammingBeLiberated.pdf
-31. Recursive Functions of Symbolic Expressions and Their Computation by Machine, https://www.cs.tufts.edu/~nr/cs257/archive/john-mccarthy/recursive.pdf
-32. 21st Century C++, https://cacm.acm.org/blogcacm/21st-century-c/
-33. SIMULA ACM Sessions, https://www.cs.tufts.edu/comp/150FP/archive/kristen-nygaard/hopl-simula.pdf
-34. Smalltalk ACM Sessions, https://dl.acm.org/doi/pdf/10.1145/234286.1057828
-35. Dr. Alan Kay on the Meaning of “Object-Oriented Programming”, https://userpage.fu-berlin.de/~ram/pub/pub_jf47ht81Ht/doc_kay_oop_en
-36. How I Declare My class And Why, https://howardhinnant.github.io/classdecl.html
-37. Introducing the Rule of DesDeMovA, https://safecpp.com/2019/07/01/initial.html
-38. C++ ACM Sessions, https://dl.acm.org/doi/pdf/10.1145/234286.1057836
-39. Fundamental Concepts in Programming Languages, https://reed.cs.depaul.edu/jriely/447/assets/articles/strachey-fundamental-concepts-in-programming-languages.pdf
-40. On Understanding Types, Data Abstraction, and Polymorphism, http://lucacardelli.name/Papers/OnUnderstanding.A4.pdf
-41. Кратко про библиотеку Range в C++, https://habr.com/ru/companies/otus/articles/841456/
-42. Beyond errno Error Handling, https://insights.sei.cmu.edu/documents/4054/2016_017_101_484207.pdf
-43. Boost.Contract, https://www.boost.org/doc/libs/1_82_0/libs/contract/doc/html/index.html
-44. What is type erasure?, https://quuxplusone.github.io/blog/2019/03/18/what-is-type-erasure/
-45. Solid relevance, https://blog.cleancoder.com/uncle-bob/2020/10/18/Solid-Relevance.html
-46. Design Principles and Design Patterns, http://www.objectmentor.com/resources/articles/Principles_and_Patterns.pdf
-47. Data Abstraction and Hierarchy, https://www.cs.tufts.edu/~nr/cs257/archive/barbara-liskov/data-abstraction-and-hierarchy.pdf
-48. Single Responsibility Principle, https://blog.cleancoder.com/uncle-bob/2014/05/08/SingleReponsibilityPrinciple.html
-49. Principles for Computer System Design, https://bwlampson.site/Slides/TuringLecture.htm
-50. John Carmack on Inlined Code, http://number-none.com/blow/john_carmack_on_inlined_code.html
-51. How do commitees invent?, http://www.melconway.com/Home/Committees_Paper.html
-52. In-depth: static code analysis, https://www.gamedeveloper.com/programming/in-depth-static-code-analysis
-53. Why I don't spend time with modern C++ anymore, https://hackerbits.com/wp-content/uploads/2016/11/hacker_bits_issue11.pdf
-54. One year of C, https://floooh.github.io/2018/06/02/one-year-of-c.html
-55. Type erasure, https://www.artima.com/articles/on-the-tension-between-object-oriented-and-generic-programming-in-c
-56. A Stream IO System, https://cseweb.ucsd.edu/classes/fa01/cse221/papers/ritchie-stream-io-belllabs84.pdf
-57. A Literate Program, https://dl.acm.org/doi/pdf/10.1145/5948.315654
-58. The UNIX Time-Sharing System, https://dsf.berkeley.edu/cs262/unix.pdf
-59. Deferred execution and lazy evaluation, https://learn.microsoft.com/en-us/dotnet/standard/linq/deferred-execution-lazy-evaluation
-60. The mechanical evaluation of expressions, https://www.cs.cmu.edu/~crary/819-f09/Landin64.pdf
-61. A Curious Course on Coroutines and Concurrency, https://www.dabeaz.com/coroutines/Coroutines.pdf
-62. A beginner's guide to C++ ranges and views, https://hannes.hauswedell.net/post/2019/11/30/range_intro/
-63. Кратко про библиотеку ranges в С++, https://habr.com/ru/companies/otus/articles/841456/
-64. The Incremental Garbage Collection of Processes, http://home.pipeline.com/~hbaker1/Futures.html
-65. Futures and Promises, http://dist-prog-book.com/chapter/2/futures.html
-66. Incremental Consistency Guarantees for Replicated Objects, https://www.usenix.org/system/files/conference/osdi16/osdi16-guerraoui.pdf
-67. Operation Costs in CPU Clock Cycles, http://ithare.com/infographics-operation-costs-in-cpu-clock-cycles/
-68. Gallery of Processor Cache Effects, https://igoro.com/archive/gallery-of-processor-cache-effects/
-69. Cache: a place for concealment and safekeeping, https://manybutfinite.com/post/intel-cpu-caches/
-70. Bit Twiddling Hacks, https://graphics.stanford.edu/~seander/bithacks.html
-71. Handles are the better pointers, https://floooh.github.io/2018/06/17/handles-vs-pointers.html
-72. Fundamentals of generic programming, https://stepanovpapers.com/DeSt98.pdf
-73. Generic programming, https://www.stepanovpapers.com/genprog.pdf
-74. Higher order functions considered unnecessary for higher order programming, https://cseweb.ucsd.edu/~goguen/pps/utyop.pdf
-75. Rational approach to consciousness, https://academic.oup.com/nc/article/2021/2/niab034/6397521
-76. Functional error handling with OPTIONAL and EXPECTED, https://accu.org/journals/overload/26/143/brand_2462/
-77. Think in Math, Write in Code, https://www.jmeiners.com/think-in-math/
-78. C Is Not a Low-level Language, https://queue.acm.org/detail.cfm?id=3212479
-79. Permission structures, https://substack.com/@mattdinan/p-173089195
-80. Design principles behind Smalltalk, https://www.cs.virginia.edu/~evans/cs655/readings/smalltalk.html
-81. Subtyping, Subclassing, and Trouble with OOP, https://okmij.org/ftp/Computation/Subtyping/
-82. Subclassing errors, OOP style and practically checkable rules to prevent them, https://okmij.org/ftp/Computation/Subtyping/Preventing-Trouble.html
-83. The Discoveries of Continuations, https://homepages.inf.ed.ac.uk/wadler/papers/papers-we-love/reynolds-discoveries.pdf
-84. Configuration flags are where software goes to rot, https://00f.net/2026/04/11/config-flags/
+4. On the Role of Scientific Thought, https://www.cs.utexas.edu/users/EWD/ewd04xx/EWD447.PDF
+5. Rational approach to consciousness, https://academic.oup.com/nc/article/2021/2/niab034/6397521
 ### Эффекты LLM
 1. Thinking—Fast, Slow, and Artificial, https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6097646
 2. How AI Impacts Skill Formation, https://arxiv.org/pdf/2601.20245
 3. The Impact of Generative AI on Critical Thinking, https://www.microsoft.com/en-us/research/publication/the-impact-of-generative-ai-on-critical-thinking-self-reported-reductions-in-cognitive-effort-and-confidence-effects-from-a-survey-of-knowledge-workers/
 4. The Illusion of Thinking, https://machinelearning.apple.com/research/illusion-of-thinking
 5. Your Brain on ChatGPT, https://arxiv.org/abs/2506.08872
+6. Permission structures, https://substack.com/@mattdinan/p-173089195
+### Объекты
+1. Objects Never? Well, Hardly Ever!, https://cacm.acm.org/magazines/2010/9/98017-objects-never-well-hardly-ever/fulltext
+2. Was Alan Kay wrong? And why does that matter?, https://braythwayt.com/2013/12/22/wrong.html
+3. Smalltalk: Getting the Message, https://web.archive.org/web/20250326043539/http://www.smalltalk.org/articles/article_20100320_a3_Getting_The_Message.html
+4. Dr. Alan Kay on the Meaning of “Object-Oriented Programming”, https://userpage.fu-berlin.de/~ram/pub/pub_jf47ht81Ht/doc_kay_oop_en
+5. Design principles behind Smalltalk, https://www.cs.virginia.edu/~evans/cs655/readings/smalltalk.html
+### Фундаментальные аспекты программирования
+1. Can programming be liberated from the von Neumann Style?, http://worrydream.com/refs/Backus-CanProgrammingBeLiberated.pdf
+2. SIMULA ACM Sessions, https://www.cs.tufts.edu/comp/150FP/archive/kristen-nygaard/hopl-simula.pdf
+3. Smalltalk ACM Sessions, https://dl.acm.org/doi/pdf/10.1145/234286.1057828
+4. Fundamental Concepts in Programming Languages, https://reed.cs.depaul.edu/jriely/447/assets/articles/strachey-fundamental-concepts-in-programming-languages.pdf
+5. On Understanding Types, Data Abstraction, and Polymorphism, http://lucacardelli.name/Papers/OnUnderstanding.A4.pdf
+6. Principles for Computer System Design, https://bwlampson.site/Slides/TuringLecture.htm
+7. How do commitees invent?, http://www.melconway.com/Home/Committees_Paper.html
+8. John Carmack on Inlined Code, http://number-none.com/blow/john_carmack_on_inlined_code.html
+9. Think in Math, Write in Code, https://www.jmeiners.com/think-in-math/
+10. Fundamentals of generic programming, https://stepanovpapers.com/DeSt98.pdf
+11. Generic programming, https://www.stepanovpapers.com/genprog.pdf
+12. What is type erasure?, https://quuxplusone.github.io/blog/2019/03/18/what-is-type-erasure/
+13. Type erasure, https://www.artima.com/articles/on-the-tension-between-object-oriented-and-generic-programming-in-c
+14. Configuration flags are where software goes to rot, https://00f.net/2026/04/11/config-flags/
+### Функциональное программирование
+1. Lisp: Good News, Bad News, How to Win Big, https://www.dreamsongs.com/WIB.html
+2. What Made Lisp Different, https://www.paulgraham.com/diff.html
+3. Recursive Functions of Symbolic Expressions and Their Computation by Machine, https://www.cs.tufts.edu/~nr/cs257/archive/john-mccarthy/recursive.pdf
+4. The mechanical evaluation of expressions, https://www.cs.cmu.edu/~crary/819-f09/Landin64.pdf
+5. The Discoveries of Continuations, https://homepages.inf.ed.ac.uk/wadler/papers/papers-we-love/reynolds-discoveries.pdf
+6. Higher order functions considered unnecessary for higher order programming, https://cseweb.ucsd.edu/~goguen/pps/utyop.pdf
+### Потоки ввода/вывода
+1. A Literate Program, https://dl.acm.org/doi/pdf/10.1145/5948.315654
+2. Deferred execution and lazy evaluation, https://learn.microsoft.com/en-us/dotnet/standard/linq/deferred-execution-lazy-evaluation
+3. Use streams, pipes and redirects, https://learning.lpi.org/en/learning-materials/101-500/103/103.4/103.4_01/
+4. A Stream IO System, https://cseweb.ucsd.edu/classes/fa01/cse221/papers/ritchie-stream-io-belllabs84.pdf
+5. The UNIX Time-Sharing System, https://dsf.berkeley.edu/cs262/unix.pdf
+6. A Curious Course on Coroutines and Concurrency, https://www.dabeaz.com/coroutines/Coroutines.pdf
+7. The Incremental Garbage Collection of Processes, http://home.pipeline.com/~hbaker1/Futures.html
+8. Futures and Promises, http://dist-prog-book.com/chapter/2/futures.html
+9. Incremental Consistency Guarantees for Replicated Objects, https://www.usenix.org/system/files/conference/osdi16/osdi16-guerraoui.pdf
+### C++
+1. 21st Century C++, https://cacm.acm.org/blogcacm/21st-century-c/
+2. C++ ACM Sessions, https://dl.acm.org/doi/pdf/10.1145/234286.1057836
+3. Is CppCoreGuidelines C.21 correct?, https://stackoverflow.com/questions/38682675/is-cppcoreguidelines-c-21-correct
+4. A beginner's guide to C++ Ranges and Views, https://hannes.hauswedell.net/post/2019/11/30/range_intro/
+5. Structured bindings in C++17, 5 years later, https://www.cppstories.com/2022/structured-bindings/
+6. Concepts: The Future of Generic Programming, https://www.stroustrup.com/good_concepts.pdf
+7. Zero-overhead deterministic exceptions: Throwing values, https://www.open-std.org/jtc1/sc22/wg21/docs/papers/2018/p0709r0.pdf
+8. C++20 Modules — Complete Guide, https://itnext.io/c-20-modules-complete-guide-ae741ddbae3d
+9. Introducing the Rule of DesDeMovA, https://safecpp.com/2019/07/01/initial.html
+10. Кратко про библиотеку Range в C++, https://habr.com/ru/companies/otus/articles/841456/
+11. Why I don't spend time with modern C++ anymore, https://hackerbits.com/wp-content/uploads/2016/11/hacker_bits_issue11.pdf
+12. A beginner's guide to C++ ranges and views, https://hannes.hauswedell.net/post/2019/11/30/range_intro/
+13. One year of C, https://floooh.github.io/2018/06/02/one-year-of-c.html
+14. C Is Not a Low-level Language, https://queue.acm.org/detail.cfm?id=3212479
+15. How I Declare My class And Why, https://howardhinnant.github.io/classdecl.html
+### Обработка ошибок
+1. Beyond errno Error Handling, https://insights.sei.cmu.edu/documents/4054/2016_017_101_484207.pdf
+2. Boost.Contract, https://www.boost.org/doc/libs/1_82_0/libs/contract/doc/html/index.html
+3. Functional error handling with OPTIONAL and EXPECTED, https://accu.org/journals/overload/26/143/brand_2462/
+### Производительность
+1. Gallery of Processor Cache Effects, https://igoro.com/archive/gallery-of-processor-cache-effects/
+2. What Every Programmer Should Know About Memory, https://people.freebsd.org/%7Elstewart/articles/cpumemory.pdf
+3. In-depth: static code analysis, https://www.gamedeveloper.com/programming/in-depth-static-code-analysis
+4. Operation Costs in CPU Clock Cycles, http://ithare.com/infographics-operation-costs-in-cpu-clock-cycles/
+5. Cache: a place for concealment and safekeeping, https://manybutfinite.com/post/intel-cpu-caches/
+6. Handles are the better pointers, https://floooh.github.io/2018/06/17/handles-vs-pointers.html
+7. Bit Twiddling Hacks, https://graphics.stanford.edu/~seander/bithacks.html
+### Дизайн ПО
+1. Domain Specific Languages - Ruby, a Sign Post on the Road to Smalltalk, http://onsmalltalk.com/domain-specific-languages-ruby-a-sign-post-on-the-road-to-smalltalk
+2. Design By Contract, https://se.inf.ethz.ch/~meyer/publications/old/dbc_chapter.pdf
+3. Is the Agile Manifesto still a thing?, https://www.atlassian.com/agile/manifesto
+4. Models of Software Acceptance, https://www.dreamsongs.com/Files/AcceptanceModels.pdf
+5. Design Principles and Design Patterns, http://www.objectmentor.com/resources/articles/Principles_and_Patterns.pdf
+6. Single Responsibility Principle, https://blog.cleancoder.com/uncle-bob/2014/05/08/SingleReponsibilityPrinciple.html
+7. Solid relevance, https://blog.cleancoder.com/uncle-bob/2020/10/18/Solid-Relevance.html
+### Наследование
+1. Data Abstraction and Hierarchy, https://www.cs.tufts.edu/~nr/cs257/archive/barbara-liskov/data-abstraction-and-hierarchy.pdf
+2. Subtyping, Subclassing, and Trouble with OOP, https://okmij.org/ftp/Computation/Subtyping/
+3. Subclassing errors, OOP style and practically checkable rules to prevent them, https://okmij.org/ftp/Computation/Subtyping/Preventing-Trouble.html
+4. Implementation Inheritance Is Evil, https://medium.com/hackernoon/inheritance-based-on-internal-structure-is-evil-7474cc8e64dc
+5. Uses and Abuses of Inheritance, Part 1, http://www.gotw.ca/publications/mill06.htm
+6. Inheritance — What your mother never told you, https://isocpp.org/wiki/faq/strange-inheritance
+7. Subtyping vs inheritance, https://www.cmi.ac.in/~madhavan/courses/pl2009/lecturenotes/lecture-notes/node28.html
 
 ## Лекции
 1. Move semantics, https://www.youtube.com/watch?v=vLinb2fgkHk
