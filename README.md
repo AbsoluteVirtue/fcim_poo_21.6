@@ -29,9 +29,6 @@ https://journals.sagepub.com/doi/abs/10.1177/0956797614524581
 24. On the Role of Scientific Thought, https://www.cs.utexas.edu/users/EWD/ewd04xx/EWD447.PDF
 25. Models of Software Acceptance, https://www.dreamsongs.com/Files/AcceptanceModels.pdf
 26. C++20 Modules — Complete Guide, https://itnext.io/c-20-modules-complete-guide-ae741ddbae3d
-27. The Impact of Generative AI on Critical Thinking, https://www.microsoft.com/en-us/research/publication/the-impact-of-generative-ai-on-critical-thinking-self-reported-reductions-in-cognitive-effort-and-confidence-effects-from-a-survey-of-knowledge-workers/
-28. The Illusion of Thinking, https://machinelearning.apple.com/research/illusion-of-thinking
-29. Your Brain on ChatGPT, https://arxiv.org/abs/2506.08872
 30. Can programming be liberated from the von Neumann Style?, http://worrydream.com/refs/Backus-CanProgrammingBeLiberated.pdf
 31. Recursive Functions of Symbolic Expressions and Their Computation by Machine, https://www.cs.tufts.edu/~nr/cs257/archive/john-mccarthy/recursive.pdf
 32. 21st Century C++, https://cacm.acm.org/blogcacm/21st-century-c/
@@ -85,6 +82,14 @@ https://journals.sagepub.com/doi/abs/10.1177/0956797614524581
 80. Design principles behind Smalltalk, https://www.cs.virginia.edu/~evans/cs655/readings/smalltalk.html
 81. Subtyping, Subclassing, and Trouble with OOP, https://okmij.org/ftp/Computation/Subtyping/
 82. Subclassing errors, OOP style and practically checkable rules to prevent them, https://okmij.org/ftp/Computation/Subtyping/Preventing-Trouble.html
+83. The Discoveries of Continuations, https://homepages.inf.ed.ac.uk/wadler/papers/papers-we-love/reynolds-discoveries.pdf
+84. Configuration flags are where software goes to rot, https://00f.net/2026/04/11/config-flags/
+### Эффекты LLM
+1. Thinking—Fast, Slow, and Artificial, https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6097646
+2. How AI Impacts Skill Formation, https://arxiv.org/pdf/2601.20245
+3. The Impact of Generative AI on Critical Thinking, https://www.microsoft.com/en-us/research/publication/the-impact-of-generative-ai-on-critical-thinking-self-reported-reductions-in-cognitive-effort-and-confidence-effects-from-a-survey-of-knowledge-workers/
+4. The Illusion of Thinking, https://machinelearning.apple.com/research/illusion-of-thinking
+5. Your Brain on ChatGPT, https://arxiv.org/abs/2506.08872
 
 ## Лекции
 1. Move semantics, https://www.youtube.com/watch?v=vLinb2fgkHk
@@ -175,7 +180,7 @@ https://journals.sagepub.com/doi/abs/10.1177/0956797614524581
 13. Stop telling me about _Generic, https://www.youtube.com/watch?v=oEL9x6pP4FM
 14. The Truth About Software Development, https://www.youtube.com/watch?v=mbEzhI3cmmo
 15. My thoughts on Y Combinator, https://www.youtube.com/watch?v=L7x2ufU1c9Y 
-16.  Why Go Or Rust On New Projects, https://www.youtube.com/watch?v=p-tb1ZfkwgQ
+16. Why Go Or Rust On New Projects, https://www.youtube.com/watch?v=p-tb1ZfkwgQ
 
 ## Документация
 1. libstdc++ Source Documentation, https://gcc.gnu.org/onlinedocs/gcc-4.6.2/libstdc++/api/index.html
@@ -199,6 +204,7 @@ https://journals.sagepub.com/doi/abs/10.1177/0956797614524581
 10. Object-Oriented Programming Using C++, https://icarus.cs.weber.edu/~dab/cs1410/textbook/
 11. Category theory for scientists, https://arxiv.org/pdf/1302.6946
 12. Data structures in practice, https://github.com/djiangtw/data-structures-in-practice-public
+13. Modern C, https://gustedt.gitlabpages.inria.fr/modern-c/
 
 ## Опросы
 1. The 2025 Developer Survey, https://survey.stackoverflow.co/2025
