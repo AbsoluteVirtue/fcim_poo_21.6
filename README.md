@@ -90,6 +90,7 @@ https://journals.sagepub.com/doi/abs/10.1177/0956797614524581
 5. Design Principles and Design Patterns, http://www.objectmentor.com/resources/articles/Principles_and_Patterns.pdf
 6. Single Responsibility Principle, https://blog.cleancoder.com/uncle-bob/2014/05/08/SingleReponsibilityPrinciple.html
 7. Solid relevance, https://blog.cleancoder.com/uncle-bob/2020/10/18/Solid-Relevance.html
+8. Codin' Dirty, https://htmx.org/essays/codin-dirty/
 ### Наследование
 1. Data Abstraction and Hierarchy, https://www.cs.tufts.edu/~nr/cs257/archive/barbara-liskov/data-abstraction-and-hierarchy.pdf
 2. Subtyping, Subclassing, and Trouble with OOP, https://okmij.org/ftp/Computation/Subtyping/
