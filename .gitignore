@@ -41,4 +41,3 @@ _*.cpp
 # Obsidian
 .obsidian/*
 *.json
-*.canvas
