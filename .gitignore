@@ -3,7 +3,7 @@
 
 labs/*
 _*.cpp
-*test*.cpp
+*test*.md
 
 # Prerequisites
 *.d
